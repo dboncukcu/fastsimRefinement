@@ -1,0 +1,12197 @@
+test10_loge_recJetpt
+selected device is cuda
+Output Path:  /eos/user/d/dboncukc/fastsim/test10_loge_recJetpt/20240313.root
+
+### get training data
+
+### build model
+Sequential(
+  (LogTransform): LogTransform()
+  (Tanh200Transform): TanhTransform()
+  (LogitTransform): LogitTransform()
+  (OneHotEncode_RecJet_hadronFlavour_FastSim): OneHotEncode()
+  (LinearWithSkipConnection_0): LinearWithSkipConnection(
+    (_linears): ModuleList(
+      (0): Linear(in_features=10, out_features=1024, bias=True)
+      (1): Linear(in_features=1024, out_features=1024, bias=True)
+    )
+    (_leakyrelus): ModuleList(
+      (0): LeakyReLU(negative_slope=0.01)
+      (1): LeakyReLU(negative_slope=0.01)
+    )
+    (_dropouts): ModuleList(
+      (0): Dropout(p=0.2, inplace=False)
+      (1): Dropout(p=0.2, inplace=False)
+    )
+  )
+  (LinearWithSkipConnection_1): LinearWithSkipConnection(
+    (_linears): ModuleList(
+      (0): Linear(in_features=1024, out_features=1024, bias=True)
+      (1): Linear(in_features=1024, out_features=1024, bias=True)
+    )
+    (_leakyrelus): ModuleList(
+      (0): LeakyReLU(negative_slope=0.01)
+      (1): LeakyReLU(negative_slope=0.01)
+    )
+    (_dropouts): ModuleList(
+      (0): Dropout(p=0.2, inplace=False)
+      (1): Dropout(p=0.2, inplace=False)
+    )
+  )
+  (LinearWithSkipConnection_2): LinearWithSkipConnection(
+    (_linears): ModuleList(
+      (0): Linear(in_features=1024, out_features=1024, bias=True)
+      (1): Linear(in_features=1024, out_features=1024, bias=True)
+    )
+    (_leakyrelus): ModuleList(
+      (0): LeakyReLU(negative_slope=0.01)
+      (1): LeakyReLU(negative_slope=0.01)
+    )
+    (_dropouts): ModuleList(
+      (0): Dropout(p=0.2, inplace=False)
+      (1): Dropout(p=0.2, inplace=False)
+    )
+  )
+  (LinearWithSkipConnection_3): LinearWithSkipConnection(
+    (_linears): ModuleList(
+      (0): Linear(in_features=1024, out_features=1024, bias=True)
+      (1): Linear(in_features=1024, out_features=1024, bias=True)
+    )
+    (_leakyrelus): ModuleList(
+      (0): LeakyReLU(negative_slope=0.01)
+      (1): LeakyReLU(negative_slope=0.01)
+    )
+    (_dropouts): ModuleList(
+      (0): Dropout(p=0.2, inplace=False)
+      (1): Dropout(p=0.2, inplace=False)
+    )
+  )
+  (LinearWithSkipConnection_last): LinearWithSkipConnection(
+    (_linears): ModuleList(
+      (0): Linear(in_features=1024, out_features=1024, bias=True)
+      (1): Linear(in_features=1024, out_features=5, bias=True)
+    )
+    (_leakyrelus): ModuleList(
+      (0): LeakyReLU(negative_slope=0.01)
+      (1): LeakyReLU(negative_slope=0.01)
+    )
+    (_dropouts): ModuleList(
+      (0): Dropout(p=0.2, inplace=False)
+      (1): Dropout(p=0.2, inplace=False)
+    )
+  )
+  (LogitTransformBack): LogitTransformBack()
+  (LogTransformBack): LogTransformBack()
+  (CastTo16Bit): CastTo16Bit()
+)
+8413189 trainable parameters
+
+### start training
+
+# epoch 1
+
+evaluate benchmarks and starting points
+
+benchmarks
+mmdfixsigma_output_target, mmd_output_target, mmd_output_target_hadflav0, mmd_output_target_hadflav4, mmd_output_target_hadflav5, mmd_output_target_hadflavSum, mse_output_target, mse_input_output, huber_output_target, huber_input_output, deepjetsum_mean, deepjetsum_std
+0.004179862428922206, 0.003379424781072885, 0.005341587918810547, 0.011828114319592714, 0.007193325282074511, 0.006645577280782163, 1.1535732681751252, 0.0, 0.05941005402803421, 0.0, 0.9999920959472657, 0.00113590281130746
+
+start points
+mmdfixsigma_output_target, mmd_output_target, mmd_output_target_hadflav0, mmd_output_target_hadflav4, mmd_output_target_hadflav5, mmd_output_target_hadflavSum, mse_output_target, mse_input_output, huber_output_target, huber_input_output, deepjetsum_mean, deepjetsum_std
+0.004127763122785837, 0.003326054577715695, 0.0052399635673500596, 0.011765312012284994, 0.007174317427910864, 0.006575042583979666, 1.153166244506836, 5.964241677247628e-06, 0.05938341986387968, 2.982114429869398e-06, 1.001430519580841, 0.0016667898891028017
+
+
+training loop
+batch 0
+train loss 0.00631
+batch 1
+train loss 0.00598
+batch 2
+train loss 0.00629
+batch 3
+train loss 0.00676
+batch 4
+train loss 0.00695
+batch 5
+train loss 0.00612
+batch 6
+train loss 0.00623
+batch 7
+train loss 0.00720
+batch 8
+train loss 0.00589
+batch 9
+train loss 0.00641
+batch 10
+train loss 0.00654
+batch 11
+train loss 0.00652
+batch 12
+train loss 0.00711
+batch 13
+train loss 0.00591
+batch 14
+train loss 0.00641
+batch 15
+train loss 0.00591
+batch 16
+train loss 0.00628
+batch 17
+train loss 0.00553
+batch 18
+train loss 0.00687
+batch 19
+train loss 0.00743
+batch 20
+train loss 0.00712
+batch 21
+train loss 0.00516
+batch 22
+train loss 0.00582
+batch 23
+train loss 0.00661
+batch 24
+train loss 0.00726
+batch 25
+train loss 0.00673
+batch 26
+train loss 0.00577
+batch 27
+train loss 0.00542
+batch 28
+train loss 0.00598
+batch 29
+train loss 0.00552
+batch 30
+train loss 0.00582
+batch 31
+train loss 0.00613
+batch 32
+train loss 0.00626
+batch 33
+train loss 0.00649
+batch 34
+train loss 0.00586
+batch 35
+train loss 0.00570
+batch 36
+train loss 0.00493
+batch 37
+train loss 0.00504
+batch 38
+train loss 0.00575
+batch 39
+train loss 0.00520
+batch 40
+train loss 0.00554
+batch 41
+train loss 0.00483
+batch 42
+train loss 0.00577
+batch 43
+train loss 0.00638
+batch 44
+train loss 0.00626
+batch 45
+train loss 0.00598
+batch 46
+train loss 0.00485
+batch 47
+train loss 0.00596
+batch 48
+train loss 0.00546
+batch 49
+train loss 0.00573
+batch 50
+train loss 0.00636
+batch 51
+train loss 0.00571
+batch 52
+train loss 0.00588
+batch 53
+train loss 0.00597
+batch 54
+train loss 0.00551
+batch 55
+train loss 0.00583
+batch 56
+train loss 0.00578
+batch 57
+train loss 0.00571
+batch 58
+train loss 0.00587
+batch 59
+train loss 0.00591
+batch 60
+train loss 0.00523
+batch 61
+train loss 0.00526
+batch 62
+train loss 0.00524
+batch 63
+train loss 0.00490
+batch 64
+train loss 0.00403
+batch 65
+train loss 0.00610
+batch 66
+train loss 0.00576
+batch 67
+train loss 0.00491
+batch 68
+train loss 0.00534
+batch 69
+train loss 0.00410
+batch 70
+train loss 0.00545
+batch 71
+train loss 0.00565
+batch 72
+train loss 0.00491
+batch 73
+train loss 0.00503
+batch 74
+train loss 0.00514
+batch 75
+train loss 0.00588
+batch 76
+train loss 0.00456
+batch 77
+train loss 0.00469
+batch 78
+train loss 0.00425
+batch 79
+train loss 0.00458
+batch 80
+train loss 0.00543
+batch 81
+train loss 0.00496
+batch 82
+train loss 0.00462
+batch 83
+train loss 0.00436
+batch 84
+train loss 0.00458
+batch 85
+train loss 0.00444
+batch 86
+train loss 0.00478
+batch 87
+train loss 0.00485
+batch 88
+train loss 0.00409
+batch 89
+train loss 0.00471
+batch 90
+train loss 0.00476
+batch 91
+train loss 0.00424
+batch 92
+train loss 0.00432
+batch 93
+train loss 0.00381
+batch 94
+train loss 0.00504
+batch 95
+train loss 0.00485
+batch 96
+train loss 0.00457
+batch 97
+train loss 0.00452
+batch 98
+train loss 0.00520
+batch 99
+train loss 0.00470
+batch 100
+train loss 0.00486
+batch 101
+train loss 0.00558
+batch 102
+train loss 0.00470
+batch 103
+train loss 0.00412
+batch 104
+train loss 0.00446
+batch 105
+train loss 0.00394
+batch 106
+train loss 0.00446
+batch 107
+train loss 0.00393
+batch 108
+train loss 0.00415
+batch 109
+train loss 0.00479
+batch 110
+train loss 0.00381
+batch 111
+train loss 0.00409
+batch 112
+train loss 0.00436
+batch 113
+train loss 0.00441
+batch 114
+train loss 0.00437
+batch 115
+train loss 0.00420
+batch 116
+train loss 0.00389
+batch 117
+train loss 0.00448
+batch 118
+train loss 0.00418
+batch 119
+train loss 0.00439
+batch 120
+train loss 0.00407
+batch 121
+train loss 0.00452
+batch 122
+train loss 0.00424
+batch 123
+train loss 0.00373
+batch 124
+train loss 0.00441
+batch 125
+train loss 0.00424
+batch 126
+train loss 0.00384
+batch 127
+train loss 0.00438
+batch 128
+train loss 0.00508
+batch 129
+train loss 0.00384
+batch 130
+train loss 0.00412
+batch 131
+train loss 0.00444
+batch 132
+train loss 0.00432
+batch 133
+train loss 0.00378
+batch 134
+train loss 0.00455
+batch 135
+train loss 0.00351
+batch 136
+train loss 0.00398
+batch 137
+train loss 0.00426
+batch 138
+train loss 0.00456
+batch 139
+train loss 0.00392
+batch 140
+train loss 0.00396
+batch 141
+train loss 0.00396
+batch 142
+train loss 0.00395
+batch 143
+train loss 0.00464
+batch 144
+train loss 0.00412
+batch 145
+train loss 0.00422
+batch 146
+train loss 0.00445
+batch 147
+train loss 0.00463
+batch 148
+train loss 0.00404
+batch 149
+train loss 0.00419
+batch 150
+train loss 0.00444
+batch 151
+train loss 0.00444
+batch 152
+train loss 0.00485
+batch 153
+train loss 0.00439
+batch 154
+train loss 0.00397
+batch 155
+train loss 0.00399
+batch 156
+train loss 0.00429
+batch 157
+train loss 0.00355
+batch 158
+train loss 0.00511
+batch 159
+train loss 0.00360
+batch 160
+train loss 0.00381
+batch 161
+train loss 0.00373
+batch 162
+train loss 0.00482
+batch 163
+train loss 0.00401
+batch 164
+train loss 0.00386
+batch 165
+train loss 0.00528
+batch 166
+train loss 0.00416
+batch 167
+train loss 0.00344
+batch 168
+train loss 0.00427
+batch 169
+train loss 0.00362
+batch 170
+train loss 0.00356
+batch 171
+train loss 0.00410
+batch 172
+train loss 0.00453
+batch 173
+train loss 0.00425
+batch 174
+train loss 0.00408
+batch 175
+train loss 0.00328
+batch 176
+train loss 0.00447
+batch 177
+train loss 0.00396
+batch 178
+train loss 0.00392
+batch 179
+train loss 0.00430
+batch 180
+train loss 0.00411
+batch 181
+train loss 0.00346
+batch 182
+train loss 0.00410
+batch 183
+train loss 0.00424
+batch 184
+train loss 0.00452
+batch 185
+train loss 0.00453
+batch 186
+train loss 0.00379
+batch 187
+train loss 0.00382
+batch 188
+train loss 0.00415
+batch 189
+train loss 0.00396
+batch 190
+train loss 0.00404
+batch 191
+train loss 0.00434
+batch 192
+train loss 0.00365
+batch 193
+train loss 0.00371
+batch 194
+train loss 0.00394
+batch 195
+train loss 0.00460
+batch 196
+train loss 0.00429
+batch 197
+train loss 0.00415
+batch 198
+train loss 0.00455
+batch 199
+train loss 0.00359
+batch 200
+train loss 0.00372
+batch 201
+train loss 0.00384
+batch 202
+train loss 0.00416
+batch 203
+train loss 0.00438
+batch 204
+train loss 0.00343
+batch 205
+train loss 0.00421
+batch 206
+train loss 0.00352
+batch 207
+train loss 0.00410
+batch 208
+train loss 0.00321
+batch 209
+train loss 0.00365
+batch 210
+train loss 0.00361
+batch 211
+train loss 0.00402
+batch 212
+train loss 0.00450
+batch 213
+train loss 0.00400
+batch 214
+train loss 0.00416
+batch 215
+train loss 0.00360
+batch 216
+train loss 0.00393
+batch 217
+train loss 0.00461
+batch 218
+train loss 0.00350
+batch 219
+train loss 0.00394
+batch 220
+train loss 0.00409
+batch 221
+train loss 0.00342
+batch 222
+train loss 0.00408
+batch 223
+train loss 0.00414
+batch 224
+train loss 0.00339
+batch 225
+train loss 0.00350
+batch 226
+train loss 0.00367
+batch 227
+train loss 0.00468
+batch 228
+train loss 0.00387
+batch 229
+train loss 0.00445
+batch 230
+train loss 0.00359
+batch 231
+train loss 0.00403
+batch 232
+train loss 0.00358
+batch 233
+train loss 0.00340
+batch 234
+train loss 0.00360
+batch 235
+train loss 0.00380
+batch 236
+train loss 0.00377
+batch 237
+train loss 0.00335
+batch 238
+train loss 0.00304
+batch 239
+train loss 0.00348
+batch 240
+train loss 0.00374
+batch 241
+train loss 0.00446
+batch 242
+train loss 0.00340
+batch 243
+train loss 0.00374
+batch 244
+train loss 0.00355
+batch 245
+train loss 0.00380
+batch 246
+train loss 0.00357
+batch 247
+train loss 0.00364
+batch 248
+train loss 0.00342
+batch 249
+train loss 0.00360
+batch 250
+train loss 0.00373
+batch 251
+train loss 0.00330
+batch 252
+train loss 0.00334
+batch 253
+train loss 0.00337
+batch 254
+train loss 0.00382
+batch 255
+train loss 0.00369
+batch 256
+train loss 0.00385
+batch 257
+train loss 0.00420
+batch 258
+train loss 0.00340
+batch 259
+train loss 0.00341
+batch 260
+train loss 0.00362
+batch 261
+train loss 0.00380
+batch 262
+train loss 0.00346
+batch 263
+train loss 0.00385
+batch 264
+train loss 0.00353
+batch 265
+train loss 0.00360
+batch 266
+train loss 0.00370
+batch 267
+train loss 0.00366
+batch 268
+train loss 0.00373
+batch 269
+train loss 0.00354
+batch 270
+train loss 0.00352
+batch 271
+train loss 0.00356
+batch 272
+train loss 0.00342
+batch 273
+train loss 0.00371
+batch 274
+train loss 0.00325
+batch 275
+train loss 0.00356
+batch 276
+train loss 0.00387
+batch 277
+train loss 0.00327
+batch 278
+train loss 0.00319
+batch 279
+train loss 0.00328
+batch 280
+train loss 0.00343
+batch 281
+train loss 0.00347
+batch 282
+train loss 0.00365
+batch 283
+train loss 0.00331
+batch 284
+train loss 0.00326
+batch 285
+train loss 0.00367
+batch 286
+train loss 0.00319
+batch 287
+train loss 0.00360
+batch 288
+train loss 0.00351
+batch 289
+train loss 0.00354
+batch 290
+train loss 0.00338
+batch 291
+train loss 0.00329
+batch 292
+train loss 0.00362
+batch 293
+train loss 0.00319
+batch 294
+train loss 0.00358
+batch 295
+train loss 0.00350
+batch 296
+train loss 0.00310
+batch 297
+train loss 0.00394
+batch 298
+train loss 0.00350
+batch 299
+train loss 0.00336
+batch 300
+train loss 0.00351
+batch 301
+train loss 0.00347
+batch 302
+train loss 0.00390
+batch 303
+train loss 0.00379
+batch 304
+train loss 0.00369
+batch 305
+train loss 0.00331
+batch 306
+train loss 0.00338
+batch 307
+train loss 0.00354
+batch 308
+train loss 0.00300
+batch 309
+train loss 0.00376
+batch 310
+train loss 0.00346
+batch 311
+train loss 0.00301
+batch 312
+train loss 0.00338
+batch 313
+train loss 0.00336
+batch 314
+train loss 0.00330
+batch 315
+train loss 0.00370
+batch 316
+train loss 0.00331
+batch 317
+train loss 0.00389
+batch 318
+train loss 0.00350
+batch 319
+train loss 0.00402
+batch 320
+train loss 0.00333
+batch 321
+train loss 0.00372
+batch 322
+train loss 0.00336
+batch 323
+train loss 0.00325
+batch 324
+train loss 0.00321
+batch 325
+train loss 0.00307
+batch 326
+train loss 0.00305
+batch 327
+train loss 0.00287
+batch 328
+train loss 0.00310
+batch 329
+train loss 0.00316
+batch 330
+train loss 0.00340
+batch 331
+train loss 0.00344
+batch 332
+train loss 0.00347
+batch 333
+train loss 0.00362
+batch 334
+train loss 0.00339
+batch 335
+train loss 0.00358
+batch 336
+train loss 0.00353
+batch 337
+train loss 0.00359
+batch 338
+train loss 0.00300
+batch 339
+train loss 0.00329
+batch 340
+train loss 0.00363
+batch 341
+train loss 0.00360
+batch 342
+train loss 0.00340
+batch 343
+train loss 0.00368
+batch 344
+train loss 0.00322
+batch 345
+train loss 0.00393
+batch 346
+train loss 0.00350
+batch 347
+train loss 0.00347
+batch 348
+train loss 0.00373
+batch 349
+train loss 0.00322
+batch 350
+train loss 0.00331
+batch 351
+train loss 0.00320
+batch 352
+train loss 0.00326
+batch 353
+train loss 0.00368
+batch 354
+train loss 0.00329
+batch 355
+train loss 0.00369
+batch 356
+train loss 0.00370
+batch 357
+train loss 0.00340
+batch 358
+train loss 0.00326
+batch 359
+train loss 0.00339
+batch 360
+train loss 0.00355
+batch 361
+train loss 0.00347
+batch 362
+train loss 0.00317
+batch 363
+train loss 0.00375
+batch 364
+train loss 0.00370
+batch 365
+train loss 0.00327
+batch 366
+train loss 0.00351
+batch 367
+train loss 0.00330
+batch 368
+train loss 0.00352
+batch 369
+train loss 0.00325
+batch 370
+train loss 0.00341
+batch 371
+train loss 0.00395
+batch 372
+train loss 0.00318
+batch 373
+train loss 0.00342
+batch 374
+train loss 0.00323
+batch 375
+train loss 0.00314
+batch 376
+train loss 0.00323
+batch 377
+train loss 0.00336
+batch 378
+train loss 0.00313
+batch 379
+train loss 0.00324
+batch 380
+train loss 0.00367
+batch 381
+train loss 0.00382
+batch 382
+train loss 0.00334
+batch 383
+train loss 0.00343
+batch 384
+train loss 0.00346
+batch 385
+train loss 0.00328
+batch 386
+train loss 0.00287
+batch 387
+train loss 0.00293
+batch 388
+train loss 0.00316
+batch 389
+train loss 0.00394
+batch 390
+train loss 0.00324
+batch 391
+train loss 0.00338
+batch 392
+train loss 0.00342
+batch 393
+train loss 0.00357
+batch 394
+train loss 0.00338
+batch 395
+train loss 0.00375
+batch 396
+train loss 0.00346
+batch 397
+train loss 0.00327
+batch 398
+train loss 0.00323
+batch 399
+train loss 0.00351
+batch 400
+train loss 0.00330
+batch 401
+train loss 0.00312
+batch 402
+train loss 0.00314
+batch 403
+train loss 0.00375
+batch 404
+train loss 0.00328
+batch 405
+train loss 0.00326
+batch 406
+train loss 0.00365
+batch 407
+train loss 0.00299
+batch 408
+train loss 0.00358
+batch 409
+train loss 0.00331
+batch 410
+train loss 0.00312
+batch 411
+train loss 0.00322
+batch 412
+train loss 0.00302
+batch 413
+train loss 0.00314
+batch 414
+train loss 0.00338
+batch 415
+train loss 0.00294
+batch 416
+train loss 0.00357
+batch 417
+train loss 0.00328
+batch 418
+train loss 0.00376
+batch 419
+train loss 0.00364
+batch 420
+train loss 0.00363
+batch 421
+train loss 0.00367
+batch 422
+train loss 0.00347
+batch 423
+train loss 0.00325
+batch 424
+train loss 0.00307
+batch 425
+train loss 0.00349
+batch 426
+train loss 0.00340
+batch 427
+train loss 0.00398
+batch 428
+train loss 0.00326
+batch 429
+train loss 0.00308
+batch 430
+train loss 0.00356
+batch 431
+train loss 0.00341
+batch 432
+train loss 0.00331
+batch 433
+train loss 0.00398
+batch 434
+train loss 0.00325
+batch 435
+train loss 0.00369
+batch 436
+train loss 0.00373
+batch 437
+train loss 0.00335
+batch 438
+train loss 0.00358
+batch 439
+train loss 0.00326
+batch 440
+train loss 0.00332
+batch 441
+train loss 0.00323
+batch 442
+train loss 0.00311
+batch 443
+train loss 0.00388
+batch 444
+train loss 0.00300
+batch 445
+train loss 0.00346
+batch 446
+train loss 0.00371
+batch 447
+train loss 0.00369
+batch 448
+train loss 0.00354
+batch 449
+train loss 0.00311
+batch 450
+train loss 0.00321
+batch 451
+train loss 0.00328
+batch 452
+train loss 0.00340
+batch 453
+train loss 0.00317
+batch 454
+train loss 0.00298
+batch 455
+train loss 0.00391
+batch 456
+train loss 0.00335
+batch 457
+train loss 0.00316
+batch 458
+train loss 0.00356
+batch 459
+train loss 0.00341
+batch 460
+train loss 0.00320
+batch 461
+train loss 0.00378
+batch 462
+train loss 0.00299
+batch 463
+train loss 0.00329
+batch 464
+train loss 0.00375
+batch 465
+train loss 0.00361
+batch 466
+train loss 0.00400
+batch 467
+train loss 0.00381
+batch 468
+train loss 0.00360
+batch 469
+train loss 0.00357
+batch 470
+train loss 0.00327
+batch 471
+train loss 0.00329
+batch 472
+train loss 0.00296
+batch 473
+train loss 0.00334
+batch 474
+train loss 0.00360
+batch 475
+train loss 0.00338
+batch 476
+train loss 0.00336
+batch 477
+train loss 0.00349
+batch 478
+train loss 0.00296
+batch 479
+train loss 0.00406
+batch 480
+train loss 0.00324
+batch 481
+train loss 0.00354
+batch 482
+train loss 0.00308
+batch 483
+train loss 0.00378
+batch 484
+train loss 0.00289
+batch 485
+train loss 0.00324
+batch 486
+train loss 0.00337
+batch 487
+train loss 0.00341
+batch 488
+train loss 0.00306
+batch 489
+train loss 0.00316
+batch 490
+train loss 0.00306
+batch 491
+train loss 0.00317
+batch 492
+train loss 0.00340
+batch 493
+train loss 0.00322
+batch 494
+train loss 0.00358
+batch 495
+train loss 0.00362
+batch 496
+train loss 0.00300
+batch 497
+train loss 0.00347
+batch 498
+train loss 0.00324
+batch 499
+train loss 0.00316
+[1 / 10] train loss: 0.0040437461
+
+validation loop
+batch 0
+validation loss 0.00372
+batch 1
+validation loss 0.00357
+batch 2
+validation loss 0.00320
+batch 3
+validation loss 0.00351
+batch 4
+validation loss 0.00348
+batch 5
+validation loss 0.00384
+batch 6
+validation loss 0.00313
+batch 7
+validation loss 0.00372
+batch 8
+validation loss 0.00307
+batch 9
+validation loss 0.00325
+batch 10
+validation loss 0.00332
+batch 11
+validation loss 0.00383
+batch 12
+validation loss 0.00338
+batch 13
+validation loss 0.00313
+batch 14
+validation loss 0.00330
+batch 15
+validation loss 0.00353
+batch 16
+validation loss 0.00362
+batch 17
+validation loss 0.00346
+batch 18
+validation loss 0.00316
+batch 19
+validation loss 0.00335
+batch 20
+validation loss 0.00297
+batch 21
+validation loss 0.00334
+batch 22
+validation loss 0.00317
+batch 23
+validation loss 0.00311
+batch 24
+validation loss 0.00329
+batch 25
+validation loss 0.00312
+batch 26
+validation loss 0.00314
+batch 27
+validation loss 0.00321
+batch 28
+validation loss 0.00392
+batch 29
+validation loss 0.00323
+batch 30
+validation loss 0.00321
+batch 31
+validation loss 0.00337
+batch 32
+validation loss 0.00322
+batch 33
+validation loss 0.00335
+batch 34
+validation loss 0.00340
+batch 35
+validation loss 0.00361
+batch 36
+validation loss 0.00371
+batch 37
+validation loss 0.00338
+batch 38
+validation loss 0.00309
+batch 39
+validation loss 0.00327
+batch 40
+validation loss 0.00329
+batch 41
+validation loss 0.00331
+batch 42
+validation loss 0.00386
+batch 43
+validation loss 0.00324
+batch 44
+validation loss 0.00324
+batch 45
+validation loss 0.00329
+batch 46
+validation loss 0.00366
+batch 47
+validation loss 0.00379
+batch 48
+validation loss 0.00310
+batch 49
+validation loss 0.00337
+batch 50
+validation loss 0.00329
+batch 51
+validation loss 0.00300
+batch 52
+validation loss 0.00377
+batch 53
+validation loss 0.00345
+batch 54
+validation loss 0.00332
+batch 55
+validation loss 0.00327
+batch 56
+validation loss 0.00327
+batch 57
+validation loss 0.00327
+batch 58
+validation loss 0.00347
+batch 59
+validation loss 0.00342
+batch 60
+validation loss 0.00364
+batch 61
+validation loss 0.00399
+batch 62
+validation loss 0.00359
+batch 63
+validation loss 0.00318
+batch 64
+validation loss 0.00364
+batch 65
+validation loss 0.00348
+batch 66
+validation loss 0.00308
+batch 67
+validation loss 0.00369
+batch 68
+validation loss 0.00336
+batch 69
+validation loss 0.00317
+batch 70
+validation loss 0.00337
+batch 71
+validation loss 0.00342
+batch 72
+validation loss 0.00314
+batch 73
+validation loss 0.00363
+batch 74
+validation loss 0.00341
+batch 75
+validation loss 0.00375
+batch 76
+validation loss 0.00319
+batch 77
+validation loss 0.00345
+batch 78
+validation loss 0.00324
+batch 79
+validation loss 0.00335
+batch 80
+validation loss 0.00375
+batch 81
+validation loss 0.00310
+batch 82
+validation loss 0.00341
+batch 83
+validation loss 0.00340
+batch 84
+validation loss 0.00345
+batch 85
+validation loss 0.00309
+batch 86
+validation loss 0.00312
+batch 87
+validation loss 0.00340
+batch 88
+validation loss 0.00323
+batch 89
+validation loss 0.00300
+batch 90
+validation loss 0.00297
+batch 91
+validation loss 0.00393
+batch 92
+validation loss 0.00339
+batch 93
+validation loss 0.00317
+batch 94
+validation loss 0.00334
+batch 95
+validation loss 0.00337
+batch 96
+validation loss 0.00308
+batch 97
+validation loss 0.00357
+batch 98
+validation loss 0.00330
+batch 99
+validation loss 0.00364
+[1 / 10] validation loss: 0.0040437461
+
+# epoch 2
+
+training loop
+batch 0
+train loss 0.00366
+batch 1
+train loss 0.00319
+batch 2
+train loss 0.00302
+batch 3
+train loss 0.00324
+batch 4
+train loss 0.00328
+batch 5
+train loss 0.00341
+batch 6
+train loss 0.00354
+batch 7
+train loss 0.00320
+batch 8
+train loss 0.00340
+batch 9
+train loss 0.00334
+batch 10
+train loss 0.00335
+batch 11
+train loss 0.00365
+batch 12
+train loss 0.00314
+batch 13
+train loss 0.00332
+batch 14
+train loss 0.00324
+batch 15
+train loss 0.00336
+batch 16
+train loss 0.00351
+batch 17
+train loss 0.00343
+batch 18
+train loss 0.00375
+batch 19
+train loss 0.00292
+batch 20
+train loss 0.00302
+batch 21
+train loss 0.00307
+batch 22
+train loss 0.00321
+batch 23
+train loss 0.00333
+batch 24
+train loss 0.00285
+batch 25
+train loss 0.00309
+batch 26
+train loss 0.00322
+batch 27
+train loss 0.00295
+batch 28
+train loss 0.00343
+batch 29
+train loss 0.00303
+batch 30
+train loss 0.00332
+batch 31
+train loss 0.00353
+batch 32
+train loss 0.00317
+batch 33
+train loss 0.00325
+batch 34
+train loss 0.00316
+batch 35
+train loss 0.00329
+batch 36
+train loss 0.00343
+batch 37
+train loss 0.00309
+batch 38
+train loss 0.00312
+batch 39
+train loss 0.00353
+batch 40
+train loss 0.00356
+batch 41
+train loss 0.00319
+batch 42
+train loss 0.00359
+batch 43
+train loss 0.00367
+batch 44
+train loss 0.00293
+batch 45
+train loss 0.00327
+batch 46
+train loss 0.00327
+batch 47
+train loss 0.00347
+batch 48
+train loss 0.00333
+batch 49
+train loss 0.00351
+batch 50
+train loss 0.00353
+batch 51
+train loss 0.00333
+batch 52
+train loss 0.00354
+batch 53
+train loss 0.00320
+batch 54
+train loss 0.00308
+batch 55
+train loss 0.00336
+batch 56
+train loss 0.00325
+batch 57
+train loss 0.00332
+batch 58
+train loss 0.00332
+batch 59
+train loss 0.00335
+batch 60
+train loss 0.00377
+batch 61
+train loss 0.00327
+batch 62
+train loss 0.00291
+batch 63
+train loss 0.00336
+batch 64
+train loss 0.00335
+batch 65
+train loss 0.00330
+batch 66
+train loss 0.00332
+batch 67
+train loss 0.00292
+batch 68
+train loss 0.00302
+batch 69
+train loss 0.00322
+batch 70
+train loss 0.00285
+batch 71
+train loss 0.00367
+batch 72
+train loss 0.00341
+batch 73
+train loss 0.00335
+batch 74
+train loss 0.00323
+batch 75
+train loss 0.00330
+batch 76
+train loss 0.00309
+batch 77
+train loss 0.00293
+batch 78
+train loss 0.00341
+batch 79
+train loss 0.00356
+batch 80
+train loss 0.00299
+batch 81
+train loss 0.00341
+batch 82
+train loss 0.00306
+batch 83
+train loss 0.00329
+batch 84
+train loss 0.00320
+batch 85
+train loss 0.00363
+batch 86
+train loss 0.00345
+batch 87
+train loss 0.00319
+batch 88
+train loss 0.00356
+batch 89
+train loss 0.00318
+batch 90
+train loss 0.00334
+batch 91
+train loss 0.00376
+batch 92
+train loss 0.00358
+batch 93
+train loss 0.00297
+batch 94
+train loss 0.00343
+batch 95
+train loss 0.00336
+batch 96
+train loss 0.00351
+batch 97
+train loss 0.00361
+batch 98
+train loss 0.00316
+batch 99
+train loss 0.00329
+batch 100
+train loss 0.00326
+batch 101
+train loss 0.00298
+batch 102
+train loss 0.00319
+batch 103
+train loss 0.00375
+batch 104
+train loss 0.00296
+batch 105
+train loss 0.00367
+batch 106
+train loss 0.00309
+batch 107
+train loss 0.00391
+batch 108
+train loss 0.00341
+batch 109
+train loss 0.00335
+batch 110
+train loss 0.00309
+batch 111
+train loss 0.00335
+batch 112
+train loss 0.00265
+batch 113
+train loss 0.00336
+batch 114
+train loss 0.00332
+batch 115
+train loss 0.00296
+batch 116
+train loss 0.00308
+batch 117
+train loss 0.00307
+batch 118
+train loss 0.00332
+batch 119
+train loss 0.00338
+batch 120
+train loss 0.00334
+batch 121
+train loss 0.00315
+batch 122
+train loss 0.00302
+batch 123
+train loss 0.00331
+batch 124
+train loss 0.00327
+batch 125
+train loss 0.00297
+batch 126
+train loss 0.00343
+batch 127
+train loss 0.00314
+batch 128
+train loss 0.00325
+batch 129
+train loss 0.00291
+batch 130
+train loss 0.00371
+batch 131
+train loss 0.00342
+batch 132
+train loss 0.00334
+batch 133
+train loss 0.00312
+batch 134
+train loss 0.00318
+batch 135
+train loss 0.00313
+batch 136
+train loss 0.00346
+batch 137
+train loss 0.00316
+batch 138
+train loss 0.00326
+batch 139
+train loss 0.00300
+batch 140
+train loss 0.00340
+batch 141
+train loss 0.00322
+batch 142
+train loss 0.00371
+batch 143
+train loss 0.00330
+batch 144
+train loss 0.00343
+batch 145
+train loss 0.00358
+batch 146
+train loss 0.00353
+batch 147
+train loss 0.00334
+batch 148
+train loss 0.00298
+batch 149
+train loss 0.00301
+batch 150
+train loss 0.00329
+batch 151
+train loss 0.00294
+batch 152
+train loss 0.00332
+batch 153
+train loss 0.00334
+batch 154
+train loss 0.00319
+batch 155
+train loss 0.00341
+batch 156
+train loss 0.00362
+batch 157
+train loss 0.00313
+batch 158
+train loss 0.00309
+batch 159
+train loss 0.00308
+batch 160
+train loss 0.00356
+batch 161
+train loss 0.00350
+batch 162
+train loss 0.00303
+batch 163
+train loss 0.00317
+batch 164
+train loss 0.00310
+batch 165
+train loss 0.00334
+batch 166
+train loss 0.00289
+batch 167
+train loss 0.00348
+batch 168
+train loss 0.00339
+batch 169
+train loss 0.00293
+batch 170
+train loss 0.00359
+batch 171
+train loss 0.00329
+batch 172
+train loss 0.00311
+batch 173
+train loss 0.00323
+batch 174
+train loss 0.00349
+batch 175
+train loss 0.00373
+batch 176
+train loss 0.00312
+batch 177
+train loss 0.00301
+batch 178
+train loss 0.00340
+batch 179
+train loss 0.00368
+batch 180
+train loss 0.00317
+batch 181
+train loss 0.00302
+batch 182
+train loss 0.00333
+batch 183
+train loss 0.00330
+batch 184
+train loss 0.00338
+batch 185
+train loss 0.00328
+batch 186
+train loss 0.00326
+batch 187
+train loss 0.00313
+batch 188
+train loss 0.00330
+batch 189
+train loss 0.00368
+batch 190
+train loss 0.00369
+batch 191
+train loss 0.00310
+batch 192
+train loss 0.00354
+batch 193
+train loss 0.00305
+batch 194
+train loss 0.00301
+batch 195
+train loss 0.00313
+batch 196
+train loss 0.00282
+batch 197
+train loss 0.00334
+batch 198
+train loss 0.00321
+batch 199
+train loss 0.00308
+batch 200
+train loss 0.00321
+batch 201
+train loss 0.00318
+batch 202
+train loss 0.00314
+batch 203
+train loss 0.00378
+batch 204
+train loss 0.00337
+batch 205
+train loss 0.00357
+batch 206
+train loss 0.00305
+batch 207
+train loss 0.00325
+batch 208
+train loss 0.00353
+batch 209
+train loss 0.00294
+batch 210
+train loss 0.00344
+batch 211
+train loss 0.00285
+batch 212
+train loss 0.00310
+batch 213
+train loss 0.00356
+batch 214
+train loss 0.00288
+batch 215
+train loss 0.00285
+batch 216
+train loss 0.00301
+batch 217
+train loss 0.00293
+batch 218
+train loss 0.00317
+batch 219
+train loss 0.00388
+batch 220
+train loss 0.00321
+batch 221
+train loss 0.00295
+batch 222
+train loss 0.00338
+batch 223
+train loss 0.00291
+batch 224
+train loss 0.00354
+batch 225
+train loss 0.00301
+batch 226
+train loss 0.00308
+batch 227
+train loss 0.00340
+batch 228
+train loss 0.00283
+batch 229
+train loss 0.00349
+batch 230
+train loss 0.00320
+batch 231
+train loss 0.00312
+batch 232
+train loss 0.00338
+batch 233
+train loss 0.00293
+batch 234
+train loss 0.00297
+batch 235
+train loss 0.00299
+batch 236
+train loss 0.00307
+batch 237
+train loss 0.00312
+batch 238
+train loss 0.00297
+batch 239
+train loss 0.00312
+batch 240
+train loss 0.00332
+batch 241
+train loss 0.00284
+batch 242
+train loss 0.00304
+batch 243
+train loss 0.00323
+batch 244
+train loss 0.00285
+batch 245
+train loss 0.00329
+batch 246
+train loss 0.00330
+batch 247
+train loss 0.00351
+batch 248
+train loss 0.00317
+batch 249
+train loss 0.00321
+batch 250
+train loss 0.00330
+batch 251
+train loss 0.00329
+batch 252
+train loss 0.00316
+batch 253
+train loss 0.00298
+batch 254
+train loss 0.00359
+batch 255
+train loss 0.00346
+batch 256
+train loss 0.00263
+batch 257
+train loss 0.00308
+batch 258
+train loss 0.00289
+batch 259
+train loss 0.00311
+batch 260
+train loss 0.00312
+batch 261
+train loss 0.00360
+batch 262
+train loss 0.00302
+batch 263
+train loss 0.00337
+batch 264
+train loss 0.00338
+batch 265
+train loss 0.00337
+batch 266
+train loss 0.00348
+batch 267
+train loss 0.00289
+batch 268
+train loss 0.00348
+batch 269
+train loss 0.00316
+batch 270
+train loss 0.00324
+batch 271
+train loss 0.00299
+batch 272
+train loss 0.00337
+batch 273
+train loss 0.00314
+batch 274
+train loss 0.00336
+batch 275
+train loss 0.00279
+batch 276
+train loss 0.00359
+batch 277
+train loss 0.00375
+batch 278
+train loss 0.00286
+batch 279
+train loss 0.00291
+batch 280
+train loss 0.00305
+batch 281
+train loss 0.00330
+batch 282
+train loss 0.00280
+batch 283
+train loss 0.00288
+batch 284
+train loss 0.00320
+batch 285
+train loss 0.00312
+batch 286
+train loss 0.00324
+batch 287
+train loss 0.00340
+batch 288
+train loss 0.00304
+batch 289
+train loss 0.00319
+batch 290
+train loss 0.00331
+batch 291
+train loss 0.00331
+batch 292
+train loss 0.00294
+batch 293
+train loss 0.00307
+batch 294
+train loss 0.00347
+batch 295
+train loss 0.00363
+batch 296
+train loss 0.00338
+batch 297
+train loss 0.00322
+batch 298
+train loss 0.00306
+batch 299
+train loss 0.00333
+batch 300
+train loss 0.00298
+batch 301
+train loss 0.00349
+batch 302
+train loss 0.00314
+batch 303
+train loss 0.00270
+batch 304
+train loss 0.00305
+batch 305
+train loss 0.00297
+batch 306
+train loss 0.00300
+batch 307
+train loss 0.00301
+batch 308
+train loss 0.00295
+batch 309
+train loss 0.00341
+batch 310
+train loss 0.00318
+batch 311
+train loss 0.00296
+batch 312
+train loss 0.00330
+batch 313
+train loss 0.00317
+batch 314
+train loss 0.00313
+batch 315
+train loss 0.00338
+batch 316
+train loss 0.00358
+batch 317
+train loss 0.00346
+batch 318
+train loss 0.00284
+batch 319
+train loss 0.00300
+batch 320
+train loss 0.00313
+batch 321
+train loss 0.00286
+batch 322
+train loss 0.00274
+batch 323
+train loss 0.00307
+batch 324
+train loss 0.00317
+batch 325
+train loss 0.00305
+batch 326
+train loss 0.00258
+batch 327
+train loss 0.00351
+batch 328
+train loss 0.00274
+batch 329
+train loss 0.00306
+batch 330
+train loss 0.00291
+batch 331
+train loss 0.00292
+batch 332
+train loss 0.00315
+batch 333
+train loss 0.00316
+batch 334
+train loss 0.00325
+batch 335
+train loss 0.00281
+batch 336
+train loss 0.00333
+batch 337
+train loss 0.00319
+batch 338
+train loss 0.00298
+batch 339
+train loss 0.00308
+batch 340
+train loss 0.00300
+batch 341
+train loss 0.00288
+batch 342
+train loss 0.00315
+batch 343
+train loss 0.00313
+batch 344
+train loss 0.00304
+batch 345
+train loss 0.00315
+batch 346
+train loss 0.00342
+batch 347
+train loss 0.00309
+batch 348
+train loss 0.00328
+batch 349
+train loss 0.00290
+batch 350
+train loss 0.00283
+batch 351
+train loss 0.00312
+batch 352
+train loss 0.00287
+batch 353
+train loss 0.00290
+batch 354
+train loss 0.00293
+batch 355
+train loss 0.00300
+batch 356
+train loss 0.00334
+batch 357
+train loss 0.00304
+batch 358
+train loss 0.00319
+batch 359
+train loss 0.00311
+batch 360
+train loss 0.00319
+batch 361
+train loss 0.00297
+batch 362
+train loss 0.00316
+batch 363
+train loss 0.00294
+batch 364
+train loss 0.00277
+batch 365
+train loss 0.00273
+batch 366
+train loss 0.00302
+batch 367
+train loss 0.00319
+batch 368
+train loss 0.00305
+batch 369
+train loss 0.00290
+batch 370
+train loss 0.00303
+batch 371
+train loss 0.00269
+batch 372
+train loss 0.00314
+batch 373
+train loss 0.00301
+batch 374
+train loss 0.00302
+batch 375
+train loss 0.00329
+batch 376
+train loss 0.00275
+batch 377
+train loss 0.00317
+batch 378
+train loss 0.00301
+batch 379
+train loss 0.00290
+batch 380
+train loss 0.00295
+batch 381
+train loss 0.00277
+batch 382
+train loss 0.00279
+batch 383
+train loss 0.00325
+batch 384
+train loss 0.00262
+batch 385
+train loss 0.00327
+batch 386
+train loss 0.00299
+batch 387
+train loss 0.00327
+batch 388
+train loss 0.00285
+batch 389
+train loss 0.00310
+batch 390
+train loss 0.00295
+batch 391
+train loss 0.00297
+batch 392
+train loss 0.00258
+batch 393
+train loss 0.00297
+batch 394
+train loss 0.00351
+batch 395
+train loss 0.00322
+batch 396
+train loss 0.00332
+batch 397
+train loss 0.00274
+batch 398
+train loss 0.00324
+batch 399
+train loss 0.00304
+batch 400
+train loss 0.00300
+batch 401
+train loss 0.00298
+batch 402
+train loss 0.00274
+batch 403
+train loss 0.00292
+batch 404
+train loss 0.00278
+batch 405
+train loss 0.00307
+batch 406
+train loss 0.00299
+batch 407
+train loss 0.00288
+batch 408
+train loss 0.00315
+batch 409
+train loss 0.00296
+batch 410
+train loss 0.00290
+batch 411
+train loss 0.00266
+batch 412
+train loss 0.00269
+batch 413
+train loss 0.00286
+batch 414
+train loss 0.00296
+batch 415
+train loss 0.00279
+batch 416
+train loss 0.00319
+batch 417
+train loss 0.00272
+batch 418
+train loss 0.00303
+batch 419
+train loss 0.00290
+batch 420
+train loss 0.00286
+batch 421
+train loss 0.00296
+batch 422
+train loss 0.00312
+batch 423
+train loss 0.00328
+batch 424
+train loss 0.00266
+batch 425
+train loss 0.00299
+batch 426
+train loss 0.00283
+batch 427
+train loss 0.00271
+batch 428
+train loss 0.00330
+batch 429
+train loss 0.00270
+batch 430
+train loss 0.00297
+batch 431
+train loss 0.00311
+batch 432
+train loss 0.00273
+batch 433
+train loss 0.00283
+batch 434
+train loss 0.00293
+batch 435
+train loss 0.00325
+batch 436
+train loss 0.00323
+batch 437
+train loss 0.00295
+batch 438
+train loss 0.00341
+batch 439
+train loss 0.00307
+batch 440
+train loss 0.00296
+batch 441
+train loss 0.00285
+batch 442
+train loss 0.00307
+batch 443
+train loss 0.00311
+batch 444
+train loss 0.00319
+batch 445
+train loss 0.00272
+batch 446
+train loss 0.00281
+batch 447
+train loss 0.00292
+batch 448
+train loss 0.00290
+batch 449
+train loss 0.00289
+batch 450
+train loss 0.00281
+batch 451
+train loss 0.00318
+batch 452
+train loss 0.00311
+batch 453
+train loss 0.00290
+batch 454
+train loss 0.00293
+batch 455
+train loss 0.00318
+batch 456
+train loss 0.00296
+batch 457
+train loss 0.00296
+batch 458
+train loss 0.00306
+batch 459
+train loss 0.00320
+batch 460
+train loss 0.00298
+batch 461
+train loss 0.00293
+batch 462
+train loss 0.00298
+batch 463
+train loss 0.00264
+batch 464
+train loss 0.00315
+batch 465
+train loss 0.00277
+batch 466
+train loss 0.00275
+batch 467
+train loss 0.00293
+batch 468
+train loss 0.00294
+batch 469
+train loss 0.00289
+batch 470
+train loss 0.00328
+batch 471
+train loss 0.00280
+batch 472
+train loss 0.00273
+batch 473
+train loss 0.00273
+batch 474
+train loss 0.00312
+batch 475
+train loss 0.00296
+batch 476
+train loss 0.00277
+batch 477
+train loss 0.00289
+batch 478
+train loss 0.00282
+batch 479
+train loss 0.00272
+batch 480
+train loss 0.00300
+batch 481
+train loss 0.00286
+batch 482
+train loss 0.00284
+batch 483
+train loss 0.00289
+batch 484
+train loss 0.00274
+batch 485
+train loss 0.00291
+batch 486
+train loss 0.00283
+batch 487
+train loss 0.00314
+batch 488
+train loss 0.00285
+batch 489
+train loss 0.00286
+batch 490
+train loss 0.00280
+batch 491
+train loss 0.00278
+batch 492
+train loss 0.00311
+batch 493
+train loss 0.00289
+batch 494
+train loss 0.00332
+batch 495
+train loss 0.00304
+batch 496
+train loss 0.00287
+batch 497
+train loss 0.00270
+batch 498
+train loss 0.00255
+batch 499
+train loss 0.00263
+[2 / 10] train loss: 0.0031489682
+
+validation loop
+batch 0
+validation loss 0.00311
+batch 1
+validation loss 0.00290
+batch 2
+validation loss 0.00273
+batch 3
+validation loss 0.00286
+batch 4
+validation loss 0.00284
+batch 5
+validation loss 0.00322
+batch 6
+validation loss 0.00271
+batch 7
+validation loss 0.00300
+batch 8
+validation loss 0.00253
+batch 9
+validation loss 0.00266
+batch 10
+validation loss 0.00292
+batch 11
+validation loss 0.00314
+batch 12
+validation loss 0.00276
+batch 13
+validation loss 0.00282
+batch 14
+validation loss 0.00280
+batch 15
+validation loss 0.00298
+batch 16
+validation loss 0.00302
+batch 17
+validation loss 0.00285
+batch 18
+validation loss 0.00271
+batch 19
+validation loss 0.00287
+batch 20
+validation loss 0.00257
+batch 21
+validation loss 0.00276
+batch 22
+validation loss 0.00274
+batch 23
+validation loss 0.00277
+batch 24
+validation loss 0.00284
+batch 25
+validation loss 0.00276
+batch 26
+validation loss 0.00265
+batch 27
+validation loss 0.00288
+batch 28
+validation loss 0.00311
+batch 29
+validation loss 0.00270
+batch 30
+validation loss 0.00273
+batch 31
+validation loss 0.00282
+batch 32
+validation loss 0.00267
+batch 33
+validation loss 0.00294
+batch 34
+validation loss 0.00289
+batch 35
+validation loss 0.00296
+batch 36
+validation loss 0.00311
+batch 37
+validation loss 0.00289
+batch 38
+validation loss 0.00263
+batch 39
+validation loss 0.00283
+batch 40
+validation loss 0.00292
+batch 41
+validation loss 0.00292
+batch 42
+validation loss 0.00322
+batch 43
+validation loss 0.00268
+batch 44
+validation loss 0.00280
+batch 45
+validation loss 0.00278
+batch 46
+validation loss 0.00293
+batch 47
+validation loss 0.00311
+batch 48
+validation loss 0.00262
+batch 49
+validation loss 0.00266
+batch 50
+validation loss 0.00276
+batch 51
+validation loss 0.00251
+batch 52
+validation loss 0.00311
+batch 53
+validation loss 0.00284
+batch 54
+validation loss 0.00282
+batch 55
+validation loss 0.00279
+batch 56
+validation loss 0.00278
+batch 57
+validation loss 0.00284
+batch 58
+validation loss 0.00298
+batch 59
+validation loss 0.00286
+batch 60
+validation loss 0.00299
+batch 61
+validation loss 0.00329
+batch 62
+validation loss 0.00294
+batch 63
+validation loss 0.00285
+batch 64
+validation loss 0.00289
+batch 65
+validation loss 0.00291
+batch 66
+validation loss 0.00276
+batch 67
+validation loss 0.00310
+batch 68
+validation loss 0.00281
+batch 69
+validation loss 0.00271
+batch 70
+validation loss 0.00284
+batch 71
+validation loss 0.00294
+batch 72
+validation loss 0.00275
+batch 73
+validation loss 0.00297
+batch 74
+validation loss 0.00291
+batch 75
+validation loss 0.00297
+batch 76
+validation loss 0.00268
+batch 77
+validation loss 0.00320
+batch 78
+validation loss 0.00270
+batch 79
+validation loss 0.00281
+batch 80
+validation loss 0.00313
+batch 81
+validation loss 0.00269
+batch 82
+validation loss 0.00285
+batch 83
+validation loss 0.00278
+batch 84
+validation loss 0.00282
+batch 85
+validation loss 0.00254
+batch 86
+validation loss 0.00260
+batch 87
+validation loss 0.00283
+batch 88
+validation loss 0.00284
+batch 89
+validation loss 0.00272
+batch 90
+validation loss 0.00266
+batch 91
+validation loss 0.00332
+batch 92
+validation loss 0.00279
+batch 93
+validation loss 0.00275
+batch 94
+validation loss 0.00277
+batch 95
+validation loss 0.00277
+batch 96
+validation loss 0.00270
+batch 97
+validation loss 0.00319
+batch 98
+validation loss 0.00265
+batch 99
+validation loss 0.00299
+[2 / 10] validation loss: 0.0031489682
+
+# epoch 3
+
+training loop
+batch 0
+train loss 0.00270
+batch 1
+train loss 0.00291
+batch 2
+train loss 0.00285
+batch 3
+train loss 0.00321
+batch 4
+train loss 0.00284
+batch 5
+train loss 0.00297
+batch 6
+train loss 0.00302
+batch 7
+train loss 0.00305
+batch 8
+train loss 0.00285
+batch 9
+train loss 0.00312
+batch 10
+train loss 0.00276
+batch 11
+train loss 0.00292
+batch 12
+train loss 0.00269
+batch 13
+train loss 0.00274
+batch 14
+train loss 0.00277
+batch 15
+train loss 0.00272
+batch 16
+train loss 0.00298
+batch 17
+train loss 0.00288
+batch 18
+train loss 0.00279
+batch 19
+train loss 0.00283
+batch 20
+train loss 0.00301
+batch 21
+train loss 0.00285
+batch 22
+train loss 0.00255
+batch 23
+train loss 0.00260
+batch 24
+train loss 0.00270
+batch 25
+train loss 0.00321
+batch 26
+train loss 0.00318
+batch 27
+train loss 0.00259
+batch 28
+train loss 0.00342
+batch 29
+train loss 0.00291
+batch 30
+train loss 0.00301
+batch 31
+train loss 0.00289
+batch 32
+train loss 0.00265
+batch 33
+train loss 0.00266
+batch 34
+train loss 0.00305
+batch 35
+train loss 0.00270
+batch 36
+train loss 0.00301
+batch 37
+train loss 0.00296
+batch 38
+train loss 0.00279
+batch 39
+train loss 0.00271
+batch 40
+train loss 0.00280
+batch 41
+train loss 0.00279
+batch 42
+train loss 0.00269
+batch 43
+train loss 0.00285
+batch 44
+train loss 0.00285
+batch 45
+train loss 0.00275
+batch 46
+train loss 0.00268
+batch 47
+train loss 0.00299
+batch 48
+train loss 0.00284
+batch 49
+train loss 0.00262
+batch 50
+train loss 0.00280
+batch 51
+train loss 0.00308
+batch 52
+train loss 0.00286
+batch 53
+train loss 0.00274
+batch 54
+train loss 0.00296
+batch 55
+train loss 0.00254
+batch 56
+train loss 0.00266
+batch 57
+train loss 0.00259
+batch 58
+train loss 0.00282
+batch 59
+train loss 0.00275
+batch 60
+train loss 0.00301
+batch 61
+train loss 0.00283
+batch 62
+train loss 0.00307
+batch 63
+train loss 0.00256
+batch 64
+train loss 0.00315
+batch 65
+train loss 0.00294
+batch 66
+train loss 0.00278
+batch 67
+train loss 0.00308
+batch 68
+train loss 0.00316
+batch 69
+train loss 0.00260
+batch 70
+train loss 0.00276
+batch 71
+train loss 0.00285
+batch 72
+train loss 0.00274
+batch 73
+train loss 0.00277
+batch 74
+train loss 0.00288
+batch 75
+train loss 0.00275
+batch 76
+train loss 0.00303
+batch 77
+train loss 0.00269
+batch 78
+train loss 0.00268
+batch 79
+train loss 0.00315
+batch 80
+train loss 0.00292
+batch 81
+train loss 0.00257
+batch 82
+train loss 0.00305
+batch 83
+train loss 0.00274
+batch 84
+train loss 0.00310
+batch 85
+train loss 0.00265
+batch 86
+train loss 0.00278
+batch 87
+train loss 0.00317
+batch 88
+train loss 0.00325
+batch 89
+train loss 0.00290
+batch 90
+train loss 0.00311
+batch 91
+train loss 0.00303
+batch 92
+train loss 0.00303
+batch 93
+train loss 0.00285
+batch 94
+train loss 0.00266
+batch 95
+train loss 0.00270
+batch 96
+train loss 0.00257
+batch 97
+train loss 0.00287
+batch 98
+train loss 0.00285
+batch 99
+train loss 0.00258
+batch 100
+train loss 0.00288
+batch 101
+train loss 0.00294
+batch 102
+train loss 0.00268
+batch 103
+train loss 0.00247
+batch 104
+train loss 0.00272
+batch 105
+train loss 0.00305
+batch 106
+train loss 0.00322
+batch 107
+train loss 0.00282
+batch 108
+train loss 0.00282
+batch 109
+train loss 0.00287
+batch 110
+train loss 0.00266
+batch 111
+train loss 0.00273
+batch 112
+train loss 0.00297
+batch 113
+train loss 0.00294
+batch 114
+train loss 0.00273
+batch 115
+train loss 0.00273
+batch 116
+train loss 0.00263
+batch 117
+train loss 0.00273
+batch 118
+train loss 0.00269
+batch 119
+train loss 0.00323
+batch 120
+train loss 0.00286
+batch 121
+train loss 0.00278
+batch 122
+train loss 0.00259
+batch 123
+train loss 0.00266
+batch 124
+train loss 0.00261
+batch 125
+train loss 0.00291
+batch 126
+train loss 0.00281
+batch 127
+train loss 0.00269
+batch 128
+train loss 0.00292
+batch 129
+train loss 0.00301
+batch 130
+train loss 0.00286
+batch 131
+train loss 0.00266
+batch 132
+train loss 0.00267
+batch 133
+train loss 0.00256
+batch 134
+train loss 0.00272
+batch 135
+train loss 0.00280
+batch 136
+train loss 0.00286
+batch 137
+train loss 0.00254
+batch 138
+train loss 0.00275
+batch 139
+train loss 0.00291
+batch 140
+train loss 0.00269
+batch 141
+train loss 0.00302
+batch 142
+train loss 0.00323
+batch 143
+train loss 0.00293
+batch 144
+train loss 0.00286
+batch 145
+train loss 0.00260
+batch 146
+train loss 0.00328
+batch 147
+train loss 0.00279
+batch 148
+train loss 0.00264
+batch 149
+train loss 0.00264
+batch 150
+train loss 0.00295
+batch 151
+train loss 0.00280
+batch 152
+train loss 0.00293
+batch 153
+train loss 0.00281
+batch 154
+train loss 0.00253
+batch 155
+train loss 0.00267
+batch 156
+train loss 0.00278
+batch 157
+train loss 0.00292
+batch 158
+train loss 0.00284
+batch 159
+train loss 0.00278
+batch 160
+train loss 0.00254
+batch 161
+train loss 0.00276
+batch 162
+train loss 0.00254
+batch 163
+train loss 0.00276
+batch 164
+train loss 0.00280
+batch 165
+train loss 0.00274
+batch 166
+train loss 0.00271
+batch 167
+train loss 0.00283
+batch 168
+train loss 0.00310
+batch 169
+train loss 0.00266
+batch 170
+train loss 0.00321
+batch 171
+train loss 0.00282
+batch 172
+train loss 0.00279
+batch 173
+train loss 0.00286
+batch 174
+train loss 0.00258
+batch 175
+train loss 0.00269
+batch 176
+train loss 0.00272
+batch 177
+train loss 0.00285
+batch 178
+train loss 0.00282
+batch 179
+train loss 0.00316
+batch 180
+train loss 0.00324
+batch 181
+train loss 0.00258
+batch 182
+train loss 0.00274
+batch 183
+train loss 0.00281
+batch 184
+train loss 0.00292
+batch 185
+train loss 0.00273
+batch 186
+train loss 0.00298
+batch 187
+train loss 0.00308
+batch 188
+train loss 0.00276
+batch 189
+train loss 0.00269
+batch 190
+train loss 0.00302
+batch 191
+train loss 0.00282
+batch 192
+train loss 0.00276
+batch 193
+train loss 0.00270
+batch 194
+train loss 0.00272
+batch 195
+train loss 0.00279
+batch 196
+train loss 0.00294
+batch 197
+train loss 0.00293
+batch 198
+train loss 0.00270
+batch 199
+train loss 0.00261
+batch 200
+train loss 0.00323
+batch 201
+train loss 0.00296
+batch 202
+train loss 0.00271
+batch 203
+train loss 0.00272
+batch 204
+train loss 0.00293
+batch 205
+train loss 0.00292
+batch 206
+train loss 0.00290
+batch 207
+train loss 0.00267
+batch 208
+train loss 0.00268
+batch 209
+train loss 0.00312
+batch 210
+train loss 0.00283
+batch 211
+train loss 0.00271
+batch 212
+train loss 0.00254
+batch 213
+train loss 0.00291
+batch 214
+train loss 0.00265
+batch 215
+train loss 0.00284
+batch 216
+train loss 0.00277
+batch 217
+train loss 0.00282
+batch 218
+train loss 0.00268
+batch 219
+train loss 0.00277
+batch 220
+train loss 0.00291
+batch 221
+train loss 0.00268
+batch 222
+train loss 0.00284
+batch 223
+train loss 0.00289
+batch 224
+train loss 0.00309
+batch 225
+train loss 0.00288
+batch 226
+train loss 0.00264
+batch 227
+train loss 0.00252
+batch 228
+train loss 0.00328
+batch 229
+train loss 0.00268
+batch 230
+train loss 0.00299
+batch 231
+train loss 0.00274
+batch 232
+train loss 0.00293
+batch 233
+train loss 0.00287
+batch 234
+train loss 0.00296
+batch 235
+train loss 0.00267
+batch 236
+train loss 0.00286
+batch 237
+train loss 0.00273
+batch 238
+train loss 0.00261
+batch 239
+train loss 0.00286
+batch 240
+train loss 0.00275
+batch 241
+train loss 0.00281
+batch 242
+train loss 0.00273
+batch 243
+train loss 0.00266
+batch 244
+train loss 0.00254
+batch 245
+train loss 0.00263
+batch 246
+train loss 0.00326
+batch 247
+train loss 0.00278
+batch 248
+train loss 0.00273
+batch 249
+train loss 0.00289
+batch 250
+train loss 0.00259
+batch 251
+train loss 0.00290
+batch 252
+train loss 0.00269
+batch 253
+train loss 0.00250
+batch 254
+train loss 0.00292
+batch 255
+train loss 0.00285
+batch 256
+train loss 0.00276
+batch 257
+train loss 0.00274
+batch 258
+train loss 0.00320
+batch 259
+train loss 0.00262
+batch 260
+train loss 0.00278
+batch 261
+train loss 0.00243
+batch 262
+train loss 0.00305
+batch 263
+train loss 0.00287
+batch 264
+train loss 0.00276
+batch 265
+train loss 0.00270
+batch 266
+train loss 0.00304
+batch 267
+train loss 0.00265
+batch 268
+train loss 0.00274
+batch 269
+train loss 0.00269
+batch 270
+train loss 0.00264
+batch 271
+train loss 0.00313
+batch 272
+train loss 0.00290
+batch 273
+train loss 0.00287
+batch 274
+train loss 0.00300
+batch 275
+train loss 0.00270
+batch 276
+train loss 0.00262
+batch 277
+train loss 0.00256
+batch 278
+train loss 0.00288
+batch 279
+train loss 0.00238
+batch 280
+train loss 0.00271
+batch 281
+train loss 0.00283
+batch 282
+train loss 0.00303
+batch 283
+train loss 0.00301
+batch 284
+train loss 0.00277
+batch 285
+train loss 0.00272
+batch 286
+train loss 0.00293
+batch 287
+train loss 0.00258
+batch 288
+train loss 0.00249
+batch 289
+train loss 0.00284
+batch 290
+train loss 0.00268
+batch 291
+train loss 0.00267
+batch 292
+train loss 0.00289
+batch 293
+train loss 0.00271
+batch 294
+train loss 0.00280
+batch 295
+train loss 0.00268
+batch 296
+train loss 0.00275
+batch 297
+train loss 0.00291
+batch 298
+train loss 0.00257
+batch 299
+train loss 0.00276
+batch 300
+train loss 0.00274
+batch 301
+train loss 0.00262
+batch 302
+train loss 0.00261
+batch 303
+train loss 0.00295
+batch 304
+train loss 0.00304
+batch 305
+train loss 0.00274
+batch 306
+train loss 0.00260
+batch 307
+train loss 0.00279
+batch 308
+train loss 0.00295
+batch 309
+train loss 0.00284
+batch 310
+train loss 0.00290
+batch 311
+train loss 0.00248
+batch 312
+train loss 0.00262
+batch 313
+train loss 0.00277
+batch 314
+train loss 0.00276
+batch 315
+train loss 0.00289
+batch 316
+train loss 0.00290
+batch 317
+train loss 0.00270
+batch 318
+train loss 0.00304
+batch 319
+train loss 0.00267
+batch 320
+train loss 0.00281
+batch 321
+train loss 0.00256
+batch 322
+train loss 0.00255
+batch 323
+train loss 0.00274
+batch 324
+train loss 0.00256
+batch 325
+train loss 0.00282
+batch 326
+train loss 0.00264
+batch 327
+train loss 0.00282
+batch 328
+train loss 0.00259
+batch 329
+train loss 0.00287
+batch 330
+train loss 0.00284
+batch 331
+train loss 0.00268
+batch 332
+train loss 0.00255
+batch 333
+train loss 0.00272
+batch 334
+train loss 0.00248
+batch 335
+train loss 0.00269
+batch 336
+train loss 0.00257
+batch 337
+train loss 0.00286
+batch 338
+train loss 0.00289
+batch 339
+train loss 0.00273
+batch 340
+train loss 0.00275
+batch 341
+train loss 0.00285
+batch 342
+train loss 0.00290
+batch 343
+train loss 0.00281
+batch 344
+train loss 0.00251
+batch 345
+train loss 0.00295
+batch 346
+train loss 0.00282
+batch 347
+train loss 0.00280
+batch 348
+train loss 0.00309
+batch 349
+train loss 0.00289
+batch 350
+train loss 0.00258
+batch 351
+train loss 0.00292
+batch 352
+train loss 0.00252
+batch 353
+train loss 0.00281
+batch 354
+train loss 0.00286
+batch 355
+train loss 0.00267
+batch 356
+train loss 0.00257
+batch 357
+train loss 0.00267
+batch 358
+train loss 0.00271
+batch 359
+train loss 0.00289
+batch 360
+train loss 0.00272
+batch 361
+train loss 0.00275
+batch 362
+train loss 0.00265
+batch 363
+train loss 0.00261
+batch 364
+train loss 0.00280
+batch 365
+train loss 0.00281
+batch 366
+train loss 0.00263
+batch 367
+train loss 0.00251
+batch 368
+train loss 0.00275
+batch 369
+train loss 0.00272
+batch 370
+train loss 0.00269
+batch 371
+train loss 0.00287
+batch 372
+train loss 0.00269
+batch 373
+train loss 0.00292
+batch 374
+train loss 0.00291
+batch 375
+train loss 0.00282
+batch 376
+train loss 0.00287
+batch 377
+train loss 0.00279
+batch 378
+train loss 0.00258
+batch 379
+train loss 0.00286
+batch 380
+train loss 0.00293
+batch 381
+train loss 0.00270
+batch 382
+train loss 0.00261
+batch 383
+train loss 0.00278
+batch 384
+train loss 0.00285
+batch 385
+train loss 0.00285
+batch 386
+train loss 0.00262
+batch 387
+train loss 0.00313
+batch 388
+train loss 0.00258
+batch 389
+train loss 0.00304
+batch 390
+train loss 0.00262
+batch 391
+train loss 0.00255
+batch 392
+train loss 0.00291
+batch 393
+train loss 0.00268
+batch 394
+train loss 0.00274
+batch 395
+train loss 0.00269
+batch 396
+train loss 0.00295
+batch 397
+train loss 0.00283
+batch 398
+train loss 0.00295
+batch 399
+train loss 0.00276
+batch 400
+train loss 0.00274
+batch 401
+train loss 0.00281
+batch 402
+train loss 0.00259
+batch 403
+train loss 0.00261
+batch 404
+train loss 0.00275
+batch 405
+train loss 0.00272
+batch 406
+train loss 0.00280
+batch 407
+train loss 0.00268
+batch 408
+train loss 0.00260
+batch 409
+train loss 0.00251
+batch 410
+train loss 0.00276
+batch 411
+train loss 0.00310
+batch 412
+train loss 0.00292
+batch 413
+train loss 0.00281
+batch 414
+train loss 0.00265
+batch 415
+train loss 0.00290
+batch 416
+train loss 0.00303
+batch 417
+train loss 0.00271
+batch 418
+train loss 0.00266
+batch 419
+train loss 0.00297
+batch 420
+train loss 0.00297
+batch 421
+train loss 0.00271
+batch 422
+train loss 0.00245
+batch 423
+train loss 0.00283
+batch 424
+train loss 0.00295
+batch 425
+train loss 0.00277
+batch 426
+train loss 0.00286
+batch 427
+train loss 0.00271
+batch 428
+train loss 0.00279
+batch 429
+train loss 0.00263
+batch 430
+train loss 0.00265
+batch 431
+train loss 0.00268
+batch 432
+train loss 0.00279
+batch 433
+train loss 0.00277
+batch 434
+train loss 0.00264
+batch 435
+train loss 0.00261
+batch 436
+train loss 0.00254
+batch 437
+train loss 0.00274
+batch 438
+train loss 0.00253
+batch 439
+train loss 0.00304
+batch 440
+train loss 0.00262
+batch 441
+train loss 0.00259
+batch 442
+train loss 0.00267
+batch 443
+train loss 0.00273
+batch 444
+train loss 0.00259
+batch 445
+train loss 0.00280
+batch 446
+train loss 0.00272
+batch 447
+train loss 0.00249
+batch 448
+train loss 0.00259
+batch 449
+train loss 0.00246
+batch 450
+train loss 0.00320
+batch 451
+train loss 0.00286
+batch 452
+train loss 0.00286
+batch 453
+train loss 0.00278
+batch 454
+train loss 0.00304
+batch 455
+train loss 0.00289
+batch 456
+train loss 0.00253
+batch 457
+train loss 0.00273
+batch 458
+train loss 0.00283
+batch 459
+train loss 0.00278
+batch 460
+train loss 0.00281
+batch 461
+train loss 0.00243
+batch 462
+train loss 0.00242
+batch 463
+train loss 0.00273
+batch 464
+train loss 0.00262
+batch 465
+train loss 0.00274
+batch 466
+train loss 0.00254
+batch 467
+train loss 0.00281
+batch 468
+train loss 0.00267
+batch 469
+train loss 0.00294
+batch 470
+train loss 0.00289
+batch 471
+train loss 0.00299
+batch 472
+train loss 0.00272
+batch 473
+train loss 0.00252
+batch 474
+train loss 0.00262
+batch 475
+train loss 0.00257
+batch 476
+train loss 0.00256
+batch 477
+train loss 0.00271
+batch 478
+train loss 0.00292
+batch 479
+train loss 0.00274
+batch 480
+train loss 0.00296
+batch 481
+train loss 0.00245
+batch 482
+train loss 0.00281
+batch 483
+train loss 0.00306
+batch 484
+train loss 0.00283
+batch 485
+train loss 0.00249
+batch 486
+train loss 0.00258
+batch 487
+train loss 0.00271
+batch 488
+train loss 0.00279
+batch 489
+train loss 0.00271
+batch 490
+train loss 0.00261
+batch 491
+train loss 0.00257
+batch 492
+train loss 0.00269
+batch 493
+train loss 0.00266
+batch 494
+train loss 0.00252
+batch 495
+train loss 0.00242
+batch 496
+train loss 0.00262
+batch 497
+train loss 0.00284
+batch 498
+train loss 0.00281
+batch 499
+train loss 0.00292
+[3 / 10] train loss: 0.0027883529
+
+validation loop
+batch 0
+validation loss 0.00300
+batch 1
+validation loss 0.00274
+batch 2
+validation loss 0.00251
+batch 3
+validation loss 0.00269
+batch 4
+validation loss 0.00257
+batch 5
+validation loss 0.00302
+batch 6
+validation loss 0.00255
+batch 7
+validation loss 0.00288
+batch 8
+validation loss 0.00241
+batch 9
+validation loss 0.00253
+batch 10
+validation loss 0.00272
+batch 11
+validation loss 0.00300
+batch 12
+validation loss 0.00261
+batch 13
+validation loss 0.00268
+batch 14
+validation loss 0.00261
+batch 15
+validation loss 0.00286
+batch 16
+validation loss 0.00298
+batch 17
+validation loss 0.00270
+batch 18
+validation loss 0.00258
+batch 19
+validation loss 0.00259
+batch 20
+validation loss 0.00248
+batch 21
+validation loss 0.00270
+batch 22
+validation loss 0.00258
+batch 23
+validation loss 0.00257
+batch 24
+validation loss 0.00267
+batch 25
+validation loss 0.00255
+batch 26
+validation loss 0.00249
+batch 27
+validation loss 0.00266
+batch 28
+validation loss 0.00301
+batch 29
+validation loss 0.00260
+batch 30
+validation loss 0.00261
+batch 31
+validation loss 0.00267
+batch 32
+validation loss 0.00249
+batch 33
+validation loss 0.00293
+batch 34
+validation loss 0.00269
+batch 35
+validation loss 0.00279
+batch 36
+validation loss 0.00291
+batch 37
+validation loss 0.00266
+batch 38
+validation loss 0.00258
+batch 39
+validation loss 0.00273
+batch 40
+validation loss 0.00260
+batch 41
+validation loss 0.00274
+batch 42
+validation loss 0.00289
+batch 43
+validation loss 0.00253
+batch 44
+validation loss 0.00265
+batch 45
+validation loss 0.00263
+batch 46
+validation loss 0.00287
+batch 47
+validation loss 0.00288
+batch 48
+validation loss 0.00249
+batch 49
+validation loss 0.00253
+batch 50
+validation loss 0.00254
+batch 51
+validation loss 0.00239
+batch 52
+validation loss 0.00285
+batch 53
+validation loss 0.00278
+batch 54
+validation loss 0.00264
+batch 55
+validation loss 0.00266
+batch 56
+validation loss 0.00253
+batch 57
+validation loss 0.00276
+batch 58
+validation loss 0.00276
+batch 59
+validation loss 0.00268
+batch 60
+validation loss 0.00267
+batch 61
+validation loss 0.00297
+batch 62
+validation loss 0.00271
+batch 63
+validation loss 0.00260
+batch 64
+validation loss 0.00282
+batch 65
+validation loss 0.00287
+batch 66
+validation loss 0.00254
+batch 67
+validation loss 0.00280
+batch 68
+validation loss 0.00263
+batch 69
+validation loss 0.00269
+batch 70
+validation loss 0.00262
+batch 71
+validation loss 0.00270
+batch 72
+validation loss 0.00252
+batch 73
+validation loss 0.00278
+batch 74
+validation loss 0.00261
+batch 75
+validation loss 0.00285
+batch 76
+validation loss 0.00253
+batch 77
+validation loss 0.00295
+batch 78
+validation loss 0.00244
+batch 79
+validation loss 0.00256
+batch 80
+validation loss 0.00312
+batch 81
+validation loss 0.00248
+batch 82
+validation loss 0.00275
+batch 83
+validation loss 0.00261
+batch 84
+validation loss 0.00267
+batch 85
+validation loss 0.00248
+batch 86
+validation loss 0.00251
+batch 87
+validation loss 0.00267
+batch 88
+validation loss 0.00267
+batch 89
+validation loss 0.00244
+batch 90
+validation loss 0.00244
+batch 91
+validation loss 0.00306
+batch 92
+validation loss 0.00267
+batch 93
+validation loss 0.00249
+batch 94
+validation loss 0.00258
+batch 95
+validation loss 0.00267
+batch 96
+validation loss 0.00260
+batch 97
+validation loss 0.00290
+batch 98
+validation loss 0.00247
+batch 99
+validation loss 0.00279
+[3 / 10] validation loss: 0.0027883529
+
+# epoch 4
+
+training loop
+batch 0
+train loss 0.00268
+batch 1
+train loss 0.00256
+batch 2
+train loss 0.00280
+batch 3
+train loss 0.00280
+batch 4
+train loss 0.00283
+batch 5
+train loss 0.00271
+batch 6
+train loss 0.00273
+batch 7
+train loss 0.00319
+batch 8
+train loss 0.00268
+batch 9
+train loss 0.00273
+batch 10
+train loss 0.00286
+batch 11
+train loss 0.00272
+batch 12
+train loss 0.00256
+batch 13
+train loss 0.00282
+batch 14
+train loss 0.00258
+batch 15
+train loss 0.00283
+batch 16
+train loss 0.00272
+batch 17
+train loss 0.00289
+batch 18
+train loss 0.00269
+batch 19
+train loss 0.00308
+batch 20
+train loss 0.00248
+batch 21
+train loss 0.00261
+batch 22
+train loss 0.00259
+batch 23
+train loss 0.00260
+batch 24
+train loss 0.00277
+batch 25
+train loss 0.00301
+batch 26
+train loss 0.00258
+batch 27
+train loss 0.00285
+batch 28
+train loss 0.00286
+batch 29
+train loss 0.00298
+batch 30
+train loss 0.00272
+batch 31
+train loss 0.00322
+batch 32
+train loss 0.00297
+batch 33
+train loss 0.00262
+batch 34
+train loss 0.00267
+batch 35
+train loss 0.00245
+batch 36
+train loss 0.00268
+batch 37
+train loss 0.00275
+batch 38
+train loss 0.00273
+batch 39
+train loss 0.00265
+batch 40
+train loss 0.00246
+batch 41
+train loss 0.00250
+batch 42
+train loss 0.00264
+batch 43
+train loss 0.00277
+batch 44
+train loss 0.00306
+batch 45
+train loss 0.00276
+batch 46
+train loss 0.00279
+batch 47
+train loss 0.00253
+batch 48
+train loss 0.00277
+batch 49
+train loss 0.00264
+batch 50
+train loss 0.00244
+batch 51
+train loss 0.00280
+batch 52
+train loss 0.00299
+batch 53
+train loss 0.00263
+batch 54
+train loss 0.00284
+batch 55
+train loss 0.00270
+batch 56
+train loss 0.00281
+batch 57
+train loss 0.00246
+batch 58
+train loss 0.00241
+batch 59
+train loss 0.00247
+batch 60
+train loss 0.00254
+batch 61
+train loss 0.00260
+batch 62
+train loss 0.00273
+batch 63
+train loss 0.00289
+batch 64
+train loss 0.00254
+batch 65
+train loss 0.00327
+batch 66
+train loss 0.00276
+batch 67
+train loss 0.00282
+batch 68
+train loss 0.00277
+batch 69
+train loss 0.00255
+batch 70
+train loss 0.00262
+batch 71
+train loss 0.00252
+batch 72
+train loss 0.00255
+batch 73
+train loss 0.00249
+batch 74
+train loss 0.00249
+batch 75
+train loss 0.00274
+batch 76
+train loss 0.00254
+batch 77
+train loss 0.00288
+batch 78
+train loss 0.00260
+batch 79
+train loss 0.00267
+batch 80
+train loss 0.00262
+batch 81
+train loss 0.00253
+batch 82
+train loss 0.00275
+batch 83
+train loss 0.00260
+batch 84
+train loss 0.00289
+batch 85
+train loss 0.00293
+batch 86
+train loss 0.00260
+batch 87
+train loss 0.00295
+batch 88
+train loss 0.00248
+batch 89
+train loss 0.00290
+batch 90
+train loss 0.00259
+batch 91
+train loss 0.00265
+batch 92
+train loss 0.00271
+batch 93
+train loss 0.00254
+batch 94
+train loss 0.00266
+batch 95
+train loss 0.00241
+batch 96
+train loss 0.00279
+batch 97
+train loss 0.00279
+batch 98
+train loss 0.00275
+batch 99
+train loss 0.00257
+batch 100
+train loss 0.00264
+batch 101
+train loss 0.00260
+batch 102
+train loss 0.00279
+batch 103
+train loss 0.00250
+batch 104
+train loss 0.00279
+batch 105
+train loss 0.00248
+batch 106
+train loss 0.00266
+batch 107
+train loss 0.00266
+batch 108
+train loss 0.00251
+batch 109
+train loss 0.00287
+batch 110
+train loss 0.00257
+batch 111
+train loss 0.00251
+batch 112
+train loss 0.00260
+batch 113
+train loss 0.00243
+batch 114
+train loss 0.00282
+batch 115
+train loss 0.00256
+batch 116
+train loss 0.00249
+batch 117
+train loss 0.00269
+batch 118
+train loss 0.00270
+batch 119
+train loss 0.00281
+batch 120
+train loss 0.00303
+batch 121
+train loss 0.00264
+batch 122
+train loss 0.00279
+batch 123
+train loss 0.00301
+batch 124
+train loss 0.00267
+batch 125
+train loss 0.00263
+batch 126
+train loss 0.00242
+batch 127
+train loss 0.00244
+batch 128
+train loss 0.00254
+batch 129
+train loss 0.00269
+batch 130
+train loss 0.00259
+batch 131
+train loss 0.00295
+batch 132
+train loss 0.00294
+batch 133
+train loss 0.00262
+batch 134
+train loss 0.00249
+batch 135
+train loss 0.00282
+batch 136
+train loss 0.00256
+batch 137
+train loss 0.00283
+batch 138
+train loss 0.00282
+batch 139
+train loss 0.00265
+batch 140
+train loss 0.00243
+batch 141
+train loss 0.00263
+batch 142
+train loss 0.00257
+batch 143
+train loss 0.00257
+batch 144
+train loss 0.00257
+batch 145
+train loss 0.00264
+batch 146
+train loss 0.00271
+batch 147
+train loss 0.00270
+batch 148
+train loss 0.00276
+batch 149
+train loss 0.00277
+batch 150
+train loss 0.00261
+batch 151
+train loss 0.00260
+batch 152
+train loss 0.00263
+batch 153
+train loss 0.00255
+batch 154
+train loss 0.00275
+batch 155
+train loss 0.00258
+batch 156
+train loss 0.00277
+batch 157
+train loss 0.00260
+batch 158
+train loss 0.00271
+batch 159
+train loss 0.00255
+batch 160
+train loss 0.00250
+batch 161
+train loss 0.00277
+batch 162
+train loss 0.00275
+batch 163
+train loss 0.00251
+batch 164
+train loss 0.00272
+batch 165
+train loss 0.00290
+batch 166
+train loss 0.00245
+batch 167
+train loss 0.00254
+batch 168
+train loss 0.00232
+batch 169
+train loss 0.00258
+batch 170
+train loss 0.00261
+batch 171
+train loss 0.00269
+batch 172
+train loss 0.00300
+batch 173
+train loss 0.00285
+batch 174
+train loss 0.00259
+batch 175
+train loss 0.00248
+batch 176
+train loss 0.00343
+batch 177
+train loss 0.00256
+batch 178
+train loss 0.00282
+batch 179
+train loss 0.00257
+batch 180
+train loss 0.00292
+batch 181
+train loss 0.00266
+batch 182
+train loss 0.00290
+batch 183
+train loss 0.00253
+batch 184
+train loss 0.00248
+batch 185
+train loss 0.00276
+batch 186
+train loss 0.00263
+batch 187
+train loss 0.00288
+batch 188
+train loss 0.00240
+batch 189
+train loss 0.00275
+batch 190
+train loss 0.00250
+batch 191
+train loss 0.00271
+batch 192
+train loss 0.00247
+batch 193
+train loss 0.00268
+batch 194
+train loss 0.00241
+batch 195
+train loss 0.00258
+batch 196
+train loss 0.00282
+batch 197
+train loss 0.00271
+batch 198
+train loss 0.00246
+batch 199
+train loss 0.00271
+batch 200
+train loss 0.00241
+batch 201
+train loss 0.00245
+batch 202
+train loss 0.00272
+batch 203
+train loss 0.00257
+batch 204
+train loss 0.00267
+batch 205
+train loss 0.00266
+batch 206
+train loss 0.00265
+batch 207
+train loss 0.00272
+batch 208
+train loss 0.00254
+batch 209
+train loss 0.00261
+batch 210
+train loss 0.00265
+batch 211
+train loss 0.00258
+batch 212
+train loss 0.00267
+batch 213
+train loss 0.00254
+batch 214
+train loss 0.00269
+batch 215
+train loss 0.00253
+batch 216
+train loss 0.00291
+batch 217
+train loss 0.00277
+batch 218
+train loss 0.00257
+batch 219
+train loss 0.00240
+batch 220
+train loss 0.00285
+batch 221
+train loss 0.00242
+batch 222
+train loss 0.00249
+batch 223
+train loss 0.00268
+batch 224
+train loss 0.00253
+batch 225
+train loss 0.00271
+batch 226
+train loss 0.00253
+batch 227
+train loss 0.00252
+batch 228
+train loss 0.00261
+batch 229
+train loss 0.00286
+batch 230
+train loss 0.00272
+batch 231
+train loss 0.00242
+batch 232
+train loss 0.00266
+batch 233
+train loss 0.00260
+batch 234
+train loss 0.00273
+batch 235
+train loss 0.00278
+batch 236
+train loss 0.00258
+batch 237
+train loss 0.00247
+batch 238
+train loss 0.00269
+batch 239
+train loss 0.00258
+batch 240
+train loss 0.00269
+batch 241
+train loss 0.00262
+batch 242
+train loss 0.00253
+batch 243
+train loss 0.00288
+batch 244
+train loss 0.00278
+batch 245
+train loss 0.00284
+batch 246
+train loss 0.00273
+batch 247
+train loss 0.00272
+batch 248
+train loss 0.00248
+batch 249
+train loss 0.00266
+batch 250
+train loss 0.00278
+batch 251
+train loss 0.00261
+batch 252
+train loss 0.00248
+batch 253
+train loss 0.00261
+batch 254
+train loss 0.00240
+batch 255
+train loss 0.00262
+batch 256
+train loss 0.00265
+batch 257
+train loss 0.00253
+batch 258
+train loss 0.00263
+batch 259
+train loss 0.00244
+batch 260
+train loss 0.00276
+batch 261
+train loss 0.00277
+batch 262
+train loss 0.00333
+batch 263
+train loss 0.00244
+batch 264
+train loss 0.00272
+batch 265
+train loss 0.00296
+batch 266
+train loss 0.00248
+batch 267
+train loss 0.00305
+batch 268
+train loss 0.00279
+batch 269
+train loss 0.00249
+batch 270
+train loss 0.00278
+batch 271
+train loss 0.00264
+batch 272
+train loss 0.00285
+batch 273
+train loss 0.00246
+batch 274
+train loss 0.00275
+batch 275
+train loss 0.00275
+batch 276
+train loss 0.00279
+batch 277
+train loss 0.00253
+batch 278
+train loss 0.00256
+batch 279
+train loss 0.00275
+batch 280
+train loss 0.00249
+batch 281
+train loss 0.00261
+batch 282
+train loss 0.00261
+batch 283
+train loss 0.00255
+batch 284
+train loss 0.00262
+batch 285
+train loss 0.00277
+batch 286
+train loss 0.00264
+batch 287
+train loss 0.00269
+batch 288
+train loss 0.00271
+batch 289
+train loss 0.00258
+batch 290
+train loss 0.00264
+batch 291
+train loss 0.00286
+batch 292
+train loss 0.00249
+batch 293
+train loss 0.00249
+batch 294
+train loss 0.00255
+batch 295
+train loss 0.00280
+batch 296
+train loss 0.00266
+batch 297
+train loss 0.00248
+batch 298
+train loss 0.00262
+batch 299
+train loss 0.00262
+batch 300
+train loss 0.00257
+batch 301
+train loss 0.00266
+batch 302
+train loss 0.00252
+batch 303
+train loss 0.00310
+batch 304
+train loss 0.00255
+batch 305
+train loss 0.00271
+batch 306
+train loss 0.00271
+batch 307
+train loss 0.00275
+batch 308
+train loss 0.00278
+batch 309
+train loss 0.00264
+batch 310
+train loss 0.00266
+batch 311
+train loss 0.00262
+batch 312
+train loss 0.00243
+batch 313
+train loss 0.00273
+batch 314
+train loss 0.00277
+batch 315
+train loss 0.00266
+batch 316
+train loss 0.00272
+batch 317
+train loss 0.00260
+batch 318
+train loss 0.00257
+batch 319
+train loss 0.00260
+batch 320
+train loss 0.00269
+batch 321
+train loss 0.00289
+batch 322
+train loss 0.00264
+batch 323
+train loss 0.00252
+batch 324
+train loss 0.00267
+batch 325
+train loss 0.00248
+batch 326
+train loss 0.00271
+batch 327
+train loss 0.00256
+batch 328
+train loss 0.00259
+batch 329
+train loss 0.00266
+batch 330
+train loss 0.00241
+batch 331
+train loss 0.00260
+batch 332
+train loss 0.00252
+batch 333
+train loss 0.00279
+batch 334
+train loss 0.00240
+batch 335
+train loss 0.00269
+batch 336
+train loss 0.00249
+batch 337
+train loss 0.00270
+batch 338
+train loss 0.00262
+batch 339
+train loss 0.00250
+batch 340
+train loss 0.00240
+batch 341
+train loss 0.00255
+batch 342
+train loss 0.00261
+batch 343
+train loss 0.00265
+batch 344
+train loss 0.00251
+batch 345
+train loss 0.00241
+batch 346
+train loss 0.00270
+batch 347
+train loss 0.00266
+batch 348
+train loss 0.00281
+batch 349
+train loss 0.00248
+batch 350
+train loss 0.00275
+batch 351
+train loss 0.00262
+batch 352
+train loss 0.00271
+batch 353
+train loss 0.00259
+batch 354
+train loss 0.00259
+batch 355
+train loss 0.00261
+batch 356
+train loss 0.00247
+batch 357
+train loss 0.00241
+batch 358
+train loss 0.00259
+batch 359
+train loss 0.00248
+batch 360
+train loss 0.00300
+batch 361
+train loss 0.00269
+batch 362
+train loss 0.00244
+batch 363
+train loss 0.00241
+batch 364
+train loss 0.00249
+batch 365
+train loss 0.00270
+batch 366
+train loss 0.00237
+batch 367
+train loss 0.00260
+batch 368
+train loss 0.00258
+batch 369
+train loss 0.00273
+batch 370
+train loss 0.00276
+batch 371
+train loss 0.00268
+batch 372
+train loss 0.00277
+batch 373
+train loss 0.00287
+batch 374
+train loss 0.00259
+batch 375
+train loss 0.00248
+batch 376
+train loss 0.00257
+batch 377
+train loss 0.00249
+batch 378
+train loss 0.00284
+batch 379
+train loss 0.00258
+batch 380
+train loss 0.00257
+batch 381
+train loss 0.00273
+batch 382
+train loss 0.00274
+batch 383
+train loss 0.00277
+batch 384
+train loss 0.00259
+batch 385
+train loss 0.00247
+batch 386
+train loss 0.00262
+batch 387
+train loss 0.00255
+batch 388
+train loss 0.00277
+batch 389
+train loss 0.00238
+batch 390
+train loss 0.00280
+batch 391
+train loss 0.00262
+batch 392
+train loss 0.00308
+batch 393
+train loss 0.00249
+batch 394
+train loss 0.00269
+batch 395
+train loss 0.00322
+batch 396
+train loss 0.00248
+batch 397
+train loss 0.00286
+batch 398
+train loss 0.00292
+batch 399
+train loss 0.00287
+batch 400
+train loss 0.00273
+batch 401
+train loss 0.00260
+batch 402
+train loss 0.00240
+batch 403
+train loss 0.00262
+batch 404
+train loss 0.00263
+batch 405
+train loss 0.00280
+batch 406
+train loss 0.00240
+batch 407
+train loss 0.00237
+batch 408
+train loss 0.00265
+batch 409
+train loss 0.00270
+batch 410
+train loss 0.00253
+batch 411
+train loss 0.00266
+batch 412
+train loss 0.00261
+batch 413
+train loss 0.00262
+batch 414
+train loss 0.00249
+batch 415
+train loss 0.00317
+batch 416
+train loss 0.00309
+batch 417
+train loss 0.00269
+batch 418
+train loss 0.00297
+batch 419
+train loss 0.00261
+batch 420
+train loss 0.00257
+batch 421
+train loss 0.00256
+batch 422
+train loss 0.00278
+batch 423
+train loss 0.00242
+batch 424
+train loss 0.00295
+batch 425
+train loss 0.00269
+batch 426
+train loss 0.00259
+batch 427
+train loss 0.00289
+batch 428
+train loss 0.00283
+batch 429
+train loss 0.00280
+batch 430
+train loss 0.00264
+batch 431
+train loss 0.00250
+batch 432
+train loss 0.00273
+batch 433
+train loss 0.00259
+batch 434
+train loss 0.00277
+batch 435
+train loss 0.00258
+batch 436
+train loss 0.00248
+batch 437
+train loss 0.00251
+batch 438
+train loss 0.00247
+batch 439
+train loss 0.00281
+batch 440
+train loss 0.00258
+batch 441
+train loss 0.00329
+batch 442
+train loss 0.00259
+batch 443
+train loss 0.00268
+batch 444
+train loss 0.00263
+batch 445
+train loss 0.00269
+batch 446
+train loss 0.00267
+batch 447
+train loss 0.00269
+batch 448
+train loss 0.00244
+batch 449
+train loss 0.00264
+batch 450
+train loss 0.00279
+batch 451
+train loss 0.00286
+batch 452
+train loss 0.00283
+batch 453
+train loss 0.00258
+batch 454
+train loss 0.00257
+batch 455
+train loss 0.00286
+batch 456
+train loss 0.00258
+batch 457
+train loss 0.00271
+batch 458
+train loss 0.00268
+batch 459
+train loss 0.00248
+batch 460
+train loss 0.00259
+batch 461
+train loss 0.00273
+batch 462
+train loss 0.00240
+batch 463
+train loss 0.00257
+batch 464
+train loss 0.00273
+batch 465
+train loss 0.00258
+batch 466
+train loss 0.00250
+batch 467
+train loss 0.00276
+batch 468
+train loss 0.00248
+batch 469
+train loss 0.00268
+batch 470
+train loss 0.00255
+batch 471
+train loss 0.00285
+batch 472
+train loss 0.00301
+batch 473
+train loss 0.00268
+batch 474
+train loss 0.00262
+batch 475
+train loss 0.00268
+batch 476
+train loss 0.00253
+batch 477
+train loss 0.00257
+batch 478
+train loss 0.00264
+batch 479
+train loss 0.00244
+batch 480
+train loss 0.00284
+batch 481
+train loss 0.00267
+batch 482
+train loss 0.00236
+batch 483
+train loss 0.00248
+batch 484
+train loss 0.00272
+batch 485
+train loss 0.00273
+batch 486
+train loss 0.00262
+batch 487
+train loss 0.00272
+batch 488
+train loss 0.00273
+batch 489
+train loss 0.00254
+batch 490
+train loss 0.00266
+batch 491
+train loss 0.00284
+batch 492
+train loss 0.00288
+batch 493
+train loss 0.00291
+batch 494
+train loss 0.00274
+batch 495
+train loss 0.00253
+batch 496
+train loss 0.00258
+batch 497
+train loss 0.00261
+batch 498
+train loss 0.00256
+batch 499
+train loss 0.00275
+[4 / 10] train loss: 0.0026641517
+
+validation loop
+batch 0
+validation loss 0.00314
+batch 1
+validation loss 0.00270
+batch 2
+validation loss 0.00252
+batch 3
+validation loss 0.00273
+batch 4
+validation loss 0.00251
+batch 5
+validation loss 0.00304
+batch 6
+validation loss 0.00262
+batch 7
+validation loss 0.00293
+batch 8
+validation loss 0.00250
+batch 9
+validation loss 0.00261
+batch 10
+validation loss 0.00267
+batch 11
+validation loss 0.00315
+batch 12
+validation loss 0.00267
+batch 13
+validation loss 0.00274
+batch 14
+validation loss 0.00268
+batch 15
+validation loss 0.00291
+batch 16
+validation loss 0.00304
+batch 17
+validation loss 0.00280
+batch 18
+validation loss 0.00265
+batch 19
+validation loss 0.00254
+batch 20
+validation loss 0.00255
+batch 21
+validation loss 0.00276
+batch 22
+validation loss 0.00261
+batch 23
+validation loss 0.00249
+batch 24
+validation loss 0.00268
+batch 25
+validation loss 0.00254
+batch 26
+validation loss 0.00255
+batch 27
+validation loss 0.00269
+batch 28
+validation loss 0.00311
+batch 29
+validation loss 0.00268
+batch 30
+validation loss 0.00268
+batch 31
+validation loss 0.00276
+batch 32
+validation loss 0.00253
+batch 33
+validation loss 0.00311
+batch 34
+validation loss 0.00269
+batch 35
+validation loss 0.00278
+batch 36
+validation loss 0.00292
+batch 37
+validation loss 0.00263
+batch 38
+validation loss 0.00279
+batch 39
+validation loss 0.00285
+batch 40
+validation loss 0.00251
+batch 41
+validation loss 0.00270
+batch 42
+validation loss 0.00279
+batch 43
+validation loss 0.00258
+batch 44
+validation loss 0.00266
+batch 45
+validation loss 0.00264
+batch 46
+validation loss 0.00296
+batch 47
+validation loss 0.00283
+batch 48
+validation loss 0.00260
+batch 49
+validation loss 0.00263
+batch 50
+validation loss 0.00248
+batch 51
+validation loss 0.00241
+batch 52
+validation loss 0.00281
+batch 53
+validation loss 0.00288
+batch 54
+validation loss 0.00269
+batch 55
+validation loss 0.00272
+batch 56
+validation loss 0.00243
+batch 57
+validation loss 0.00289
+batch 58
+validation loss 0.00280
+batch 59
+validation loss 0.00274
+batch 60
+validation loss 0.00256
+batch 61
+validation loss 0.00280
+batch 62
+validation loss 0.00269
+batch 63
+validation loss 0.00259
+batch 64
+validation loss 0.00295
+batch 65
+validation loss 0.00309
+batch 66
+validation loss 0.00248
+batch 67
+validation loss 0.00274
+batch 68
+validation loss 0.00270
+batch 69
+validation loss 0.00283
+batch 70
+validation loss 0.00259
+batch 71
+validation loss 0.00270
+batch 72
+validation loss 0.00246
+batch 73
+validation loss 0.00280
+batch 74
+validation loss 0.00250
+batch 75
+validation loss 0.00297
+batch 76
+validation loss 0.00256
+batch 77
+validation loss 0.00279
+batch 78
+validation loss 0.00238
+batch 79
+validation loss 0.00255
+batch 80
+validation loss 0.00327
+batch 81
+validation loss 0.00250
+batch 82
+validation loss 0.00285
+batch 83
+validation loss 0.00274
+batch 84
+validation loss 0.00270
+batch 85
+validation loss 0.00262
+batch 86
+validation loss 0.00261
+batch 87
+validation loss 0.00268
+batch 88
+validation loss 0.00267
+batch 89
+validation loss 0.00239
+batch 90
+validation loss 0.00239
+batch 91
+validation loss 0.00305
+batch 92
+validation loss 0.00272
+batch 93
+validation loss 0.00243
+batch 94
+validation loss 0.00256
+batch 95
+validation loss 0.00277
+batch 96
+validation loss 0.00273
+batch 97
+validation loss 0.00276
+batch 98
+validation loss 0.00253
+batch 99
+validation loss 0.00283
+[4 / 10] validation loss: 0.0026641517
+
+# epoch 5
+
+training loop
+batch 0
+train loss 0.00291
+batch 1
+train loss 0.00261
+batch 2
+train loss 0.00261
+batch 3
+train loss 0.00266
+batch 4
+train loss 0.00279
+batch 5
+train loss 0.00249
+batch 6
+train loss 0.00285
+batch 7
+train loss 0.00247
+batch 8
+train loss 0.00252
+batch 9
+train loss 0.00281
+batch 10
+train loss 0.00267
+batch 11
+train loss 0.00241
+batch 12
+train loss 0.00250
+batch 13
+train loss 0.00276
+batch 14
+train loss 0.00226
+batch 15
+train loss 0.00258
+batch 16
+train loss 0.00260
+batch 17
+train loss 0.00245
+batch 18
+train loss 0.00249
+batch 19
+train loss 0.00303
+batch 20
+train loss 0.00258
+batch 21
+train loss 0.00267
+batch 22
+train loss 0.00311
+batch 23
+train loss 0.00253
+batch 24
+train loss 0.00287
+batch 25
+train loss 0.00243
+batch 26
+train loss 0.00269
+batch 27
+train loss 0.00255
+batch 28
+train loss 0.00267
+batch 29
+train loss 0.00265
+batch 30
+train loss 0.00243
+batch 31
+train loss 0.00255
+batch 32
+train loss 0.00240
+batch 33
+train loss 0.00294
+batch 34
+train loss 0.00258
+batch 35
+train loss 0.00271
+batch 36
+train loss 0.00278
+batch 37
+train loss 0.00244
+batch 38
+train loss 0.00266
+batch 39
+train loss 0.00259
+batch 40
+train loss 0.00274
+batch 41
+train loss 0.00277
+batch 42
+train loss 0.00242
+batch 43
+train loss 0.00260
+batch 44
+train loss 0.00297
+batch 45
+train loss 0.00241
+batch 46
+train loss 0.00255
+batch 47
+train loss 0.00244
+batch 48
+train loss 0.00263
+batch 49
+train loss 0.00261
+batch 50
+train loss 0.00237
+batch 51
+train loss 0.00251
+batch 52
+train loss 0.00264
+batch 53
+train loss 0.00244
+batch 54
+train loss 0.00241
+batch 55
+train loss 0.00278
+batch 56
+train loss 0.00262
+batch 57
+train loss 0.00259
+batch 58
+train loss 0.00254
+batch 59
+train loss 0.00258
+batch 60
+train loss 0.00251
+batch 61
+train loss 0.00278
+batch 62
+train loss 0.00269
+batch 63
+train loss 0.00277
+batch 64
+train loss 0.00273
+batch 65
+train loss 0.00281
+batch 66
+train loss 0.00240
+batch 67
+train loss 0.00261
+batch 68
+train loss 0.00268
+batch 69
+train loss 0.00278
+batch 70
+train loss 0.00265
+batch 71
+train loss 0.00270
+batch 72
+train loss 0.00273
+batch 73
+train loss 0.00280
+batch 74
+train loss 0.00264
+batch 75
+train loss 0.00255
+batch 76
+train loss 0.00277
+batch 77
+train loss 0.00285
+batch 78
+train loss 0.00244
+batch 79
+train loss 0.00259
+batch 80
+train loss 0.00285
+batch 81
+train loss 0.00309
+batch 82
+train loss 0.00261
+batch 83
+train loss 0.00278
+batch 84
+train loss 0.00241
+batch 85
+train loss 0.00284
+batch 86
+train loss 0.00248
+batch 87
+train loss 0.00243
+batch 88
+train loss 0.00255
+batch 89
+train loss 0.00250
+batch 90
+train loss 0.00252
+batch 91
+train loss 0.00239
+batch 92
+train loss 0.00280
+batch 93
+train loss 0.00238
+batch 94
+train loss 0.00248
+batch 95
+train loss 0.00258
+batch 96
+train loss 0.00247
+batch 97
+train loss 0.00262
+batch 98
+train loss 0.00242
+batch 99
+train loss 0.00317
+batch 100
+train loss 0.00246
+batch 101
+train loss 0.00261
+batch 102
+train loss 0.00263
+batch 103
+train loss 0.00273
+batch 104
+train loss 0.00250
+batch 105
+train loss 0.00286
+batch 106
+train loss 0.00261
+batch 107
+train loss 0.00259
+batch 108
+train loss 0.00279
+batch 109
+train loss 0.00255
+batch 110
+train loss 0.00245
+batch 111
+train loss 0.00257
+batch 112
+train loss 0.00266
+batch 113
+train loss 0.00248
+batch 114
+train loss 0.00267
+batch 115
+train loss 0.00277
+batch 116
+train loss 0.00261
+batch 117
+train loss 0.00279
+batch 118
+train loss 0.00257
+batch 119
+train loss 0.00254
+batch 120
+train loss 0.00262
+batch 121
+train loss 0.00251
+batch 122
+train loss 0.00242
+batch 123
+train loss 0.00257
+batch 124
+train loss 0.00259
+batch 125
+train loss 0.00244
+batch 126
+train loss 0.00273
+batch 127
+train loss 0.00306
+batch 128
+train loss 0.00247
+batch 129
+train loss 0.00247
+batch 130
+train loss 0.00245
+batch 131
+train loss 0.00283
+batch 132
+train loss 0.00278
+batch 133
+train loss 0.00269
+batch 134
+train loss 0.00277
+batch 135
+train loss 0.00251
+batch 136
+train loss 0.00236
+batch 137
+train loss 0.00255
+batch 138
+train loss 0.00242
+batch 139
+train loss 0.00277
+batch 140
+train loss 0.00253
+batch 141
+train loss 0.00288
+batch 142
+train loss 0.00278
+batch 143
+train loss 0.00291
+batch 144
+train loss 0.00265
+batch 145
+train loss 0.00259
+batch 146
+train loss 0.00239
+batch 147
+train loss 0.00259
+batch 148
+train loss 0.00272
+batch 149
+train loss 0.00262
+batch 150
+train loss 0.00273
+batch 151
+train loss 0.00258
+batch 152
+train loss 0.00251
+batch 153
+train loss 0.00258
+batch 154
+train loss 0.00273
+batch 155
+train loss 0.00275
+batch 156
+train loss 0.00281
+batch 157
+train loss 0.00239
+batch 158
+train loss 0.00262
+batch 159
+train loss 0.00266
+batch 160
+train loss 0.00251
+batch 161
+train loss 0.00299
+batch 162
+train loss 0.00306
+batch 163
+train loss 0.00281
+batch 164
+train loss 0.00261
+batch 165
+train loss 0.00252
+batch 166
+train loss 0.00270
+batch 167
+train loss 0.00291
+batch 168
+train loss 0.00262
+batch 169
+train loss 0.00260
+batch 170
+train loss 0.00275
+batch 171
+train loss 0.00257
+batch 172
+train loss 0.00258
+batch 173
+train loss 0.00260
+batch 174
+train loss 0.00252
+batch 175
+train loss 0.00276
+batch 176
+train loss 0.00268
+batch 177
+train loss 0.00276
+batch 178
+train loss 0.00257
+batch 179
+train loss 0.00277
+batch 180
+train loss 0.00279
+batch 181
+train loss 0.00260
+batch 182
+train loss 0.00277
+batch 183
+train loss 0.00257
+batch 184
+train loss 0.00262
+batch 185
+train loss 0.00261
+batch 186
+train loss 0.00262
+batch 187
+train loss 0.00258
+batch 188
+train loss 0.00251
+batch 189
+train loss 0.00252
+batch 190
+train loss 0.00277
+batch 191
+train loss 0.00250
+batch 192
+train loss 0.00259
+batch 193
+train loss 0.00270
+batch 194
+train loss 0.00251
+batch 195
+train loss 0.00255
+batch 196
+train loss 0.00290
+batch 197
+train loss 0.00259
+batch 198
+train loss 0.00254
+batch 199
+train loss 0.00249
+batch 200
+train loss 0.00244
+batch 201
+train loss 0.00270
+batch 202
+train loss 0.00254
+batch 203
+train loss 0.00265
+batch 204
+train loss 0.00241
+batch 205
+train loss 0.00289
+batch 206
+train loss 0.00250
+batch 207
+train loss 0.00264
+batch 208
+train loss 0.00253
+batch 209
+train loss 0.00267
+batch 210
+train loss 0.00277
+batch 211
+train loss 0.00280
+batch 212
+train loss 0.00272
+batch 213
+train loss 0.00266
+batch 214
+train loss 0.00249
+batch 215
+train loss 0.00258
+batch 216
+train loss 0.00254
+batch 217
+train loss 0.00286
+batch 218
+train loss 0.00249
+batch 219
+train loss 0.00266
+batch 220
+train loss 0.00243
+batch 221
+train loss 0.00246
+batch 222
+train loss 0.00279
+batch 223
+train loss 0.00232
+batch 224
+train loss 0.00273
+batch 225
+train loss 0.00244
+batch 226
+train loss 0.00255
+batch 227
+train loss 0.00252
+batch 228
+train loss 0.00247
+batch 229
+train loss 0.00270
+batch 230
+train loss 0.00259
+batch 231
+train loss 0.00266
+batch 232
+train loss 0.00272
+batch 233
+train loss 0.00258
+batch 234
+train loss 0.00283
+batch 235
+train loss 0.00289
+batch 236
+train loss 0.00247
+batch 237
+train loss 0.00262
+batch 238
+train loss 0.00237
+batch 239
+train loss 0.00244
+batch 240
+train loss 0.00255
+batch 241
+train loss 0.00264
+batch 242
+train loss 0.00269
+batch 243
+train loss 0.00273
+batch 244
+train loss 0.00257
+batch 245
+train loss 0.00273
+batch 246
+train loss 0.00232
+batch 247
+train loss 0.00241
+batch 248
+train loss 0.00261
+batch 249
+train loss 0.00264
+batch 250
+train loss 0.00235
+batch 251
+train loss 0.00265
+batch 252
+train loss 0.00266
+batch 253
+train loss 0.00306
+batch 254
+train loss 0.00240
+batch 255
+train loss 0.00249
+batch 256
+train loss 0.00242
+batch 257
+train loss 0.00257
+batch 258
+train loss 0.00243
+batch 259
+train loss 0.00268
+batch 260
+train loss 0.00263
+batch 261
+train loss 0.00247
+batch 262
+train loss 0.00259
+batch 263
+train loss 0.00252
+batch 264
+train loss 0.00265
+batch 265
+train loss 0.00240
+batch 266
+train loss 0.00243
+batch 267
+train loss 0.00258
+batch 268
+train loss 0.00266
+batch 269
+train loss 0.00252
+batch 270
+train loss 0.00271
+batch 271
+train loss 0.00250
+batch 272
+train loss 0.00256
+batch 273
+train loss 0.00274
+batch 274
+train loss 0.00246
+batch 275
+train loss 0.00249
+batch 276
+train loss 0.00263
+batch 277
+train loss 0.00273
+batch 278
+train loss 0.00255
+batch 279
+train loss 0.00262
+batch 280
+train loss 0.00247
+batch 281
+train loss 0.00277
+batch 282
+train loss 0.00244
+batch 283
+train loss 0.00254
+batch 284
+train loss 0.00259
+batch 285
+train loss 0.00235
+batch 286
+train loss 0.00239
+batch 287
+train loss 0.00255
+batch 288
+train loss 0.00256
+batch 289
+train loss 0.00267
+batch 290
+train loss 0.00261
+batch 291
+train loss 0.00253
+batch 292
+train loss 0.00257
+batch 293
+train loss 0.00255
+batch 294
+train loss 0.00281
+batch 295
+train loss 0.00250
+batch 296
+train loss 0.00253
+batch 297
+train loss 0.00266
+batch 298
+train loss 0.00243
+batch 299
+train loss 0.00264
+batch 300
+train loss 0.00273
+batch 301
+train loss 0.00258
+batch 302
+train loss 0.00237
+batch 303
+train loss 0.00265
+batch 304
+train loss 0.00255
+batch 305
+train loss 0.00241
+batch 306
+train loss 0.00256
+batch 307
+train loss 0.00246
+batch 308
+train loss 0.00262
+batch 309
+train loss 0.00295
+batch 310
+train loss 0.00278
+batch 311
+train loss 0.00277
+batch 312
+train loss 0.00295
+batch 313
+train loss 0.00266
+batch 314
+train loss 0.00249
+batch 315
+train loss 0.00285
+batch 316
+train loss 0.00282
+batch 317
+train loss 0.00275
+batch 318
+train loss 0.00277
+batch 319
+train loss 0.00252
+batch 320
+train loss 0.00244
+batch 321
+train loss 0.00279
+batch 322
+train loss 0.00239
+batch 323
+train loss 0.00239
+batch 324
+train loss 0.00267
+batch 325
+train loss 0.00285
+batch 326
+train loss 0.00271
+batch 327
+train loss 0.00265
+batch 328
+train loss 0.00245
+batch 329
+train loss 0.00257
+batch 330
+train loss 0.00270
+batch 331
+train loss 0.00263
+batch 332
+train loss 0.00254
+batch 333
+train loss 0.00255
+batch 334
+train loss 0.00234
+batch 335
+train loss 0.00255
+batch 336
+train loss 0.00255
+batch 337
+train loss 0.00254
+batch 338
+train loss 0.00255
+batch 339
+train loss 0.00253
+batch 340
+train loss 0.00282
+batch 341
+train loss 0.00255
+batch 342
+train loss 0.00273
+batch 343
+train loss 0.00252
+batch 344
+train loss 0.00259
+batch 345
+train loss 0.00271
+batch 346
+train loss 0.00314
+batch 347
+train loss 0.00293
+batch 348
+train loss 0.00264
+batch 349
+train loss 0.00266
+batch 350
+train loss 0.00253
+batch 351
+train loss 0.00275
+batch 352
+train loss 0.00294
+batch 353
+train loss 0.00246
+batch 354
+train loss 0.00271
+batch 355
+train loss 0.00272
+batch 356
+train loss 0.00249
+batch 357
+train loss 0.00260
+batch 358
+train loss 0.00243
+batch 359
+train loss 0.00256
+batch 360
+train loss 0.00272
+batch 361
+train loss 0.00279
+batch 362
+train loss 0.00261
+batch 363
+train loss 0.00269
+batch 364
+train loss 0.00249
+batch 365
+train loss 0.00256
+batch 366
+train loss 0.00284
+batch 367
+train loss 0.00257
+batch 368
+train loss 0.00253
+batch 369
+train loss 0.00260
+batch 370
+train loss 0.00243
+batch 371
+train loss 0.00261
+batch 372
+train loss 0.00278
+batch 373
+train loss 0.00282
+batch 374
+train loss 0.00292
+batch 375
+train loss 0.00234
+batch 376
+train loss 0.00282
+batch 377
+train loss 0.00250
+batch 378
+train loss 0.00257
+batch 379
+train loss 0.00254
+batch 380
+train loss 0.00268
+batch 381
+train loss 0.00269
+batch 382
+train loss 0.00278
+batch 383
+train loss 0.00253
+batch 384
+train loss 0.00256
+batch 385
+train loss 0.00245
+batch 386
+train loss 0.00275
+batch 387
+train loss 0.00254
+batch 388
+train loss 0.00244
+batch 389
+train loss 0.00277
+batch 390
+train loss 0.00250
+batch 391
+train loss 0.00266
+batch 392
+train loss 0.00264
+batch 393
+train loss 0.00323
+batch 394
+train loss 0.00244
+batch 395
+train loss 0.00260
+batch 396
+train loss 0.00278
+batch 397
+train loss 0.00240
+batch 398
+train loss 0.00249
+batch 399
+train loss 0.00305
+batch 400
+train loss 0.00240
+batch 401
+train loss 0.00256
+batch 402
+train loss 0.00256
+batch 403
+train loss 0.00270
+batch 404
+train loss 0.00246
+batch 405
+train loss 0.00254
+batch 406
+train loss 0.00254
+batch 407
+train loss 0.00260
+batch 408
+train loss 0.00284
+batch 409
+train loss 0.00256
+batch 410
+train loss 0.00261
+batch 411
+train loss 0.00248
+batch 412
+train loss 0.00282
+batch 413
+train loss 0.00258
+batch 414
+train loss 0.00264
+batch 415
+train loss 0.00262
+batch 416
+train loss 0.00244
+batch 417
+train loss 0.00277
+batch 418
+train loss 0.00297
+batch 419
+train loss 0.00246
+batch 420
+train loss 0.00281
+batch 421
+train loss 0.00263
+batch 422
+train loss 0.00260
+batch 423
+train loss 0.00286
+batch 424
+train loss 0.00244
+batch 425
+train loss 0.00267
+batch 426
+train loss 0.00280
+batch 427
+train loss 0.00335
+batch 428
+train loss 0.00265
+batch 429
+train loss 0.00237
+batch 430
+train loss 0.00291
+batch 431
+train loss 0.00268
+batch 432
+train loss 0.00286
+batch 433
+train loss 0.00251
+batch 434
+train loss 0.00240
+batch 435
+train loss 0.00281
+batch 436
+train loss 0.00264
+batch 437
+train loss 0.00250
+batch 438
+train loss 0.00278
+batch 439
+train loss 0.00275
+batch 440
+train loss 0.00238
+batch 441
+train loss 0.00263
+batch 442
+train loss 0.00245
+batch 443
+train loss 0.00245
+batch 444
+train loss 0.00253
+batch 445
+train loss 0.00260
+batch 446
+train loss 0.00264
+batch 447
+train loss 0.00268
+batch 448
+train loss 0.00266
+batch 449
+train loss 0.00250
+batch 450
+train loss 0.00272
+batch 451
+train loss 0.00262
+batch 452
+train loss 0.00253
+batch 453
+train loss 0.00258
+batch 454
+train loss 0.00257
+batch 455
+train loss 0.00231
+batch 456
+train loss 0.00249
+batch 457
+train loss 0.00236
+batch 458
+train loss 0.00275
+batch 459
+train loss 0.00255
+batch 460
+train loss 0.00283
+batch 461
+train loss 0.00254
+batch 462
+train loss 0.00263
+batch 463
+train loss 0.00259
+batch 464
+train loss 0.00248
+batch 465
+train loss 0.00283
+batch 466
+train loss 0.00285
+batch 467
+train loss 0.00258
+batch 468
+train loss 0.00253
+batch 469
+train loss 0.00269
+batch 470
+train loss 0.00259
+batch 471
+train loss 0.00275
+batch 472
+train loss 0.00302
+batch 473
+train loss 0.00251
+batch 474
+train loss 0.00247
+batch 475
+train loss 0.00254
+batch 476
+train loss 0.00247
+batch 477
+train loss 0.00254
+batch 478
+train loss 0.00259
+batch 479
+train loss 0.00249
+batch 480
+train loss 0.00261
+batch 481
+train loss 0.00272
+batch 482
+train loss 0.00258
+batch 483
+train loss 0.00281
+batch 484
+train loss 0.00249
+batch 485
+train loss 0.00249
+batch 486
+train loss 0.00268
+batch 487
+train loss 0.00242
+batch 488
+train loss 0.00230
+batch 489
+train loss 0.00287
+batch 490
+train loss 0.00245
+batch 491
+train loss 0.00243
+batch 492
+train loss 0.00250
+batch 493
+train loss 0.00252
+batch 494
+train loss 0.00252
+batch 495
+train loss 0.00254
+batch 496
+train loss 0.00255
+batch 497
+train loss 0.00246
+batch 498
+train loss 0.00250
+batch 499
+train loss 0.00264
+[5 / 10] train loss: 0.0026186710
+
+validation loop
+batch 0
+validation loss 0.00283
+batch 1
+validation loss 0.00254
+batch 2
+validation loss 0.00244
+batch 3
+validation loss 0.00253
+batch 4
+validation loss 0.00244
+batch 5
+validation loss 0.00286
+batch 6
+validation loss 0.00247
+batch 7
+validation loss 0.00270
+batch 8
+validation loss 0.00227
+batch 9
+validation loss 0.00236
+batch 10
+validation loss 0.00268
+batch 11
+validation loss 0.00278
+batch 12
+validation loss 0.00253
+batch 13
+validation loss 0.00256
+batch 14
+validation loss 0.00251
+batch 15
+validation loss 0.00265
+batch 16
+validation loss 0.00269
+batch 17
+validation loss 0.00247
+batch 18
+validation loss 0.00250
+batch 19
+validation loss 0.00255
+batch 20
+validation loss 0.00240
+batch 21
+validation loss 0.00255
+batch 22
+validation loss 0.00248
+batch 23
+validation loss 0.00249
+batch 24
+validation loss 0.00250
+batch 25
+validation loss 0.00246
+batch 26
+validation loss 0.00240
+batch 27
+validation loss 0.00259
+batch 28
+validation loss 0.00274
+batch 29
+validation loss 0.00250
+batch 30
+validation loss 0.00240
+batch 31
+validation loss 0.00253
+batch 32
+validation loss 0.00234
+batch 33
+validation loss 0.00276
+batch 34
+validation loss 0.00257
+batch 35
+validation loss 0.00265
+batch 36
+validation loss 0.00271
+batch 37
+validation loss 0.00266
+batch 38
+validation loss 0.00242
+batch 39
+validation loss 0.00259
+batch 40
+validation loss 0.00256
+batch 41
+validation loss 0.00264
+batch 42
+validation loss 0.00277
+batch 43
+validation loss 0.00235
+batch 44
+validation loss 0.00265
+batch 45
+validation loss 0.00252
+batch 46
+validation loss 0.00265
+batch 47
+validation loss 0.00273
+batch 48
+validation loss 0.00239
+batch 49
+validation loss 0.00235
+batch 50
+validation loss 0.00238
+batch 51
+validation loss 0.00230
+batch 52
+validation loss 0.00265
+batch 53
+validation loss 0.00259
+batch 54
+validation loss 0.00257
+batch 55
+validation loss 0.00258
+batch 56
+validation loss 0.00248
+batch 57
+validation loss 0.00263
+batch 58
+validation loss 0.00257
+batch 59
+validation loss 0.00253
+batch 60
+validation loss 0.00247
+batch 61
+validation loss 0.00272
+batch 62
+validation loss 0.00254
+batch 63
+validation loss 0.00254
+batch 64
+validation loss 0.00254
+batch 65
+validation loss 0.00270
+batch 66
+validation loss 0.00246
+batch 67
+validation loss 0.00265
+batch 68
+validation loss 0.00255
+batch 69
+validation loss 0.00254
+batch 70
+validation loss 0.00246
+batch 71
+validation loss 0.00263
+batch 72
+validation loss 0.00243
+batch 73
+validation loss 0.00261
+batch 74
+validation loss 0.00253
+batch 75
+validation loss 0.00262
+batch 76
+validation loss 0.00244
+batch 77
+validation loss 0.00282
+batch 78
+validation loss 0.00235
+batch 79
+validation loss 0.00237
+batch 80
+validation loss 0.00292
+batch 81
+validation loss 0.00243
+batch 82
+validation loss 0.00258
+batch 83
+validation loss 0.00247
+batch 84
+validation loss 0.00256
+batch 85
+validation loss 0.00235
+batch 86
+validation loss 0.00238
+batch 87
+validation loss 0.00252
+batch 88
+validation loss 0.00250
+batch 89
+validation loss 0.00243
+batch 90
+validation loss 0.00245
+batch 91
+validation loss 0.00291
+batch 92
+validation loss 0.00253
+batch 93
+validation loss 0.00241
+batch 94
+validation loss 0.00245
+batch 95
+validation loss 0.00253
+batch 96
+validation loss 0.00253
+batch 97
+validation loss 0.00287
+batch 98
+validation loss 0.00231
+batch 99
+validation loss 0.00267
+[5 / 10] validation loss: 0.0026186710
+
+# epoch 6
+
+training loop
+batch 0
+train loss 0.00245
+batch 1
+train loss 0.00240
+batch 2
+train loss 0.00277
+batch 3
+train loss 0.00283
+batch 4
+train loss 0.00238
+batch 5
+train loss 0.00240
+batch 6
+train loss 0.00261
+batch 7
+train loss 0.00269
+batch 8
+train loss 0.00254
+batch 9
+train loss 0.00256
+batch 10
+train loss 0.00288
+batch 11
+train loss 0.00236
+batch 12
+train loss 0.00245
+batch 13
+train loss 0.00269
+batch 14
+train loss 0.00271
+batch 15
+train loss 0.00243
+batch 16
+train loss 0.00274
+batch 17
+train loss 0.00288
+batch 18
+train loss 0.00264
+batch 19
+train loss 0.00256
+batch 20
+train loss 0.00246
+batch 21
+train loss 0.00263
+batch 22
+train loss 0.00270
+batch 23
+train loss 0.00258
+batch 24
+train loss 0.00265
+batch 25
+train loss 0.00269
+batch 26
+train loss 0.00255
+batch 27
+train loss 0.00251
+batch 28
+train loss 0.00271
+batch 29
+train loss 0.00259
+batch 30
+train loss 0.00245
+batch 31
+train loss 0.00274
+batch 32
+train loss 0.00291
+batch 33
+train loss 0.00249
+batch 34
+train loss 0.00270
+batch 35
+train loss 0.00270
+batch 36
+train loss 0.00269
+batch 37
+train loss 0.00258
+batch 38
+train loss 0.00243
+batch 39
+train loss 0.00245
+batch 40
+train loss 0.00238
+batch 41
+train loss 0.00275
+batch 42
+train loss 0.00281
+batch 43
+train loss 0.00248
+batch 44
+train loss 0.00284
+batch 45
+train loss 0.00268
+batch 46
+train loss 0.00258
+batch 47
+train loss 0.00254
+batch 48
+train loss 0.00255
+batch 49
+train loss 0.00255
+batch 50
+train loss 0.00255
+batch 51
+train loss 0.00254
+batch 52
+train loss 0.00279
+batch 53
+train loss 0.00241
+batch 54
+train loss 0.00263
+batch 55
+train loss 0.00245
+batch 56
+train loss 0.00276
+batch 57
+train loss 0.00252
+batch 58
+train loss 0.00275
+batch 59
+train loss 0.00234
+batch 60
+train loss 0.00242
+batch 61
+train loss 0.00256
+batch 62
+train loss 0.00255
+batch 63
+train loss 0.00268
+batch 64
+train loss 0.00288
+batch 65
+train loss 0.00243
+batch 66
+train loss 0.00249
+batch 67
+train loss 0.00233
+batch 68
+train loss 0.00239
+batch 69
+train loss 0.00249
+batch 70
+train loss 0.00259
+batch 71
+train loss 0.00265
+batch 72
+train loss 0.00264
+batch 73
+train loss 0.00241
+batch 74
+train loss 0.00255
+batch 75
+train loss 0.00258
+batch 76
+train loss 0.00259
+batch 77
+train loss 0.00253
+batch 78
+train loss 0.00260
+batch 79
+train loss 0.00243
+batch 80
+train loss 0.00261
+batch 81
+train loss 0.00261
+batch 82
+train loss 0.00258
+batch 83
+train loss 0.00268
+batch 84
+train loss 0.00253
+batch 85
+train loss 0.00299
+batch 86
+train loss 0.00268
+batch 87
+train loss 0.00257
+batch 88
+train loss 0.00235
+batch 89
+train loss 0.00265
+batch 90
+train loss 0.00249
+batch 91
+train loss 0.00264
+batch 92
+train loss 0.00253
+batch 93
+train loss 0.00243
+batch 94
+train loss 0.00240
+batch 95
+train loss 0.00256
+batch 96
+train loss 0.00258
+batch 97
+train loss 0.00253
+batch 98
+train loss 0.00260
+batch 99
+train loss 0.00263
+batch 100
+train loss 0.00266
+batch 101
+train loss 0.00249
+batch 102
+train loss 0.00247
+batch 103
+train loss 0.00252
+batch 104
+train loss 0.00283
+batch 105
+train loss 0.00297
+batch 106
+train loss 0.00257
+batch 107
+train loss 0.00266
+batch 108
+train loss 0.00269
+batch 109
+train loss 0.00291
+batch 110
+train loss 0.00251
+batch 111
+train loss 0.00262
+batch 112
+train loss 0.00261
+batch 113
+train loss 0.00252
+batch 114
+train loss 0.00246
+batch 115
+train loss 0.00266
+batch 116
+train loss 0.00265
+batch 117
+train loss 0.00278
+batch 118
+train loss 0.00284
+batch 119
+train loss 0.00264
+batch 120
+train loss 0.00281
+batch 121
+train loss 0.00264
+batch 122
+train loss 0.00251
+batch 123
+train loss 0.00281
+batch 124
+train loss 0.00290
+batch 125
+train loss 0.00264
+batch 126
+train loss 0.00247
+batch 127
+train loss 0.00263
+batch 128
+train loss 0.00259
+batch 129
+train loss 0.00243
+batch 130
+train loss 0.00285
+batch 131
+train loss 0.00240
+batch 132
+train loss 0.00285
+batch 133
+train loss 0.00286
+batch 134
+train loss 0.00259
+batch 135
+train loss 0.00260
+batch 136
+train loss 0.00270
+batch 137
+train loss 0.00266
+batch 138
+train loss 0.00262
+batch 139
+train loss 0.00277
+batch 140
+train loss 0.00261
+batch 141
+train loss 0.00260
+batch 142
+train loss 0.00296
+batch 143
+train loss 0.00239
+batch 144
+train loss 0.00281
+batch 145
+train loss 0.00255
+batch 146
+train loss 0.00232
+batch 147
+train loss 0.00273
+batch 148
+train loss 0.00251
+batch 149
+train loss 0.00283
+batch 150
+train loss 0.00233
+batch 151
+train loss 0.00260
+batch 152
+train loss 0.00247
+batch 153
+train loss 0.00240
+batch 154
+train loss 0.00253
+batch 155
+train loss 0.00240
+batch 156
+train loss 0.00238
+batch 157
+train loss 0.00246
+batch 158
+train loss 0.00274
+batch 159
+train loss 0.00247
+batch 160
+train loss 0.00273
+batch 161
+train loss 0.00258
+batch 162
+train loss 0.00252
+batch 163
+train loss 0.00266
+batch 164
+train loss 0.00265
+batch 165
+train loss 0.00273
+batch 166
+train loss 0.00268
+batch 167
+train loss 0.00250
+batch 168
+train loss 0.00294
+batch 169
+train loss 0.00287
+batch 170
+train loss 0.00279
+batch 171
+train loss 0.00280
+batch 172
+train loss 0.00267
+batch 173
+train loss 0.00252
+batch 174
+train loss 0.00254
+batch 175
+train loss 0.00259
+batch 176
+train loss 0.00268
+batch 177
+train loss 0.00251
+batch 178
+train loss 0.00258
+batch 179
+train loss 0.00246
+batch 180
+train loss 0.00237
+batch 181
+train loss 0.00305
+batch 182
+train loss 0.00252
+batch 183
+train loss 0.00250
+batch 184
+train loss 0.00265
+batch 185
+train loss 0.00256
+batch 186
+train loss 0.00245
+batch 187
+train loss 0.00265
+batch 188
+train loss 0.00250
+batch 189
+train loss 0.00254
+batch 190
+train loss 0.00239
+batch 191
+train loss 0.00270
+batch 192
+train loss 0.00248
+batch 193
+train loss 0.00252
+batch 194
+train loss 0.00251
+batch 195
+train loss 0.00247
+batch 196
+train loss 0.00265
+batch 197
+train loss 0.00272
+batch 198
+train loss 0.00276
+batch 199
+train loss 0.00263
+batch 200
+train loss 0.00257
+batch 201
+train loss 0.00260
+batch 202
+train loss 0.00246
+batch 203
+train loss 0.00245
+batch 204
+train loss 0.00241
+batch 205
+train loss 0.00245
+batch 206
+train loss 0.00264
+batch 207
+train loss 0.00243
+batch 208
+train loss 0.00260
+batch 209
+train loss 0.00280
+batch 210
+train loss 0.00243
+batch 211
+train loss 0.00258
+batch 212
+train loss 0.00260
+batch 213
+train loss 0.00243
+batch 214
+train loss 0.00258
+batch 215
+train loss 0.00285
+batch 216
+train loss 0.00256
+batch 217
+train loss 0.00244
+batch 218
+train loss 0.00248
+batch 219
+train loss 0.00241
+batch 220
+train loss 0.00244
+batch 221
+train loss 0.00246
+batch 222
+train loss 0.00243
+batch 223
+train loss 0.00253
+batch 224
+train loss 0.00236
+batch 225
+train loss 0.00296
+batch 226
+train loss 0.00254
+batch 227
+train loss 0.00281
+batch 228
+train loss 0.00279
+batch 229
+train loss 0.00246
+batch 230
+train loss 0.00244
+batch 231
+train loss 0.00237
+batch 232
+train loss 0.00265
+batch 233
+train loss 0.00245
+batch 234
+train loss 0.00241
+batch 235
+train loss 0.00293
+batch 236
+train loss 0.00245
+batch 237
+train loss 0.00284
+batch 238
+train loss 0.00261
+batch 239
+train loss 0.00242
+batch 240
+train loss 0.00285
+batch 241
+train loss 0.00270
+batch 242
+train loss 0.00243
+batch 243
+train loss 0.00279
+batch 244
+train loss 0.00271
+batch 245
+train loss 0.00256
+batch 246
+train loss 0.00268
+batch 247
+train loss 0.00254
+batch 248
+train loss 0.00252
+batch 249
+train loss 0.00247
+batch 250
+train loss 0.00266
+batch 251
+train loss 0.00295
+batch 252
+train loss 0.00263
+batch 253
+train loss 0.00266
+batch 254
+train loss 0.00272
+batch 255
+train loss 0.00253
+batch 256
+train loss 0.00258
+batch 257
+train loss 0.00249
+batch 258
+train loss 0.00269
+batch 259
+train loss 0.00255
+batch 260
+train loss 0.00236
+batch 261
+train loss 0.00240
+batch 262
+train loss 0.00249
+batch 263
+train loss 0.00244
+batch 264
+train loss 0.00279
+batch 265
+train loss 0.00248
+batch 266
+train loss 0.00278
+batch 267
+train loss 0.00241
+batch 268
+train loss 0.00255
+batch 269
+train loss 0.00243
+batch 270
+train loss 0.00266
+batch 271
+train loss 0.00246
+batch 272
+train loss 0.00260
+batch 273
+train loss 0.00259
+batch 274
+train loss 0.00243
+batch 275
+train loss 0.00257
+batch 276
+train loss 0.00221
+batch 277
+train loss 0.00226
+batch 278
+train loss 0.00252
+batch 279
+train loss 0.00270
+batch 280
+train loss 0.00244
+batch 281
+train loss 0.00256
+batch 282
+train loss 0.00271
+batch 283
+train loss 0.00247
+batch 284
+train loss 0.00252
+batch 285
+train loss 0.00243
+batch 286
+train loss 0.00232
+batch 287
+train loss 0.00261
+batch 288
+train loss 0.00273
+batch 289
+train loss 0.00256
+batch 290
+train loss 0.00262
+batch 291
+train loss 0.00239
+batch 292
+train loss 0.00252
+batch 293
+train loss 0.00274
+batch 294
+train loss 0.00260
+batch 295
+train loss 0.00238
+batch 296
+train loss 0.00246
+batch 297
+train loss 0.00270
+batch 298
+train loss 0.00263
+batch 299
+train loss 0.00240
+batch 300
+train loss 0.00257
+batch 301
+train loss 0.00250
+batch 302
+train loss 0.00250
+batch 303
+train loss 0.00232
+batch 304
+train loss 0.00252
+batch 305
+train loss 0.00280
+batch 306
+train loss 0.00266
+batch 307
+train loss 0.00253
+batch 308
+train loss 0.00255
+batch 309
+train loss 0.00278
+batch 310
+train loss 0.00272
+batch 311
+train loss 0.00245
+batch 312
+train loss 0.00258
+batch 313
+train loss 0.00249
+batch 314
+train loss 0.00242
+batch 315
+train loss 0.00282
+batch 316
+train loss 0.00270
+batch 317
+train loss 0.00266
+batch 318
+train loss 0.00266
+batch 319
+train loss 0.00264
+batch 320
+train loss 0.00263
+batch 321
+train loss 0.00248
+batch 322
+train loss 0.00268
+batch 323
+train loss 0.00238
+batch 324
+train loss 0.00263
+batch 325
+train loss 0.00263
+batch 326
+train loss 0.00251
+batch 327
+train loss 0.00316
+batch 328
+train loss 0.00243
+batch 329
+train loss 0.00256
+batch 330
+train loss 0.00257
+batch 331
+train loss 0.00240
+batch 332
+train loss 0.00247
+batch 333
+train loss 0.00282
+batch 334
+train loss 0.00258
+batch 335
+train loss 0.00257
+batch 336
+train loss 0.00241
+batch 337
+train loss 0.00242
+batch 338
+train loss 0.00239
+batch 339
+train loss 0.00264
+batch 340
+train loss 0.00267
+batch 341
+train loss 0.00259
+batch 342
+train loss 0.00252
+batch 343
+train loss 0.00284
+batch 344
+train loss 0.00246
+batch 345
+train loss 0.00247
+batch 346
+train loss 0.00249
+batch 347
+train loss 0.00252
+batch 348
+train loss 0.00254
+batch 349
+train loss 0.00235
+batch 350
+train loss 0.00262
+batch 351
+train loss 0.00297
+batch 352
+train loss 0.00269
+batch 353
+train loss 0.00263
+batch 354
+train loss 0.00241
+batch 355
+train loss 0.00264
+batch 356
+train loss 0.00270
+batch 357
+train loss 0.00277
+batch 358
+train loss 0.00239
+batch 359
+train loss 0.00249
+batch 360
+train loss 0.00259
+batch 361
+train loss 0.00291
+batch 362
+train loss 0.00247
+batch 363
+train loss 0.00256
+batch 364
+train loss 0.00241
+batch 365
+train loss 0.00255
+batch 366
+train loss 0.00252
+batch 367
+train loss 0.00234
+batch 368
+train loss 0.00260
+batch 369
+train loss 0.00245
+batch 370
+train loss 0.00267
+batch 371
+train loss 0.00282
+batch 372
+train loss 0.00263
+batch 373
+train loss 0.00265
+batch 374
+train loss 0.00261
+batch 375
+train loss 0.00246
+batch 376
+train loss 0.00246
+batch 377
+train loss 0.00271
+batch 378
+train loss 0.00249
+batch 379
+train loss 0.00249
+batch 380
+train loss 0.00274
+batch 381
+train loss 0.00278
+batch 382
+train loss 0.00249
+batch 383
+train loss 0.00256
+batch 384
+train loss 0.00239
+batch 385
+train loss 0.00277
+batch 386
+train loss 0.00267
+batch 387
+train loss 0.00251
+batch 388
+train loss 0.00261
+batch 389
+train loss 0.00236
+batch 390
+train loss 0.00253
+batch 391
+train loss 0.00295
+batch 392
+train loss 0.00260
+batch 393
+train loss 0.00266
+batch 394
+train loss 0.00268
+batch 395
+train loss 0.00259
+batch 396
+train loss 0.00236
+batch 397
+train loss 0.00244
+batch 398
+train loss 0.00241
+batch 399
+train loss 0.00254
+batch 400
+train loss 0.00261
+batch 401
+train loss 0.00291
+batch 402
+train loss 0.00255
+batch 403
+train loss 0.00258
+batch 404
+train loss 0.00248
+batch 405
+train loss 0.00292
+batch 406
+train loss 0.00253
+batch 407
+train loss 0.00252
+batch 408
+train loss 0.00248
+batch 409
+train loss 0.00263
+batch 410
+train loss 0.00253
+batch 411
+train loss 0.00263
+batch 412
+train loss 0.00253
+batch 413
+train loss 0.00257
+batch 414
+train loss 0.00255
+batch 415
+train loss 0.00247
+batch 416
+train loss 0.00260
+batch 417
+train loss 0.00261
+batch 418
+train loss 0.00247
+batch 419
+train loss 0.00249
+batch 420
+train loss 0.00242
+batch 421
+train loss 0.00273
+batch 422
+train loss 0.00279
+batch 423
+train loss 0.00231
+batch 424
+train loss 0.00256
+batch 425
+train loss 0.00267
+batch 426
+train loss 0.00254
+batch 427
+train loss 0.00234
+batch 428
+train loss 0.00245
+batch 429
+train loss 0.00248
+batch 430
+train loss 0.00266
+batch 431
+train loss 0.00259
+batch 432
+train loss 0.00257
+batch 433
+train loss 0.00241
+batch 434
+train loss 0.00272
+batch 435
+train loss 0.00275
+batch 436
+train loss 0.00238
+batch 437
+train loss 0.00266
+batch 438
+train loss 0.00246
+batch 439
+train loss 0.00246
+batch 440
+train loss 0.00252
+batch 441
+train loss 0.00239
+batch 442
+train loss 0.00263
+batch 443
+train loss 0.00233
+batch 444
+train loss 0.00258
+batch 445
+train loss 0.00250
+batch 446
+train loss 0.00250
+batch 447
+train loss 0.00252
+batch 448
+train loss 0.00241
+batch 449
+train loss 0.00272
+batch 450
+train loss 0.00277
+batch 451
+train loss 0.00259
+batch 452
+train loss 0.00246
+batch 453
+train loss 0.00250
+batch 454
+train loss 0.00245
+batch 455
+train loss 0.00234
+batch 456
+train loss 0.00250
+batch 457
+train loss 0.00263
+batch 458
+train loss 0.00276
+batch 459
+train loss 0.00234
+batch 460
+train loss 0.00255
+batch 461
+train loss 0.00268
+batch 462
+train loss 0.00245
+batch 463
+train loss 0.00254
+batch 464
+train loss 0.00255
+batch 465
+train loss 0.00265
+batch 466
+train loss 0.00278
+batch 467
+train loss 0.00257
+batch 468
+train loss 0.00245
+batch 469
+train loss 0.00272
+batch 470
+train loss 0.00284
+batch 471
+train loss 0.00243
+batch 472
+train loss 0.00235
+batch 473
+train loss 0.00259
+batch 474
+train loss 0.00263
+batch 475
+train loss 0.00250
+batch 476
+train loss 0.00273
+batch 477
+train loss 0.00261
+batch 478
+train loss 0.00268
+batch 479
+train loss 0.00269
+batch 480
+train loss 0.00232
+batch 481
+train loss 0.00265
+batch 482
+train loss 0.00253
+batch 483
+train loss 0.00267
+batch 484
+train loss 0.00272
+batch 485
+train loss 0.00237
+batch 486
+train loss 0.00262
+batch 487
+train loss 0.00245
+batch 488
+train loss 0.00246
+batch 489
+train loss 0.00257
+batch 490
+train loss 0.00264
+batch 491
+train loss 0.00259
+batch 492
+train loss 0.00233
+batch 493
+train loss 0.00251
+batch 494
+train loss 0.00269
+batch 495
+train loss 0.00245
+batch 496
+train loss 0.00245
+batch 497
+train loss 0.00261
+batch 498
+train loss 0.00243
+batch 499
+train loss 0.00260
+[6 / 10] train loss: 0.0025802395
+
+validation loop
+batch 0
+validation loss 0.00286
+batch 1
+validation loss 0.00254
+batch 2
+validation loss 0.00240
+batch 3
+validation loss 0.00254
+batch 4
+validation loss 0.00242
+batch 5
+validation loss 0.00282
+batch 6
+validation loss 0.00248
+batch 7
+validation loss 0.00273
+batch 8
+validation loss 0.00231
+batch 9
+validation loss 0.00241
+batch 10
+validation loss 0.00261
+batch 11
+validation loss 0.00282
+batch 12
+validation loss 0.00254
+batch 13
+validation loss 0.00261
+batch 14
+validation loss 0.00251
+batch 15
+validation loss 0.00266
+batch 16
+validation loss 0.00271
+batch 17
+validation loss 0.00251
+batch 18
+validation loss 0.00251
+batch 19
+validation loss 0.00249
+batch 20
+validation loss 0.00239
+batch 21
+validation loss 0.00256
+batch 22
+validation loss 0.00249
+batch 23
+validation loss 0.00239
+batch 24
+validation loss 0.00253
+batch 25
+validation loss 0.00240
+batch 26
+validation loss 0.00243
+batch 27
+validation loss 0.00256
+batch 28
+validation loss 0.00280
+batch 29
+validation loss 0.00254
+batch 30
+validation loss 0.00244
+batch 31
+validation loss 0.00257
+batch 32
+validation loss 0.00233
+batch 33
+validation loss 0.00279
+batch 34
+validation loss 0.00254
+batch 35
+validation loss 0.00262
+batch 36
+validation loss 0.00268
+batch 37
+validation loss 0.00262
+batch 38
+validation loss 0.00248
+batch 39
+validation loss 0.00258
+batch 40
+validation loss 0.00249
+batch 41
+validation loss 0.00256
+batch 42
+validation loss 0.00270
+batch 43
+validation loss 0.00236
+batch 44
+validation loss 0.00263
+batch 45
+validation loss 0.00252
+batch 46
+validation loss 0.00268
+batch 47
+validation loss 0.00269
+batch 48
+validation loss 0.00238
+batch 49
+validation loss 0.00241
+batch 50
+validation loss 0.00233
+batch 51
+validation loss 0.00228
+batch 52
+validation loss 0.00264
+batch 53
+validation loss 0.00269
+batch 54
+validation loss 0.00260
+batch 55
+validation loss 0.00258
+batch 56
+validation loss 0.00243
+batch 57
+validation loss 0.00265
+batch 58
+validation loss 0.00257
+batch 59
+validation loss 0.00255
+batch 60
+validation loss 0.00239
+batch 61
+validation loss 0.00264
+batch 62
+validation loss 0.00256
+batch 63
+validation loss 0.00250
+batch 64
+validation loss 0.00262
+batch 65
+validation loss 0.00281
+batch 66
+validation loss 0.00239
+batch 67
+validation loss 0.00264
+batch 68
+validation loss 0.00255
+batch 69
+validation loss 0.00261
+batch 70
+validation loss 0.00241
+batch 71
+validation loss 0.00258
+batch 72
+validation loss 0.00235
+batch 73
+validation loss 0.00262
+batch 74
+validation loss 0.00244
+batch 75
+validation loss 0.00265
+batch 76
+validation loss 0.00245
+batch 77
+validation loss 0.00271
+batch 78
+validation loss 0.00232
+batch 79
+validation loss 0.00235
+batch 80
+validation loss 0.00302
+batch 81
+validation loss 0.00239
+batch 82
+validation loss 0.00262
+batch 83
+validation loss 0.00250
+batch 84
+validation loss 0.00254
+batch 85
+validation loss 0.00241
+batch 86
+validation loss 0.00241
+batch 87
+validation loss 0.00249
+batch 88
+validation loss 0.00249
+batch 89
+validation loss 0.00235
+batch 90
+validation loss 0.00240
+batch 91
+validation loss 0.00286
+batch 92
+validation loss 0.00255
+batch 93
+validation loss 0.00230
+batch 94
+validation loss 0.00244
+batch 95
+validation loss 0.00259
+batch 96
+validation loss 0.00253
+batch 97
+validation loss 0.00278
+batch 98
+validation loss 0.00233
+batch 99
+validation loss 0.00262
+[6 / 10] validation loss: 0.0025802395
+
+# epoch 7
+
+training loop
+batch 0
+train loss 0.00244
+batch 1
+train loss 0.00249
+batch 2
+train loss 0.00272
+batch 3
+train loss 0.00252
+batch 4
+train loss 0.00243
+batch 5
+train loss 0.00248
+batch 6
+train loss 0.00264
+batch 7
+train loss 0.00275
+batch 8
+train loss 0.00283
+batch 9
+train loss 0.00272
+batch 10
+train loss 0.00270
+batch 11
+train loss 0.00250
+batch 12
+train loss 0.00272
+batch 13
+train loss 0.00255
+batch 14
+train loss 0.00267
+batch 15
+train loss 0.00252
+batch 16
+train loss 0.00254
+batch 17
+train loss 0.00253
+batch 18
+train loss 0.00272
+batch 19
+train loss 0.00263
+batch 20
+train loss 0.00256
+batch 21
+train loss 0.00299
+batch 22
+train loss 0.00243
+batch 23
+train loss 0.00232
+batch 24
+train loss 0.00243
+batch 25
+train loss 0.00239
+batch 26
+train loss 0.00268
+batch 27
+train loss 0.00254
+batch 28
+train loss 0.00248
+batch 29
+train loss 0.00243
+batch 30
+train loss 0.00256
+batch 31
+train loss 0.00267
+batch 32
+train loss 0.00264
+batch 33
+train loss 0.00247
+batch 34
+train loss 0.00251
+batch 35
+train loss 0.00265
+batch 36
+train loss 0.00243
+batch 37
+train loss 0.00248
+batch 38
+train loss 0.00269
+batch 39
+train loss 0.00240
+batch 40
+train loss 0.00274
+batch 41
+train loss 0.00243
+batch 42
+train loss 0.00237
+batch 43
+train loss 0.00232
+batch 44
+train loss 0.00237
+batch 45
+train loss 0.00256
+batch 46
+train loss 0.00267
+batch 47
+train loss 0.00252
+batch 48
+train loss 0.00262
+batch 49
+train loss 0.00241
+batch 50
+train loss 0.00255
+batch 51
+train loss 0.00281
+batch 52
+train loss 0.00253
+batch 53
+train loss 0.00257
+batch 54
+train loss 0.00265
+batch 55
+train loss 0.00252
+batch 56
+train loss 0.00266
+batch 57
+train loss 0.00274
+batch 58
+train loss 0.00261
+batch 59
+train loss 0.00256
+batch 60
+train loss 0.00265
+batch 61
+train loss 0.00258
+batch 62
+train loss 0.00268
+batch 63
+train loss 0.00270
+batch 64
+train loss 0.00241
+batch 65
+train loss 0.00246
+batch 66
+train loss 0.00298
+batch 67
+train loss 0.00270
+batch 68
+train loss 0.00242
+batch 69
+train loss 0.00254
+batch 70
+train loss 0.00284
+batch 71
+train loss 0.00258
+batch 72
+train loss 0.00259
+batch 73
+train loss 0.00245
+batch 74
+train loss 0.00276
+batch 75
+train loss 0.00260
+batch 76
+train loss 0.00250
+batch 77
+train loss 0.00243
+batch 78
+train loss 0.00262
+batch 79
+train loss 0.00274
+batch 80
+train loss 0.00239
+batch 81
+train loss 0.00275
+batch 82
+train loss 0.00242
+batch 83
+train loss 0.00314
+batch 84
+train loss 0.00269
+batch 85
+train loss 0.00250
+batch 86
+train loss 0.00259
+batch 87
+train loss 0.00251
+batch 88
+train loss 0.00255
+batch 89
+train loss 0.00268
+batch 90
+train loss 0.00255
+batch 91
+train loss 0.00245
+batch 92
+train loss 0.00277
+batch 93
+train loss 0.00264
+batch 94
+train loss 0.00292
+batch 95
+train loss 0.00257
+batch 96
+train loss 0.00246
+batch 97
+train loss 0.00270
+batch 98
+train loss 0.00282
+batch 99
+train loss 0.00258
+batch 100
+train loss 0.00270
+batch 101
+train loss 0.00287
+batch 102
+train loss 0.00253
+batch 103
+train loss 0.00257
+batch 104
+train loss 0.00268
+batch 105
+train loss 0.00265
+batch 106
+train loss 0.00261
+batch 107
+train loss 0.00251
+batch 108
+train loss 0.00257
+batch 109
+train loss 0.00251
+batch 110
+train loss 0.00258
+batch 111
+train loss 0.00236
+batch 112
+train loss 0.00277
+batch 113
+train loss 0.00277
+batch 114
+train loss 0.00248
+batch 115
+train loss 0.00257
+batch 116
+train loss 0.00236
+batch 117
+train loss 0.00256
+batch 118
+train loss 0.00248
+batch 119
+train loss 0.00242
+batch 120
+train loss 0.00250
+batch 121
+train loss 0.00252
+batch 122
+train loss 0.00277
+batch 123
+train loss 0.00251
+batch 124
+train loss 0.00273
+batch 125
+train loss 0.00241
+batch 126
+train loss 0.00269
+batch 127
+train loss 0.00276
+batch 128
+train loss 0.00273
+batch 129
+train loss 0.00246
+batch 130
+train loss 0.00255
+batch 131
+train loss 0.00229
+batch 132
+train loss 0.00250
+batch 133
+train loss 0.00244
+batch 134
+train loss 0.00239
+batch 135
+train loss 0.00277
+batch 136
+train loss 0.00247
+batch 137
+train loss 0.00266
+batch 138
+train loss 0.00266
+batch 139
+train loss 0.00266
+batch 140
+train loss 0.00245
+batch 141
+train loss 0.00260
+batch 142
+train loss 0.00241
+batch 143
+train loss 0.00275
+batch 144
+train loss 0.00261
+batch 145
+train loss 0.00251
+batch 146
+train loss 0.00260
+batch 147
+train loss 0.00247
+batch 148
+train loss 0.00259
+batch 149
+train loss 0.00235
+batch 150
+train loss 0.00260
+batch 151
+train loss 0.00264
+batch 152
+train loss 0.00251
+batch 153
+train loss 0.00283
+batch 154
+train loss 0.00245
+batch 155
+train loss 0.00276
+batch 156
+train loss 0.00259
+batch 157
+train loss 0.00255
+batch 158
+train loss 0.00260
+batch 159
+train loss 0.00244
+batch 160
+train loss 0.00263
+batch 161
+train loss 0.00249
+batch 162
+train loss 0.00253
+batch 163
+train loss 0.00241
+batch 164
+train loss 0.00244
+batch 165
+train loss 0.00260
+batch 166
+train loss 0.00257
+batch 167
+train loss 0.00264
+batch 168
+train loss 0.00286
+batch 169
+train loss 0.00245
+batch 170
+train loss 0.00274
+batch 171
+train loss 0.00241
+batch 172
+train loss 0.00231
+batch 173
+train loss 0.00269
+batch 174
+train loss 0.00252
+batch 175
+train loss 0.00249
+batch 176
+train loss 0.00261
+batch 177
+train loss 0.00249
+batch 178
+train loss 0.00258
+batch 179
+train loss 0.00233
+batch 180
+train loss 0.00249
+batch 181
+train loss 0.00262
+batch 182
+train loss 0.00236
+batch 183
+train loss 0.00249
+batch 184
+train loss 0.00281
+batch 185
+train loss 0.00260
+batch 186
+train loss 0.00296
+batch 187
+train loss 0.00252
+batch 188
+train loss 0.00284
+batch 189
+train loss 0.00281
+batch 190
+train loss 0.00274
+batch 191
+train loss 0.00280
+batch 192
+train loss 0.00274
+batch 193
+train loss 0.00250
+batch 194
+train loss 0.00266
+batch 195
+train loss 0.00243
+batch 196
+train loss 0.00255
+batch 197
+train loss 0.00256
+batch 198
+train loss 0.00277
+batch 199
+train loss 0.00288
+batch 200
+train loss 0.00265
+batch 201
+train loss 0.00258
+batch 202
+train loss 0.00246
+batch 203
+train loss 0.00258
+batch 204
+train loss 0.00241
+batch 205
+train loss 0.00254
+batch 206
+train loss 0.00248
+batch 207
+train loss 0.00265
+batch 208
+train loss 0.00291
+batch 209
+train loss 0.00266
+batch 210
+train loss 0.00236
+batch 211
+train loss 0.00236
+batch 212
+train loss 0.00237
+batch 213
+train loss 0.00259
+batch 214
+train loss 0.00260
+batch 215
+train loss 0.00245
+batch 216
+train loss 0.00260
+batch 217
+train loss 0.00253
+batch 218
+train loss 0.00265
+batch 219
+train loss 0.00233
+batch 220
+train loss 0.00235
+batch 221
+train loss 0.00246
+batch 222
+train loss 0.00261
+batch 223
+train loss 0.00248
+batch 224
+train loss 0.00261
+batch 225
+train loss 0.00282
+batch 226
+train loss 0.00267
+batch 227
+train loss 0.00259
+batch 228
+train loss 0.00278
+batch 229
+train loss 0.00255
+batch 230
+train loss 0.00244
+batch 231
+train loss 0.00261
+batch 232
+train loss 0.00257
+batch 233
+train loss 0.00245
+batch 234
+train loss 0.00259
+batch 235
+train loss 0.00262
+batch 236
+train loss 0.00249
+batch 237
+train loss 0.00243
+batch 238
+train loss 0.00236
+batch 239
+train loss 0.00268
+batch 240
+train loss 0.00252
+batch 241
+train loss 0.00264
+batch 242
+train loss 0.00244
+batch 243
+train loss 0.00261
+batch 244
+train loss 0.00256
+batch 245
+train loss 0.00244
+batch 246
+train loss 0.00252
+batch 247
+train loss 0.00242
+batch 248
+train loss 0.00276
+batch 249
+train loss 0.00279
+batch 250
+train loss 0.00230
+batch 251
+train loss 0.00287
+batch 252
+train loss 0.00256
+batch 253
+train loss 0.00257
+batch 254
+train loss 0.00247
+batch 255
+train loss 0.00263
+batch 256
+train loss 0.00251
+batch 257
+train loss 0.00249
+batch 258
+train loss 0.00251
+batch 259
+train loss 0.00261
+batch 260
+train loss 0.00223
+batch 261
+train loss 0.00245
+batch 262
+train loss 0.00275
+batch 263
+train loss 0.00249
+batch 264
+train loss 0.00256
+batch 265
+train loss 0.00249
+batch 266
+train loss 0.00280
+batch 267
+train loss 0.00251
+batch 268
+train loss 0.00239
+batch 269
+train loss 0.00250
+batch 270
+train loss 0.00228
+batch 271
+train loss 0.00234
+batch 272
+train loss 0.00264
+batch 273
+train loss 0.00263
+batch 274
+train loss 0.00270
+batch 275
+train loss 0.00269
+batch 276
+train loss 0.00261
+batch 277
+train loss 0.00259
+batch 278
+train loss 0.00253
+batch 279
+train loss 0.00257
+batch 280
+train loss 0.00294
+batch 281
+train loss 0.00256
+batch 282
+train loss 0.00250
+batch 283
+train loss 0.00240
+batch 284
+train loss 0.00273
+batch 285
+train loss 0.00276
+batch 286
+train loss 0.00265
+batch 287
+train loss 0.00256
+batch 288
+train loss 0.00243
+batch 289
+train loss 0.00273
+batch 290
+train loss 0.00265
+batch 291
+train loss 0.00254
+batch 292
+train loss 0.00262
+batch 293
+train loss 0.00246
+batch 294
+train loss 0.00253
+batch 295
+train loss 0.00269
+batch 296
+train loss 0.00257
+batch 297
+train loss 0.00239
+batch 298
+train loss 0.00236
+batch 299
+train loss 0.00245
+batch 300
+train loss 0.00280
+batch 301
+train loss 0.00264
+batch 302
+train loss 0.00265
+batch 303
+train loss 0.00278
+batch 304
+train loss 0.00234
+batch 305
+train loss 0.00259
+batch 306
+train loss 0.00256
+batch 307
+train loss 0.00247
+batch 308
+train loss 0.00241
+batch 309
+train loss 0.00251
+batch 310
+train loss 0.00255
+batch 311
+train loss 0.00234
+batch 312
+train loss 0.00264
+batch 313
+train loss 0.00271
+batch 314
+train loss 0.00281
+batch 315
+train loss 0.00265
+batch 316
+train loss 0.00249
+batch 317
+train loss 0.00277
+batch 318
+train loss 0.00246
+batch 319
+train loss 0.00249
+batch 320
+train loss 0.00272
+batch 321
+train loss 0.00255
+batch 322
+train loss 0.00235
+batch 323
+train loss 0.00275
+batch 324
+train loss 0.00247
+batch 325
+train loss 0.00241
+batch 326
+train loss 0.00283
+batch 327
+train loss 0.00295
+batch 328
+train loss 0.00245
+batch 329
+train loss 0.00239
+batch 330
+train loss 0.00287
+batch 331
+train loss 0.00291
+batch 332
+train loss 0.00255
+batch 333
+train loss 0.00254
+batch 334
+train loss 0.00266
+batch 335
+train loss 0.00258
+batch 336
+train loss 0.00268
+batch 337
+train loss 0.00266
+batch 338
+train loss 0.00250
+batch 339
+train loss 0.00247
+batch 340
+train loss 0.00254
+batch 341
+train loss 0.00234
+batch 342
+train loss 0.00251
+batch 343
+train loss 0.00261
+batch 344
+train loss 0.00261
+batch 345
+train loss 0.00276
+batch 346
+train loss 0.00264
+batch 347
+train loss 0.00240
+batch 348
+train loss 0.00281
+batch 349
+train loss 0.00279
+batch 350
+train loss 0.00245
+batch 351
+train loss 0.00278
+batch 352
+train loss 0.00261
+batch 353
+train loss 0.00249
+batch 354
+train loss 0.00252
+batch 355
+train loss 0.00261
+batch 356
+train loss 0.00237
+batch 357
+train loss 0.00256
+batch 358
+train loss 0.00266
+batch 359
+train loss 0.00263
+batch 360
+train loss 0.00258
+batch 361
+train loss 0.00238
+batch 362
+train loss 0.00237
+batch 363
+train loss 0.00237
+batch 364
+train loss 0.00259
+batch 365
+train loss 0.00264
+batch 366
+train loss 0.00256
+batch 367
+train loss 0.00275
+batch 368
+train loss 0.00293
+batch 369
+train loss 0.00267
+batch 370
+train loss 0.00242
+batch 371
+train loss 0.00263
+batch 372
+train loss 0.00292
+batch 373
+train loss 0.00262
+batch 374
+train loss 0.00255
+batch 375
+train loss 0.00268
+batch 376
+train loss 0.00248
+batch 377
+train loss 0.00245
+batch 378
+train loss 0.00231
+batch 379
+train loss 0.00260
+batch 380
+train loss 0.00257
+batch 381
+train loss 0.00253
+batch 382
+train loss 0.00287
+batch 383
+train loss 0.00261
+batch 384
+train loss 0.00250
+batch 385
+train loss 0.00277
+batch 386
+train loss 0.00261
+batch 387
+train loss 0.00240
+batch 388
+train loss 0.00256
+batch 389
+train loss 0.00258
+batch 390
+train loss 0.00265
+batch 391
+train loss 0.00240
+batch 392
+train loss 0.00246
+batch 393
+train loss 0.00294
+batch 394
+train loss 0.00274
+batch 395
+train loss 0.00252
+batch 396
+train loss 0.00247
+batch 397
+train loss 0.00283
+batch 398
+train loss 0.00257
+batch 399
+train loss 0.00234
+batch 400
+train loss 0.00264
+batch 401
+train loss 0.00248
+batch 402
+train loss 0.00249
+batch 403
+train loss 0.00240
+batch 404
+train loss 0.00264
+batch 405
+train loss 0.00255
+batch 406
+train loss 0.00266
+batch 407
+train loss 0.00249
+batch 408
+train loss 0.00255
+batch 409
+train loss 0.00277
+batch 410
+train loss 0.00252
+batch 411
+train loss 0.00278
+batch 412
+train loss 0.00244
+batch 413
+train loss 0.00256
+batch 414
+train loss 0.00236
+batch 415
+train loss 0.00242
+batch 416
+train loss 0.00239
+batch 417
+train loss 0.00258
+batch 418
+train loss 0.00250
+batch 419
+train loss 0.00267
+batch 420
+train loss 0.00257
+batch 421
+train loss 0.00256
+batch 422
+train loss 0.00259
+batch 423
+train loss 0.00249
+batch 424
+train loss 0.00252
+batch 425
+train loss 0.00279
+batch 426
+train loss 0.00246
+batch 427
+train loss 0.00258
+batch 428
+train loss 0.00264
+batch 429
+train loss 0.00244
+batch 430
+train loss 0.00261
+batch 431
+train loss 0.00242
+batch 432
+train loss 0.00247
+batch 433
+train loss 0.00253
+batch 434
+train loss 0.00240
+batch 435
+train loss 0.00249
+batch 436
+train loss 0.00236
+batch 437
+train loss 0.00242
+batch 438
+train loss 0.00255
+batch 439
+train loss 0.00231
+batch 440
+train loss 0.00259
+batch 441
+train loss 0.00242
+batch 442
+train loss 0.00243
+batch 443
+train loss 0.00271
+batch 444
+train loss 0.00239
+batch 445
+train loss 0.00241
+batch 446
+train loss 0.00267
+batch 447
+train loss 0.00258
+batch 448
+train loss 0.00246
+batch 449
+train loss 0.00259
+batch 450
+train loss 0.00233
+batch 451
+train loss 0.00261
+batch 452
+train loss 0.00252
+batch 453
+train loss 0.00228
+batch 454
+train loss 0.00268
+batch 455
+train loss 0.00234
+batch 456
+train loss 0.00234
+batch 457
+train loss 0.00282
+batch 458
+train loss 0.00262
+batch 459
+train loss 0.00252
+batch 460
+train loss 0.00234
+batch 461
+train loss 0.00266
+batch 462
+train loss 0.00237
+batch 463
+train loss 0.00249
+batch 464
+train loss 0.00253
+batch 465
+train loss 0.00258
+batch 466
+train loss 0.00252
+batch 467
+train loss 0.00246
+batch 468
+train loss 0.00253
+batch 469
+train loss 0.00249
+batch 470
+train loss 0.00251
+batch 471
+train loss 0.00253
+batch 472
+train loss 0.00275
+batch 473
+train loss 0.00243
+batch 474
+train loss 0.00255
+batch 475
+train loss 0.00292
+batch 476
+train loss 0.00262
+batch 477
+train loss 0.00267
+batch 478
+train loss 0.00243
+batch 479
+train loss 0.00239
+batch 480
+train loss 0.00239
+batch 481
+train loss 0.00239
+batch 482
+train loss 0.00230
+batch 483
+train loss 0.00264
+batch 484
+train loss 0.00251
+batch 485
+train loss 0.00250
+batch 486
+train loss 0.00265
+batch 487
+train loss 0.00310
+batch 488
+train loss 0.00238
+batch 489
+train loss 0.00236
+batch 490
+train loss 0.00287
+batch 491
+train loss 0.00263
+batch 492
+train loss 0.00265
+batch 493
+train loss 0.00258
+batch 494
+train loss 0.00239
+batch 495
+train loss 0.00259
+batch 496
+train loss 0.00263
+batch 497
+train loss 0.00250
+batch 498
+train loss 0.00262
+batch 499
+train loss 0.00264
+[7 / 10] train loss: 0.0025701719
+
+validation loop
+batch 0
+validation loss 0.00280
+batch 1
+validation loss 0.00249
+batch 2
+validation loss 0.00242
+batch 3
+validation loss 0.00252
+batch 4
+validation loss 0.00241
+batch 5
+validation loss 0.00283
+batch 6
+validation loss 0.00246
+batch 7
+validation loss 0.00268
+batch 8
+validation loss 0.00226
+batch 9
+validation loss 0.00236
+batch 10
+validation loss 0.00267
+batch 11
+validation loss 0.00278
+batch 12
+validation loss 0.00252
+batch 13
+validation loss 0.00257
+batch 14
+validation loss 0.00251
+batch 15
+validation loss 0.00263
+batch 16
+validation loss 0.00261
+batch 17
+validation loss 0.00245
+batch 18
+validation loss 0.00248
+batch 19
+validation loss 0.00254
+batch 20
+validation loss 0.00236
+batch 21
+validation loss 0.00251
+batch 22
+validation loss 0.00245
+batch 23
+validation loss 0.00244
+batch 24
+validation loss 0.00249
+batch 25
+validation loss 0.00246
+batch 26
+validation loss 0.00242
+batch 27
+validation loss 0.00258
+batch 28
+validation loss 0.00271
+batch 29
+validation loss 0.00251
+batch 30
+validation loss 0.00238
+batch 31
+validation loss 0.00255
+batch 32
+validation loss 0.00234
+batch 33
+validation loss 0.00274
+batch 34
+validation loss 0.00254
+batch 35
+validation loss 0.00262
+batch 36
+validation loss 0.00269
+batch 37
+validation loss 0.00264
+batch 38
+validation loss 0.00239
+batch 39
+validation loss 0.00258
+batch 40
+validation loss 0.00252
+batch 41
+validation loss 0.00260
+batch 42
+validation loss 0.00275
+batch 43
+validation loss 0.00234
+batch 44
+validation loss 0.00266
+batch 45
+validation loss 0.00247
+batch 46
+validation loss 0.00260
+batch 47
+validation loss 0.00268
+batch 48
+validation loss 0.00238
+batch 49
+validation loss 0.00235
+batch 50
+validation loss 0.00237
+batch 51
+validation loss 0.00228
+batch 52
+validation loss 0.00262
+batch 53
+validation loss 0.00260
+batch 54
+validation loss 0.00256
+batch 55
+validation loss 0.00254
+batch 56
+validation loss 0.00248
+batch 57
+validation loss 0.00261
+batch 58
+validation loss 0.00254
+batch 59
+validation loss 0.00251
+batch 60
+validation loss 0.00245
+batch 61
+validation loss 0.00265
+batch 62
+validation loss 0.00254
+batch 63
+validation loss 0.00253
+batch 64
+validation loss 0.00250
+batch 65
+validation loss 0.00269
+batch 66
+validation loss 0.00244
+batch 67
+validation loss 0.00265
+batch 68
+validation loss 0.00256
+batch 69
+validation loss 0.00253
+batch 70
+validation loss 0.00244
+batch 71
+validation loss 0.00262
+batch 72
+validation loss 0.00242
+batch 73
+validation loss 0.00258
+batch 74
+validation loss 0.00250
+batch 75
+validation loss 0.00256
+batch 76
+validation loss 0.00245
+batch 77
+validation loss 0.00279
+batch 78
+validation loss 0.00234
+batch 79
+validation loss 0.00236
+batch 80
+validation loss 0.00292
+batch 81
+validation loss 0.00242
+batch 82
+validation loss 0.00255
+batch 83
+validation loss 0.00248
+batch 84
+validation loss 0.00253
+batch 85
+validation loss 0.00236
+batch 86
+validation loss 0.00238
+batch 87
+validation loss 0.00246
+batch 88
+validation loss 0.00246
+batch 89
+validation loss 0.00242
+batch 90
+validation loss 0.00244
+batch 91
+validation loss 0.00290
+batch 92
+validation loss 0.00249
+batch 93
+validation loss 0.00239
+batch 94
+validation loss 0.00246
+batch 95
+validation loss 0.00251
+batch 96
+validation loss 0.00251
+batch 97
+validation loss 0.00283
+batch 98
+validation loss 0.00229
+batch 99
+validation loss 0.00267
+[7 / 10] validation loss: 0.0025701719
+
+# epoch 8
+
+training loop
+batch 0
+train loss 0.00260
+batch 1
+train loss 0.00266
+batch 2
+train loss 0.00249
+batch 3
+train loss 0.00234
+batch 4
+train loss 0.00257
+batch 5
+train loss 0.00258
+batch 6
+train loss 0.00257
+batch 7
+train loss 0.00242
+batch 8
+train loss 0.00260
+batch 9
+train loss 0.00280
+batch 10
+train loss 0.00274
+batch 11
+train loss 0.00257
+batch 12
+train loss 0.00270
+batch 13
+train loss 0.00279
+batch 14
+train loss 0.00239
+batch 15
+train loss 0.00253
+batch 16
+train loss 0.00266
+batch 17
+train loss 0.00248
+batch 18
+train loss 0.00239
+batch 19
+train loss 0.00282
+batch 20
+train loss 0.00243
+batch 21
+train loss 0.00251
+batch 22
+train loss 0.00248
+batch 23
+train loss 0.00255
+batch 24
+train loss 0.00252
+batch 25
+train loss 0.00293
+batch 26
+train loss 0.00287
+batch 27
+train loss 0.00234
+batch 28
+train loss 0.00243
+batch 29
+train loss 0.00247
+batch 30
+train loss 0.00250
+batch 31
+train loss 0.00260
+batch 32
+train loss 0.00303
+batch 33
+train loss 0.00253
+batch 34
+train loss 0.00239
+batch 35
+train loss 0.00233
+batch 36
+train loss 0.00248
+batch 37
+train loss 0.00252
+batch 38
+train loss 0.00238
+batch 39
+train loss 0.00264
+batch 40
+train loss 0.00251
+batch 41
+train loss 0.00254
+batch 42
+train loss 0.00235
+batch 43
+train loss 0.00257
+batch 44
+train loss 0.00251
+batch 45
+train loss 0.00246
+batch 46
+train loss 0.00247
+batch 47
+train loss 0.00244
+batch 48
+train loss 0.00263
+batch 49
+train loss 0.00258
+batch 50
+train loss 0.00264
+batch 51
+train loss 0.00264
+batch 52
+train loss 0.00239
+batch 53
+train loss 0.00245
+batch 54
+train loss 0.00255
+batch 55
+train loss 0.00263
+batch 56
+train loss 0.00250
+batch 57
+train loss 0.00250
+batch 58
+train loss 0.00277
+batch 59
+train loss 0.00283
+batch 60
+train loss 0.00271
+batch 61
+train loss 0.00260
+batch 62
+train loss 0.00276
+batch 63
+train loss 0.00261
+batch 64
+train loss 0.00267
+batch 65
+train loss 0.00256
+batch 66
+train loss 0.00250
+batch 67
+train loss 0.00304
+batch 68
+train loss 0.00251
+batch 69
+train loss 0.00249
+batch 70
+train loss 0.00264
+batch 71
+train loss 0.00262
+batch 72
+train loss 0.00241
+batch 73
+train loss 0.00229
+batch 74
+train loss 0.00251
+batch 75
+train loss 0.00269
+batch 76
+train loss 0.00250
+batch 77
+train loss 0.00253
+batch 78
+train loss 0.00265
+batch 79
+train loss 0.00265
+batch 80
+train loss 0.00270
+batch 81
+train loss 0.00278
+batch 82
+train loss 0.00293
+batch 83
+train loss 0.00235
+batch 84
+train loss 0.00250
+batch 85
+train loss 0.00270
+batch 86
+train loss 0.00247
+batch 87
+train loss 0.00272
+batch 88
+train loss 0.00256
+batch 89
+train loss 0.00247
+batch 90
+train loss 0.00273
+batch 91
+train loss 0.00258
+batch 92
+train loss 0.00266
+batch 93
+train loss 0.00261
+batch 94
+train loss 0.00233
+batch 95
+train loss 0.00260
+batch 96
+train loss 0.00256
+batch 97
+train loss 0.00246
+batch 98
+train loss 0.00254
+batch 99
+train loss 0.00241
+batch 100
+train loss 0.00283
+batch 101
+train loss 0.00238
+batch 102
+train loss 0.00295
+batch 103
+train loss 0.00248
+batch 104
+train loss 0.00240
+batch 105
+train loss 0.00243
+batch 106
+train loss 0.00272
+batch 107
+train loss 0.00264
+batch 108
+train loss 0.00264
+batch 109
+train loss 0.00252
+batch 110
+train loss 0.00280
+batch 111
+train loss 0.00250
+batch 112
+train loss 0.00259
+batch 113
+train loss 0.00252
+batch 114
+train loss 0.00295
+batch 115
+train loss 0.00239
+batch 116
+train loss 0.00251
+batch 117
+train loss 0.00259
+batch 118
+train loss 0.00248
+batch 119
+train loss 0.00280
+batch 120
+train loss 0.00265
+batch 121
+train loss 0.00243
+batch 122
+train loss 0.00260
+batch 123
+train loss 0.00268
+batch 124
+train loss 0.00250
+batch 125
+train loss 0.00272
+batch 126
+train loss 0.00238
+batch 127
+train loss 0.00272
+batch 128
+train loss 0.00252
+batch 129
+train loss 0.00263
+batch 130
+train loss 0.00254
+batch 131
+train loss 0.00249
+batch 132
+train loss 0.00270
+batch 133
+train loss 0.00232
+batch 134
+train loss 0.00262
+batch 135
+train loss 0.00230
+batch 136
+train loss 0.00241
+batch 137
+train loss 0.00257
+batch 138
+train loss 0.00252
+batch 139
+train loss 0.00241
+batch 140
+train loss 0.00278
+batch 141
+train loss 0.00254
+batch 142
+train loss 0.00279
+batch 143
+train loss 0.00259
+batch 144
+train loss 0.00268
+batch 145
+train loss 0.00241
+batch 146
+train loss 0.00279
+batch 147
+train loss 0.00282
+batch 148
+train loss 0.00249
+batch 149
+train loss 0.00262
+batch 150
+train loss 0.00248
+batch 151
+train loss 0.00230
+batch 152
+train loss 0.00278
+batch 153
+train loss 0.00252
+batch 154
+train loss 0.00245
+batch 155
+train loss 0.00258
+batch 156
+train loss 0.00262
+batch 157
+train loss 0.00272
+batch 158
+train loss 0.00259
+batch 159
+train loss 0.00263
+batch 160
+train loss 0.00249
+batch 161
+train loss 0.00298
+batch 162
+train loss 0.00244
+batch 163
+train loss 0.00266
+batch 164
+train loss 0.00258
+batch 165
+train loss 0.00240
+batch 166
+train loss 0.00242
+batch 167
+train loss 0.00241
+batch 168
+train loss 0.00276
+batch 169
+train loss 0.00239
+batch 170
+train loss 0.00275
+batch 171
+train loss 0.00260
+batch 172
+train loss 0.00250
+batch 173
+train loss 0.00314
+batch 174
+train loss 0.00280
+batch 175
+train loss 0.00239
+batch 176
+train loss 0.00252
+batch 177
+train loss 0.00258
+batch 178
+train loss 0.00261
+batch 179
+train loss 0.00273
+batch 180
+train loss 0.00241
+batch 181
+train loss 0.00237
+batch 182
+train loss 0.00241
+batch 183
+train loss 0.00249
+batch 184
+train loss 0.00289
+batch 185
+train loss 0.00249
+batch 186
+train loss 0.00266
+batch 187
+train loss 0.00255
+batch 188
+train loss 0.00284
+batch 189
+train loss 0.00247
+batch 190
+train loss 0.00257
+batch 191
+train loss 0.00282
+batch 192
+train loss 0.00260
+batch 193
+train loss 0.00266
+batch 194
+train loss 0.00282
+batch 195
+train loss 0.00270
+batch 196
+train loss 0.00262
+batch 197
+train loss 0.00267
+batch 198
+train loss 0.00244
+batch 199
+train loss 0.00249
+batch 200
+train loss 0.00261
+batch 201
+train loss 0.00283
+batch 202
+train loss 0.00240
+batch 203
+train loss 0.00266
+batch 204
+train loss 0.00282
+batch 205
+train loss 0.00263
+batch 206
+train loss 0.00274
+batch 207
+train loss 0.00275
+batch 208
+train loss 0.00248
+batch 209
+train loss 0.00269
+batch 210
+train loss 0.00261
+batch 211
+train loss 0.00267
+batch 212
+train loss 0.00239
+batch 213
+train loss 0.00257
+batch 214
+train loss 0.00235
+batch 215
+train loss 0.00246
+batch 216
+train loss 0.00241
+batch 217
+train loss 0.00256
+batch 218
+train loss 0.00263
+batch 219
+train loss 0.00260
+batch 220
+train loss 0.00244
+batch 221
+train loss 0.00248
+batch 222
+train loss 0.00245
+batch 223
+train loss 0.00260
+batch 224
+train loss 0.00242
+batch 225
+train loss 0.00256
+batch 226
+train loss 0.00269
+batch 227
+train loss 0.00250
+batch 228
+train loss 0.00272
+batch 229
+train loss 0.00270
+batch 230
+train loss 0.00255
+batch 231
+train loss 0.00254
+batch 232
+train loss 0.00249
+batch 233
+train loss 0.00287
+batch 234
+train loss 0.00246
+batch 235
+train loss 0.00243
+batch 236
+train loss 0.00251
+batch 237
+train loss 0.00284
+batch 238
+train loss 0.00243
+batch 239
+train loss 0.00276
+batch 240
+train loss 0.00238
+batch 241
+train loss 0.00243
+batch 242
+train loss 0.00241
+batch 243
+train loss 0.00284
+batch 244
+train loss 0.00259
+batch 245
+train loss 0.00258
+batch 246
+train loss 0.00261
+batch 247
+train loss 0.00243
+batch 248
+train loss 0.00261
+batch 249
+train loss 0.00267
+batch 250
+train loss 0.00229
+batch 251
+train loss 0.00265
+batch 252
+train loss 0.00233
+batch 253
+train loss 0.00273
+batch 254
+train loss 0.00245
+batch 255
+train loss 0.00241
+batch 256
+train loss 0.00254
+batch 257
+train loss 0.00251
+batch 258
+train loss 0.00255
+batch 259
+train loss 0.00237
+batch 260
+train loss 0.00267
+batch 261
+train loss 0.00261
+batch 262
+train loss 0.00260
+batch 263
+train loss 0.00249
+batch 264
+train loss 0.00234
+batch 265
+train loss 0.00267
+batch 266
+train loss 0.00244
+batch 267
+train loss 0.00321
+batch 268
+train loss 0.00269
+batch 269
+train loss 0.00268
+batch 270
+train loss 0.00241
+batch 271
+train loss 0.00257
+batch 272
+train loss 0.00257
+batch 273
+train loss 0.00264
+batch 274
+train loss 0.00260
+batch 275
+train loss 0.00256
+batch 276
+train loss 0.00290
+batch 277
+train loss 0.00271
+batch 278
+train loss 0.00266
+batch 279
+train loss 0.00247
+batch 280
+train loss 0.00293
+batch 281
+train loss 0.00315
+batch 282
+train loss 0.00240
+batch 283
+train loss 0.00236
+batch 284
+train loss 0.00263
+batch 285
+train loss 0.00288
+batch 286
+train loss 0.00257
+batch 287
+train loss 0.00251
+batch 288
+train loss 0.00261
+batch 289
+train loss 0.00255
+batch 290
+train loss 0.00279
+batch 291
+train loss 0.00259
+batch 292
+train loss 0.00264
+batch 293
+train loss 0.00241
+batch 294
+train loss 0.00255
+batch 295
+train loss 0.00242
+batch 296
+train loss 0.00269
+batch 297
+train loss 0.00244
+batch 298
+train loss 0.00257
+batch 299
+train loss 0.00248
+batch 300
+train loss 0.00243
+batch 301
+train loss 0.00283
+batch 302
+train loss 0.00258
+batch 303
+train loss 0.00263
+batch 304
+train loss 0.00246
+batch 305
+train loss 0.00248
+batch 306
+train loss 0.00270
+batch 307
+train loss 0.00250
+batch 308
+train loss 0.00228
+batch 309
+train loss 0.00249
+batch 310
+train loss 0.00227
+batch 311
+train loss 0.00243
+batch 312
+train loss 0.00249
+batch 313
+train loss 0.00277
+batch 314
+train loss 0.00240
+batch 315
+train loss 0.00255
+batch 316
+train loss 0.00288
+batch 317
+train loss 0.00247
+batch 318
+train loss 0.00280
+batch 319
+train loss 0.00254
+batch 320
+train loss 0.00269
+batch 321
+train loss 0.00266
+batch 322
+train loss 0.00263
+batch 323
+train loss 0.00252
+batch 324
+train loss 0.00273
+batch 325
+train loss 0.00285
+batch 326
+train loss 0.00264
+batch 327
+train loss 0.00241
+batch 328
+train loss 0.00263
+batch 329
+train loss 0.00248
+batch 330
+train loss 0.00259
+batch 331
+train loss 0.00229
+batch 332
+train loss 0.00260
+batch 333
+train loss 0.00242
+batch 334
+train loss 0.00270
+batch 335
+train loss 0.00244
+batch 336
+train loss 0.00249
+batch 337
+train loss 0.00296
+batch 338
+train loss 0.00249
+batch 339
+train loss 0.00244
+batch 340
+train loss 0.00266
+batch 341
+train loss 0.00261
+batch 342
+train loss 0.00251
+batch 343
+train loss 0.00241
+batch 344
+train loss 0.00278
+batch 345
+train loss 0.00274
+batch 346
+train loss 0.00237
+batch 347
+train loss 0.00251
+batch 348
+train loss 0.00239
+batch 349
+train loss 0.00271
+batch 350
+train loss 0.00284
+batch 351
+train loss 0.00275
+batch 352
+train loss 0.00279
+batch 353
+train loss 0.00251
+batch 354
+train loss 0.00248
+batch 355
+train loss 0.00264
+batch 356
+train loss 0.00261
+batch 357
+train loss 0.00249
+batch 358
+train loss 0.00261
+batch 359
+train loss 0.00239
+batch 360
+train loss 0.00251
+batch 361
+train loss 0.00272
+batch 362
+train loss 0.00263
+batch 363
+train loss 0.00253
+batch 364
+train loss 0.00256
+batch 365
+train loss 0.00255
+batch 366
+train loss 0.00258
+batch 367
+train loss 0.00258
+batch 368
+train loss 0.00242
+batch 369
+train loss 0.00249
+batch 370
+train loss 0.00265
+batch 371
+train loss 0.00264
+batch 372
+train loss 0.00227
+batch 373
+train loss 0.00259
+batch 374
+train loss 0.00237
+batch 375
+train loss 0.00243
+batch 376
+train loss 0.00290
+batch 377
+train loss 0.00255
+batch 378
+train loss 0.00245
+batch 379
+train loss 0.00275
+batch 380
+train loss 0.00276
+batch 381
+train loss 0.00277
+batch 382
+train loss 0.00273
+batch 383
+train loss 0.00270
+batch 384
+train loss 0.00256
+batch 385
+train loss 0.00271
+batch 386
+train loss 0.00240
+batch 387
+train loss 0.00279
+batch 388
+train loss 0.00264
+batch 389
+train loss 0.00254
+batch 390
+train loss 0.00248
+batch 391
+train loss 0.00276
+batch 392
+train loss 0.00268
+batch 393
+train loss 0.00256
+batch 394
+train loss 0.00268
+batch 395
+train loss 0.00279
+batch 396
+train loss 0.00257
+batch 397
+train loss 0.00256
+batch 398
+train loss 0.00275
+batch 399
+train loss 0.00253
+batch 400
+train loss 0.00261
+batch 401
+train loss 0.00239
+batch 402
+train loss 0.00233
+batch 403
+train loss 0.00254
+batch 404
+train loss 0.00251
+batch 405
+train loss 0.00259
+batch 406
+train loss 0.00262
+batch 407
+train loss 0.00252
+batch 408
+train loss 0.00259
+batch 409
+train loss 0.00246
+batch 410
+train loss 0.00266
+batch 411
+train loss 0.00252
+batch 412
+train loss 0.00282
+batch 413
+train loss 0.00254
+batch 414
+train loss 0.00261
+batch 415
+train loss 0.00256
+batch 416
+train loss 0.00261
+batch 417
+train loss 0.00285
+batch 418
+train loss 0.00269
+batch 419
+train loss 0.00267
+batch 420
+train loss 0.00254
+batch 421
+train loss 0.00290
+batch 422
+train loss 0.00241
+batch 423
+train loss 0.00255
+batch 424
+train loss 0.00260
+batch 425
+train loss 0.00272
+batch 426
+train loss 0.00283
+batch 427
+train loss 0.00269
+batch 428
+train loss 0.00236
+batch 429
+train loss 0.00264
+batch 430
+train loss 0.00254
+batch 431
+train loss 0.00272
+batch 432
+train loss 0.00260
+batch 433
+train loss 0.00240
+batch 434
+train loss 0.00237
+batch 435
+train loss 0.00261
+batch 436
+train loss 0.00272
+batch 437
+train loss 0.00243
+batch 438
+train loss 0.00289
+batch 439
+train loss 0.00255
+batch 440
+train loss 0.00260
+batch 441
+train loss 0.00278
+batch 442
+train loss 0.00245
+batch 443
+train loss 0.00239
+batch 444
+train loss 0.00267
+batch 445
+train loss 0.00249
+batch 446
+train loss 0.00263
+batch 447
+train loss 0.00242
+batch 448
+train loss 0.00252
+batch 449
+train loss 0.00238
+batch 450
+train loss 0.00262
+batch 451
+train loss 0.00254
+batch 452
+train loss 0.00258
+batch 453
+train loss 0.00243
+batch 454
+train loss 0.00274
+batch 455
+train loss 0.00252
+batch 456
+train loss 0.00242
+batch 457
+train loss 0.00272
+batch 458
+train loss 0.00260
+batch 459
+train loss 0.00243
+batch 460
+train loss 0.00254
+batch 461
+train loss 0.00238
+batch 462
+train loss 0.00261
+batch 463
+train loss 0.00268
+batch 464
+train loss 0.00256
+batch 465
+train loss 0.00261
+batch 466
+train loss 0.00258
+batch 467
+train loss 0.00254
+batch 468
+train loss 0.00293
+batch 469
+train loss 0.00250
+batch 470
+train loss 0.00256
+batch 471
+train loss 0.00270
+batch 472
+train loss 0.00266
+batch 473
+train loss 0.00257
+batch 474
+train loss 0.00273
+batch 475
+train loss 0.00249
+batch 476
+train loss 0.00253
+batch 477
+train loss 0.00240
+batch 478
+train loss 0.00273
+batch 479
+train loss 0.00250
+batch 480
+train loss 0.00261
+batch 481
+train loss 0.00242
+batch 482
+train loss 0.00248
+batch 483
+train loss 0.00256
+batch 484
+train loss 0.00251
+batch 485
+train loss 0.00262
+batch 486
+train loss 0.00240
+batch 487
+train loss 0.00235
+batch 488
+train loss 0.00269
+batch 489
+train loss 0.00249
+batch 490
+train loss 0.00272
+batch 491
+train loss 0.00254
+batch 492
+train loss 0.00304
+batch 493
+train loss 0.00270
+batch 494
+train loss 0.00263
+batch 495
+train loss 0.00279
+batch 496
+train loss 0.00252
+batch 497
+train loss 0.00238
+batch 498
+train loss 0.00253
+batch 499
+train loss 0.00281
+[8 / 10] train loss: 0.0025830106
+
+validation loop
+batch 0
+validation loss 0.00284
+batch 1
+validation loss 0.00250
+batch 2
+validation loss 0.00241
+batch 3
+validation loss 0.00256
+batch 4
+validation loss 0.00239
+batch 5
+validation loss 0.00281
+batch 6
+validation loss 0.00245
+batch 7
+validation loss 0.00271
+batch 8
+validation loss 0.00225
+batch 9
+validation loss 0.00232
+batch 10
+validation loss 0.00270
+batch 11
+validation loss 0.00277
+batch 12
+validation loss 0.00250
+batch 13
+validation loss 0.00253
+batch 14
+validation loss 0.00247
+batch 15
+validation loss 0.00266
+batch 16
+validation loss 0.00260
+batch 17
+validation loss 0.00245
+batch 18
+validation loss 0.00248
+batch 19
+validation loss 0.00254
+batch 20
+validation loss 0.00239
+batch 21
+validation loss 0.00251
+batch 22
+validation loss 0.00243
+batch 23
+validation loss 0.00245
+batch 24
+validation loss 0.00250
+batch 25
+validation loss 0.00245
+batch 26
+validation loss 0.00238
+batch 27
+validation loss 0.00255
+batch 28
+validation loss 0.00270
+batch 29
+validation loss 0.00247
+batch 30
+validation loss 0.00235
+batch 31
+validation loss 0.00251
+batch 32
+validation loss 0.00232
+batch 33
+validation loss 0.00277
+batch 34
+validation loss 0.00255
+batch 35
+validation loss 0.00261
+batch 36
+validation loss 0.00271
+batch 37
+validation loss 0.00266
+batch 38
+validation loss 0.00237
+batch 39
+validation loss 0.00263
+batch 40
+validation loss 0.00249
+batch 41
+validation loss 0.00257
+batch 42
+validation loss 0.00275
+batch 43
+validation loss 0.00235
+batch 44
+validation loss 0.00267
+batch 45
+validation loss 0.00250
+batch 46
+validation loss 0.00261
+batch 47
+validation loss 0.00268
+batch 48
+validation loss 0.00239
+batch 49
+validation loss 0.00233
+batch 50
+validation loss 0.00236
+batch 51
+validation loss 0.00226
+batch 52
+validation loss 0.00261
+batch 53
+validation loss 0.00261
+batch 54
+validation loss 0.00254
+batch 55
+validation loss 0.00249
+batch 56
+validation loss 0.00248
+batch 57
+validation loss 0.00259
+batch 58
+validation loss 0.00255
+batch 59
+validation loss 0.00249
+batch 60
+validation loss 0.00246
+batch 61
+validation loss 0.00264
+batch 62
+validation loss 0.00254
+batch 63
+validation loss 0.00253
+batch 64
+validation loss 0.00253
+batch 65
+validation loss 0.00271
+batch 66
+validation loss 0.00245
+batch 67
+validation loss 0.00264
+batch 68
+validation loss 0.00255
+batch 69
+validation loss 0.00255
+batch 70
+validation loss 0.00243
+batch 71
+validation loss 0.00262
+batch 72
+validation loss 0.00245
+batch 73
+validation loss 0.00257
+batch 74
+validation loss 0.00249
+batch 75
+validation loss 0.00257
+batch 76
+validation loss 0.00244
+batch 77
+validation loss 0.00281
+batch 78
+validation loss 0.00236
+batch 79
+validation loss 0.00235
+batch 80
+validation loss 0.00290
+batch 81
+validation loss 0.00242
+batch 82
+validation loss 0.00255
+batch 83
+validation loss 0.00247
+batch 84
+validation loss 0.00255
+batch 85
+validation loss 0.00237
+batch 86
+validation loss 0.00238
+batch 87
+validation loss 0.00247
+batch 88
+validation loss 0.00247
+batch 89
+validation loss 0.00241
+batch 90
+validation loss 0.00243
+batch 91
+validation loss 0.00285
+batch 92
+validation loss 0.00247
+batch 93
+validation loss 0.00239
+batch 94
+validation loss 0.00242
+batch 95
+validation loss 0.00254
+batch 96
+validation loss 0.00251
+batch 97
+validation loss 0.00282
+batch 98
+validation loss 0.00230
+batch 99
+validation loss 0.00268
+[8 / 10] validation loss: 0.0025830106
+
+# epoch 9
+
+training loop
+batch 0
+train loss 0.00259
+batch 1
+train loss 0.00234
+batch 2
+train loss 0.00246
+batch 3
+train loss 0.00265
+batch 4
+train loss 0.00266
+batch 5
+train loss 0.00267
+batch 6
+train loss 0.00274
+batch 7
+train loss 0.00264
+batch 8
+train loss 0.00258
+batch 9
+train loss 0.00258
+batch 10
+train loss 0.00267
+batch 11
+train loss 0.00234
+batch 12
+train loss 0.00254
+batch 13
+train loss 0.00249
+batch 14
+train loss 0.00252
+batch 15
+train loss 0.00256
+batch 16
+train loss 0.00254
+batch 17
+train loss 0.00301
+batch 18
+train loss 0.00238
+batch 19
+train loss 0.00272
+batch 20
+train loss 0.00250
+batch 21
+train loss 0.00232
+batch 22
+train loss 0.00260
+batch 23
+train loss 0.00271
+batch 24
+train loss 0.00246
+batch 25
+train loss 0.00254
+batch 26
+train loss 0.00252
+batch 27
+train loss 0.00252
+batch 28
+train loss 0.00246
+batch 29
+train loss 0.00261
+batch 30
+train loss 0.00227
+batch 31
+train loss 0.00275
+batch 32
+train loss 0.00267
+batch 33
+train loss 0.00247
+batch 34
+train loss 0.00292
+batch 35
+train loss 0.00283
+batch 36
+train loss 0.00233
+batch 37
+train loss 0.00261
+batch 38
+train loss 0.00262
+batch 39
+train loss 0.00246
+batch 40
+train loss 0.00273
+batch 41
+train loss 0.00260
+batch 42
+train loss 0.00259
+batch 43
+train loss 0.00246
+batch 44
+train loss 0.00275
+batch 45
+train loss 0.00273
+batch 46
+train loss 0.00258
+batch 47
+train loss 0.00245
+batch 48
+train loss 0.00248
+batch 49
+train loss 0.00279
+batch 50
+train loss 0.00257
+batch 51
+train loss 0.00248
+batch 52
+train loss 0.00264
+batch 53
+train loss 0.00263
+batch 54
+train loss 0.00250
+batch 55
+train loss 0.00231
+batch 56
+train loss 0.00262
+batch 57
+train loss 0.00269
+batch 58
+train loss 0.00260
+batch 59
+train loss 0.00246
+batch 60
+train loss 0.00256
+batch 61
+train loss 0.00258
+batch 62
+train loss 0.00274
+batch 63
+train loss 0.00249
+batch 64
+train loss 0.00238
+batch 65
+train loss 0.00248
+batch 66
+train loss 0.00260
+batch 67
+train loss 0.00256
+batch 68
+train loss 0.00242
+batch 69
+train loss 0.00281
+batch 70
+train loss 0.00250
+batch 71
+train loss 0.00253
+batch 72
+train loss 0.00262
+batch 73
+train loss 0.00252
+batch 74
+train loss 0.00247
+batch 75
+train loss 0.00263
+batch 76
+train loss 0.00275
+batch 77
+train loss 0.00283
+batch 78
+train loss 0.00247
+batch 79
+train loss 0.00275
+batch 80
+train loss 0.00239
+batch 81
+train loss 0.00259
+batch 82
+train loss 0.00269
+batch 83
+train loss 0.00262
+batch 84
+train loss 0.00262
+batch 85
+train loss 0.00256
+batch 86
+train loss 0.00279
+batch 87
+train loss 0.00235
+batch 88
+train loss 0.00268
+batch 89
+train loss 0.00270
+batch 90
+train loss 0.00251
+batch 91
+train loss 0.00241
+batch 92
+train loss 0.00243
+batch 93
+train loss 0.00239
+batch 94
+train loss 0.00268
+batch 95
+train loss 0.00259
+batch 96
+train loss 0.00258
+batch 97
+train loss 0.00238
+batch 98
+train loss 0.00261
+batch 99
+train loss 0.00240
+batch 100
+train loss 0.00251
+batch 101
+train loss 0.00247
+batch 102
+train loss 0.00245
+batch 103
+train loss 0.00250
+batch 104
+train loss 0.00268
+batch 105
+train loss 0.00261
+batch 106
+train loss 0.00258
+batch 107
+train loss 0.00252
+batch 108
+train loss 0.00236
+batch 109
+train loss 0.00270
+batch 110
+train loss 0.00271
+batch 111
+train loss 0.00276
+batch 112
+train loss 0.00252
+batch 113
+train loss 0.00238
+batch 114
+train loss 0.00267
+batch 115
+train loss 0.00279
+batch 116
+train loss 0.00286
+batch 117
+train loss 0.00266
+batch 118
+train loss 0.00299
+batch 119
+train loss 0.00261
+batch 120
+train loss 0.00280
+batch 121
+train loss 0.00254
+batch 122
+train loss 0.00271
+batch 123
+train loss 0.00246
+batch 124
+train loss 0.00248
+batch 125
+train loss 0.00243
+batch 126
+train loss 0.00267
+batch 127
+train loss 0.00255
+batch 128
+train loss 0.00283
+batch 129
+train loss 0.00238
+batch 130
+train loss 0.00265
+batch 131
+train loss 0.00261
+batch 132
+train loss 0.00254
+batch 133
+train loss 0.00235
+batch 134
+train loss 0.00249
+batch 135
+train loss 0.00242
+batch 136
+train loss 0.00271
+batch 137
+train loss 0.00242
+batch 138
+train loss 0.00279
+batch 139
+train loss 0.00269
+batch 140
+train loss 0.00267
+batch 141
+train loss 0.00283
+batch 142
+train loss 0.00244
+batch 143
+train loss 0.00244
+batch 144
+train loss 0.00265
+batch 145
+train loss 0.00264
+batch 146
+train loss 0.00254
+batch 147
+train loss 0.00241
+batch 148
+train loss 0.00251
+batch 149
+train loss 0.00245
+batch 150
+train loss 0.00269
+batch 151
+train loss 0.00274
+batch 152
+train loss 0.00263
+batch 153
+train loss 0.00245
+batch 154
+train loss 0.00266
+batch 155
+train loss 0.00258
+batch 156
+train loss 0.00259
+batch 157
+train loss 0.00251
+batch 158
+train loss 0.00223
+batch 159
+train loss 0.00286
+batch 160
+train loss 0.00247
+batch 161
+train loss 0.00252
+batch 162
+train loss 0.00273
+batch 163
+train loss 0.00241
+batch 164
+train loss 0.00272
+batch 165
+train loss 0.00241
+batch 166
+train loss 0.00253
+batch 167
+train loss 0.00254
+batch 168
+train loss 0.00265
+batch 169
+train loss 0.00263
+batch 170
+train loss 0.00238
+batch 171
+train loss 0.00250
+batch 172
+train loss 0.00258
+batch 173
+train loss 0.00249
+batch 174
+train loss 0.00292
+batch 175
+train loss 0.00236
+batch 176
+train loss 0.00257
+batch 177
+train loss 0.00236
+batch 178
+train loss 0.00251
+batch 179
+train loss 0.00247
+batch 180
+train loss 0.00266
+batch 181
+train loss 0.00255
+batch 182
+train loss 0.00251
+batch 183
+train loss 0.00229
+batch 184
+train loss 0.00286
+batch 185
+train loss 0.00251
+batch 186
+train loss 0.00254
+batch 187
+train loss 0.00261
+batch 188
+train loss 0.00263
+batch 189
+train loss 0.00243
+batch 190
+train loss 0.00263
+batch 191
+train loss 0.00246
+batch 192
+train loss 0.00267
+batch 193
+train loss 0.00253
+batch 194
+train loss 0.00263
+batch 195
+train loss 0.00273
+batch 196
+train loss 0.00249
+batch 197
+train loss 0.00247
+batch 198
+train loss 0.00253
+batch 199
+train loss 0.00247
+batch 200
+train loss 0.00243
+batch 201
+train loss 0.00260
+batch 202
+train loss 0.00280
+batch 203
+train loss 0.00248
+batch 204
+train loss 0.00258
+batch 205
+train loss 0.00256
+batch 206
+train loss 0.00258
+batch 207
+train loss 0.00276
+batch 208
+train loss 0.00254
+batch 209
+train loss 0.00246
+batch 210
+train loss 0.00245
+batch 211
+train loss 0.00259
+batch 212
+train loss 0.00278
+batch 213
+train loss 0.00238
+batch 214
+train loss 0.00269
+batch 215
+train loss 0.00267
+batch 216
+train loss 0.00272
+batch 217
+train loss 0.00250
+batch 218
+train loss 0.00267
+batch 219
+train loss 0.00246
+batch 220
+train loss 0.00255
+batch 221
+train loss 0.00239
+batch 222
+train loss 0.00295
+batch 223
+train loss 0.00261
+batch 224
+train loss 0.00239
+batch 225
+train loss 0.00249
+batch 226
+train loss 0.00255
+batch 227
+train loss 0.00255
+batch 228
+train loss 0.00268
+batch 229
+train loss 0.00275
+batch 230
+train loss 0.00232
+batch 231
+train loss 0.00265
+batch 232
+train loss 0.00250
+batch 233
+train loss 0.00251
+batch 234
+train loss 0.00320
+batch 235
+train loss 0.00271
+batch 236
+train loss 0.00263
+batch 237
+train loss 0.00254
+batch 238
+train loss 0.00243
+batch 239
+train loss 0.00261
+batch 240
+train loss 0.00267
+batch 241
+train loss 0.00228
+batch 242
+train loss 0.00289
+batch 243
+train loss 0.00266
+batch 244
+train loss 0.00246
+batch 245
+train loss 0.00266
+batch 246
+train loss 0.00249
+batch 247
+train loss 0.00262
+batch 248
+train loss 0.00273
+batch 249
+train loss 0.00233
+batch 250
+train loss 0.00280
+batch 251
+train loss 0.00236
+batch 252
+train loss 0.00278
+batch 253
+train loss 0.00273
+batch 254
+train loss 0.00254
+batch 255
+train loss 0.00252
+batch 256
+train loss 0.00257
+batch 257
+train loss 0.00229
+batch 258
+train loss 0.00244
+batch 259
+train loss 0.00260
+batch 260
+train loss 0.00237
+batch 261
+train loss 0.00244
+batch 262
+train loss 0.00247
+batch 263
+train loss 0.00250
+batch 264
+train loss 0.00234
+batch 265
+train loss 0.00239
+batch 266
+train loss 0.00240
+batch 267
+train loss 0.00245
+batch 268
+train loss 0.00250
+batch 269
+train loss 0.00255
+batch 270
+train loss 0.00251
+batch 271
+train loss 0.00275
+batch 272
+train loss 0.00264
+batch 273
+train loss 0.00268
+batch 274
+train loss 0.00251
+batch 275
+train loss 0.00231
+batch 276
+train loss 0.00266
+batch 277
+train loss 0.00268
+batch 278
+train loss 0.00246
+batch 279
+train loss 0.00250
+batch 280
+train loss 0.00261
+batch 281
+train loss 0.00237
+batch 282
+train loss 0.00249
+batch 283
+train loss 0.00251
+batch 284
+train loss 0.00233
+batch 285
+train loss 0.00241
+batch 286
+train loss 0.00269
+batch 287
+train loss 0.00239
+batch 288
+train loss 0.00277
+batch 289
+train loss 0.00264
+batch 290
+train loss 0.00240
+batch 291
+train loss 0.00243
+batch 292
+train loss 0.00247
+batch 293
+train loss 0.00231
+batch 294
+train loss 0.00273
+batch 295
+train loss 0.00266
+batch 296
+train loss 0.00249
+batch 297
+train loss 0.00245
+batch 298
+train loss 0.00258
+batch 299
+train loss 0.00259
+batch 300
+train loss 0.00276
+batch 301
+train loss 0.00287
+batch 302
+train loss 0.00239
+batch 303
+train loss 0.00254
+batch 304
+train loss 0.00262
+batch 305
+train loss 0.00248
+batch 306
+train loss 0.00254
+batch 307
+train loss 0.00257
+batch 308
+train loss 0.00242
+batch 309
+train loss 0.00257
+batch 310
+train loss 0.00268
+batch 311
+train loss 0.00240
+batch 312
+train loss 0.00247
+batch 313
+train loss 0.00251
+batch 314
+train loss 0.00243
+batch 315
+train loss 0.00277
+batch 316
+train loss 0.00263
+batch 317
+train loss 0.00233
+batch 318
+train loss 0.00241
+batch 319
+train loss 0.00250
+batch 320
+train loss 0.00294
+batch 321
+train loss 0.00262
+batch 322
+train loss 0.00233
+batch 323
+train loss 0.00258
+batch 324
+train loss 0.00272
+batch 325
+train loss 0.00273
+batch 326
+train loss 0.00247
+batch 327
+train loss 0.00226
+batch 328
+train loss 0.00235
+batch 329
+train loss 0.00290
+batch 330
+train loss 0.00242
+batch 331
+train loss 0.00247
+batch 332
+train loss 0.00241
+batch 333
+train loss 0.00256
+batch 334
+train loss 0.00261
+batch 335
+train loss 0.00281
+batch 336
+train loss 0.00288
+batch 337
+train loss 0.00261
+batch 338
+train loss 0.00255
+batch 339
+train loss 0.00266
+batch 340
+train loss 0.00260
+batch 341
+train loss 0.00252
+batch 342
+train loss 0.00254
+batch 343
+train loss 0.00277
+batch 344
+train loss 0.00268
+batch 345
+train loss 0.00251
+batch 346
+train loss 0.00243
+batch 347
+train loss 0.00238
+batch 348
+train loss 0.00247
+batch 349
+train loss 0.00297
+batch 350
+train loss 0.00263
+batch 351
+train loss 0.00252
+batch 352
+train loss 0.00243
+batch 353
+train loss 0.00267
+batch 354
+train loss 0.00265
+batch 355
+train loss 0.00242
+batch 356
+train loss 0.00260
+batch 357
+train loss 0.00278
+batch 358
+train loss 0.00268
+batch 359
+train loss 0.00259
+batch 360
+train loss 0.00247
+batch 361
+train loss 0.00244
+batch 362
+train loss 0.00254
+batch 363
+train loss 0.00265
+batch 364
+train loss 0.00240
+batch 365
+train loss 0.00282
+batch 366
+train loss 0.00229
+batch 367
+train loss 0.00252
+batch 368
+train loss 0.00250
+batch 369
+train loss 0.00248
+batch 370
+train loss 0.00253
+batch 371
+train loss 0.00247
+batch 372
+train loss 0.00247
+batch 373
+train loss 0.00283
+batch 374
+train loss 0.00247
+batch 375
+train loss 0.00273
+batch 376
+train loss 0.00273
+batch 377
+train loss 0.00240
+batch 378
+train loss 0.00250
+batch 379
+train loss 0.00249
+batch 380
+train loss 0.00284
+batch 381
+train loss 0.00246
+batch 382
+train loss 0.00244
+batch 383
+train loss 0.00246
+batch 384
+train loss 0.00252
+batch 385
+train loss 0.00243
+batch 386
+train loss 0.00243
+batch 387
+train loss 0.00247
+batch 388
+train loss 0.00266
+batch 389
+train loss 0.00253
+batch 390
+train loss 0.00278
+batch 391
+train loss 0.00250
+batch 392
+train loss 0.00243
+batch 393
+train loss 0.00254
+batch 394
+train loss 0.00242
+batch 395
+train loss 0.00261
+batch 396
+train loss 0.00264
+batch 397
+train loss 0.00284
+batch 398
+train loss 0.00258
+batch 399
+train loss 0.00247
+batch 400
+train loss 0.00247
+batch 401
+train loss 0.00255
+batch 402
+train loss 0.00264
+batch 403
+train loss 0.00262
+batch 404
+train loss 0.00237
+batch 405
+train loss 0.00248
+batch 406
+train loss 0.00244
+batch 407
+train loss 0.00249
+batch 408
+train loss 0.00263
+batch 409
+train loss 0.00248
+batch 410
+train loss 0.00244
+batch 411
+train loss 0.00249
+batch 412
+train loss 0.00244
+batch 413
+train loss 0.00242
+batch 414
+train loss 0.00273
+batch 415
+train loss 0.00242
+batch 416
+train loss 0.00248
+batch 417
+train loss 0.00247
+batch 418
+train loss 0.00275
+batch 419
+train loss 0.00248
+batch 420
+train loss 0.00262
+batch 421
+train loss 0.00260
+batch 422
+train loss 0.00274
+batch 423
+train loss 0.00271
+batch 424
+train loss 0.00245
+batch 425
+train loss 0.00238
+batch 426
+train loss 0.00249
+batch 427
+train loss 0.00253
+batch 428
+train loss 0.00272
+batch 429
+train loss 0.00294
+batch 430
+train loss 0.00263
+batch 431
+train loss 0.00291
+batch 432
+train loss 0.00266
+batch 433
+train loss 0.00244
+batch 434
+train loss 0.00243
+batch 435
+train loss 0.00256
+batch 436
+train loss 0.00261
+batch 437
+train loss 0.00274
+batch 438
+train loss 0.00278
+batch 439
+train loss 0.00266
+batch 440
+train loss 0.00258
+batch 441
+train loss 0.00242
+batch 442
+train loss 0.00252
+batch 443
+train loss 0.00234
+batch 444
+train loss 0.00255
+batch 445
+train loss 0.00263
+batch 446
+train loss 0.00259
+batch 447
+train loss 0.00265
+batch 448
+train loss 0.00292
+batch 449
+train loss 0.00229
+batch 450
+train loss 0.00246
+batch 451
+train loss 0.00250
+batch 452
+train loss 0.00260
+batch 453
+train loss 0.00262
+batch 454
+train loss 0.00254
+batch 455
+train loss 0.00246
+batch 456
+train loss 0.00266
+batch 457
+train loss 0.00235
+batch 458
+train loss 0.00257
+batch 459
+train loss 0.00239
+batch 460
+train loss 0.00256
+batch 461
+train loss 0.00260
+batch 462
+train loss 0.00253
+batch 463
+train loss 0.00256
+batch 464
+train loss 0.00250
+batch 465
+train loss 0.00276
+batch 466
+train loss 0.00259
+batch 467
+train loss 0.00260
+batch 468
+train loss 0.00254
+batch 469
+train loss 0.00251
+batch 470
+train loss 0.00260
+batch 471
+train loss 0.00278
+batch 472
+train loss 0.00252
+batch 473
+train loss 0.00255
+batch 474
+train loss 0.00269
+batch 475
+train loss 0.00229
+batch 476
+train loss 0.00261
+batch 477
+train loss 0.00239
+batch 478
+train loss 0.00269
+batch 479
+train loss 0.00278
+batch 480
+train loss 0.00266
+batch 481
+train loss 0.00279
+batch 482
+train loss 0.00262
+batch 483
+train loss 0.00261
+batch 484
+train loss 0.00280
+batch 485
+train loss 0.00240
+batch 486
+train loss 0.00239
+batch 487
+train loss 0.00252
+batch 488
+train loss 0.00261
+batch 489
+train loss 0.00246
+batch 490
+train loss 0.00251
+batch 491
+train loss 0.00247
+batch 492
+train loss 0.00247
+batch 493
+train loss 0.00258
+batch 494
+train loss 0.00239
+batch 495
+train loss 0.00277
+batch 496
+train loss 0.00236
+batch 497
+train loss 0.00269
+batch 498
+train loss 0.00251
+batch 499
+train loss 0.00249
+[9 / 10] train loss: 0.0025653320
+
+validation loop
+batch 0
+validation loss 0.00283
+batch 1
+validation loss 0.00247
+batch 2
+validation loss 0.00235
+batch 3
+validation loss 0.00252
+batch 4
+validation loss 0.00236
+batch 5
+validation loss 0.00277
+batch 6
+validation loss 0.00246
+batch 7
+validation loss 0.00270
+batch 8
+validation loss 0.00226
+batch 9
+validation loss 0.00236
+batch 10
+validation loss 0.00261
+batch 11
+validation loss 0.00281
+batch 12
+validation loss 0.00250
+batch 13
+validation loss 0.00257
+batch 14
+validation loss 0.00249
+batch 15
+validation loss 0.00265
+batch 16
+validation loss 0.00261
+batch 17
+validation loss 0.00247
+batch 18
+validation loss 0.00246
+batch 19
+validation loss 0.00248
+batch 20
+validation loss 0.00236
+batch 21
+validation loss 0.00251
+batch 22
+validation loss 0.00242
+batch 23
+validation loss 0.00238
+batch 24
+validation loss 0.00250
+batch 25
+validation loss 0.00242
+batch 26
+validation loss 0.00240
+batch 27
+validation loss 0.00253
+batch 28
+validation loss 0.00274
+batch 29
+validation loss 0.00251
+batch 30
+validation loss 0.00239
+batch 31
+validation loss 0.00255
+batch 32
+validation loss 0.00232
+batch 33
+validation loss 0.00275
+batch 34
+validation loss 0.00250
+batch 35
+validation loss 0.00256
+batch 36
+validation loss 0.00268
+batch 37
+validation loss 0.00257
+batch 38
+validation loss 0.00242
+batch 39
+validation loss 0.00262
+batch 40
+validation loss 0.00244
+batch 41
+validation loss 0.00255
+batch 42
+validation loss 0.00269
+batch 43
+validation loss 0.00236
+batch 44
+validation loss 0.00262
+batch 45
+validation loss 0.00247
+batch 46
+validation loss 0.00262
+batch 47
+validation loss 0.00262
+batch 48
+validation loss 0.00237
+batch 49
+validation loss 0.00235
+batch 50
+validation loss 0.00232
+batch 51
+validation loss 0.00225
+batch 52
+validation loss 0.00257
+batch 53
+validation loss 0.00263
+batch 54
+validation loss 0.00253
+batch 55
+validation loss 0.00251
+batch 56
+validation loss 0.00241
+batch 57
+validation loss 0.00261
+batch 58
+validation loss 0.00253
+batch 59
+validation loss 0.00250
+batch 60
+validation loss 0.00239
+batch 61
+validation loss 0.00257
+batch 62
+validation loss 0.00251
+batch 63
+validation loss 0.00249
+batch 64
+validation loss 0.00257
+batch 65
+validation loss 0.00275
+batch 66
+validation loss 0.00238
+batch 67
+validation loss 0.00259
+batch 68
+validation loss 0.00254
+batch 69
+validation loss 0.00256
+batch 70
+validation loss 0.00238
+batch 71
+validation loss 0.00256
+batch 72
+validation loss 0.00237
+batch 73
+validation loss 0.00256
+batch 74
+validation loss 0.00242
+batch 75
+validation loss 0.00257
+batch 76
+validation loss 0.00242
+batch 77
+validation loss 0.00272
+batch 78
+validation loss 0.00230
+batch 79
+validation loss 0.00233
+batch 80
+validation loss 0.00298
+batch 81
+validation loss 0.00238
+batch 82
+validation loss 0.00255
+batch 83
+validation loss 0.00249
+batch 84
+validation loss 0.00250
+batch 85
+validation loss 0.00240
+batch 86
+validation loss 0.00240
+batch 87
+validation loss 0.00244
+batch 88
+validation loss 0.00245
+batch 89
+validation loss 0.00234
+batch 90
+validation loss 0.00236
+batch 91
+validation loss 0.00283
+batch 92
+validation loss 0.00246
+batch 93
+validation loss 0.00232
+batch 94
+validation loss 0.00243
+batch 95
+validation loss 0.00253
+batch 96
+validation loss 0.00250
+batch 97
+validation loss 0.00274
+batch 98
+validation loss 0.00228
+batch 99
+validation loss 0.00262
+[9 / 10] validation loss: 0.0025653320
+
+# epoch 10
+
+training loop
+batch 0
+train loss 0.00241
+batch 1
+train loss 0.00270
+batch 2
+train loss 0.00235
+batch 3
+train loss 0.00243
+batch 4
+train loss 0.00242
+batch 5
+train loss 0.00265
+batch 6
+train loss 0.00272
+batch 7
+train loss 0.00269
+batch 8
+train loss 0.00253
+batch 9
+train loss 0.00262
+batch 10
+train loss 0.00257
+batch 11
+train loss 0.00253
+batch 12
+train loss 0.00249
+batch 13
+train loss 0.00255
+batch 14
+train loss 0.00243
+batch 15
+train loss 0.00271
+batch 16
+train loss 0.00250
+batch 17
+train loss 0.00244
+batch 18
+train loss 0.00243
+batch 19
+train loss 0.00247
+batch 20
+train loss 0.00245
+batch 21
+train loss 0.00253
+batch 22
+train loss 0.00259
+batch 23
+train loss 0.00245
+batch 24
+train loss 0.00249
+batch 25
+train loss 0.00259
+batch 26
+train loss 0.00274
+batch 27
+train loss 0.00248
+batch 28
+train loss 0.00247
+batch 29
+train loss 0.00247
+batch 30
+train loss 0.00240
+batch 31
+train loss 0.00249
+batch 32
+train loss 0.00242
+batch 33
+train loss 0.00258
+batch 34
+train loss 0.00237
+batch 35
+train loss 0.00259
+batch 36
+train loss 0.00260
+batch 37
+train loss 0.00247
+batch 38
+train loss 0.00258
+batch 39
+train loss 0.00271
+batch 40
+train loss 0.00235
+batch 41
+train loss 0.00235
+batch 42
+train loss 0.00248
+batch 43
+train loss 0.00242
+batch 44
+train loss 0.00236
+batch 45
+train loss 0.00259
+batch 46
+train loss 0.00245
+batch 47
+train loss 0.00262
+batch 48
+train loss 0.00255
+batch 49
+train loss 0.00258
+batch 50
+train loss 0.00265
+batch 51
+train loss 0.00243
+batch 52
+train loss 0.00245
+batch 53
+train loss 0.00241
+batch 54
+train loss 0.00242
+batch 55
+train loss 0.00255
+batch 56
+train loss 0.00261
+batch 57
+train loss 0.00223
+batch 58
+train loss 0.00247
+batch 59
+train loss 0.00266
+batch 60
+train loss 0.00307
+batch 61
+train loss 0.00270
+batch 62
+train loss 0.00254
+batch 63
+train loss 0.00263
+batch 64
+train loss 0.00240
+batch 65
+train loss 0.00249
+batch 66
+train loss 0.00252
+batch 67
+train loss 0.00261
+batch 68
+train loss 0.00254
+batch 69
+train loss 0.00227
+batch 70
+train loss 0.00260
+batch 71
+train loss 0.00257
+batch 72
+train loss 0.00269
+batch 73
+train loss 0.00260
+batch 74
+train loss 0.00294
+batch 75
+train loss 0.00252
+batch 76
+train loss 0.00243
+batch 77
+train loss 0.00245
+batch 78
+train loss 0.00251
+batch 79
+train loss 0.00242
+batch 80
+train loss 0.00265
+batch 81
+train loss 0.00247
+batch 82
+train loss 0.00240
+batch 83
+train loss 0.00240
+batch 84
+train loss 0.00251
+batch 85
+train loss 0.00238
+batch 86
+train loss 0.00230
+batch 87
+train loss 0.00274
+batch 88
+train loss 0.00252
+batch 89
+train loss 0.00260
+batch 90
+train loss 0.00249
+batch 91
+train loss 0.00249
+batch 92
+train loss 0.00252
+batch 93
+train loss 0.00238
+batch 94
+train loss 0.00252
+batch 95
+train loss 0.00270
+batch 96
+train loss 0.00251
+batch 97
+train loss 0.00285
+batch 98
+train loss 0.00268
+batch 99
+train loss 0.00241
+batch 100
+train loss 0.00241
+batch 101
+train loss 0.00256
+batch 102
+train loss 0.00248
+batch 103
+train loss 0.00251
+batch 104
+train loss 0.00235
+batch 105
+train loss 0.00249
+batch 106
+train loss 0.00263
+batch 107
+train loss 0.00260
+batch 108
+train loss 0.00260
+batch 109
+train loss 0.00284
+batch 110
+train loss 0.00219
+batch 111
+train loss 0.00276
+batch 112
+train loss 0.00248
+batch 113
+train loss 0.00250
+batch 114
+train loss 0.00227
+batch 115
+train loss 0.00264
+batch 116
+train loss 0.00248
+batch 117
+train loss 0.00253
+batch 118
+train loss 0.00247
+batch 119
+train loss 0.00236
+batch 120
+train loss 0.00243
+batch 121
+train loss 0.00243
+batch 122
+train loss 0.00251
+batch 123
+train loss 0.00249
+batch 124
+train loss 0.00240
+batch 125
+train loss 0.00260
+batch 126
+train loss 0.00250
+batch 127
+train loss 0.00273
+batch 128
+train loss 0.00266
+batch 129
+train loss 0.00282
+batch 130
+train loss 0.00267
+batch 131
+train loss 0.00236
+batch 132
+train loss 0.00261
+batch 133
+train loss 0.00286
+batch 134
+train loss 0.00263
+batch 135
+train loss 0.00263
+batch 136
+train loss 0.00265
+batch 137
+train loss 0.00265
+batch 138
+train loss 0.00285
+batch 139
+train loss 0.00320
+batch 140
+train loss 0.00247
+batch 141
+train loss 0.00258
+batch 142
+train loss 0.00232
+batch 143
+train loss 0.00267
+batch 144
+train loss 0.00247
+batch 145
+train loss 0.00274
+batch 146
+train loss 0.00284
+batch 147
+train loss 0.00265
+batch 148
+train loss 0.00267
+batch 149
+train loss 0.00245
+batch 150
+train loss 0.00240
+batch 151
+train loss 0.00245
+batch 152
+train loss 0.00272
+batch 153
+train loss 0.00240
+batch 154
+train loss 0.00253
+batch 155
+train loss 0.00249
+batch 156
+train loss 0.00248
+batch 157
+train loss 0.00245
+batch 158
+train loss 0.00253
+batch 159
+train loss 0.00273
+batch 160
+train loss 0.00246
+batch 161
+train loss 0.00275
+batch 162
+train loss 0.00235
+batch 163
+train loss 0.00249
+batch 164
+train loss 0.00261
+batch 165
+train loss 0.00260
+batch 166
+train loss 0.00259
+batch 167
+train loss 0.00263
+batch 168
+train loss 0.00255
+batch 169
+train loss 0.00273
+batch 170
+train loss 0.00249
+batch 171
+train loss 0.00244
+batch 172
+train loss 0.00246
+batch 173
+train loss 0.00244
+batch 174
+train loss 0.00269
+batch 175
+train loss 0.00280
+batch 176
+train loss 0.00254
+batch 177
+train loss 0.00271
+batch 178
+train loss 0.00264
+batch 179
+train loss 0.00245
+batch 180
+train loss 0.00253
+batch 181
+train loss 0.00262
+batch 182
+train loss 0.00256
+batch 183
+train loss 0.00233
+batch 184
+train loss 0.00261
+batch 185
+train loss 0.00248
+batch 186
+train loss 0.00243
+batch 187
+train loss 0.00284
+batch 188
+train loss 0.00262
+batch 189
+train loss 0.00254
+batch 190
+train loss 0.00261
+batch 191
+train loss 0.00242
+batch 192
+train loss 0.00237
+batch 193
+train loss 0.00261
+batch 194
+train loss 0.00242
+batch 195
+train loss 0.00255
+batch 196
+train loss 0.00266
+batch 197
+train loss 0.00243
+batch 198
+train loss 0.00296
+batch 199
+train loss 0.00245
+batch 200
+train loss 0.00234
+batch 201
+train loss 0.00246
+batch 202
+train loss 0.00257
+batch 203
+train loss 0.00269
+batch 204
+train loss 0.00228
+batch 205
+train loss 0.00255
+batch 206
+train loss 0.00247
+batch 207
+train loss 0.00226
+batch 208
+train loss 0.00246
+batch 209
+train loss 0.00250
+batch 210
+train loss 0.00253
+batch 211
+train loss 0.00254
+batch 212
+train loss 0.00235
+batch 213
+train loss 0.00267
+batch 214
+train loss 0.00290
+batch 215
+train loss 0.00235
+batch 216
+train loss 0.00294
+batch 217
+train loss 0.00224
+batch 218
+train loss 0.00264
+batch 219
+train loss 0.00267
+batch 220
+train loss 0.00246
+batch 221
+train loss 0.00274
+batch 222
+train loss 0.00266
+batch 223
+train loss 0.00251
+batch 224
+train loss 0.00277
+batch 225
+train loss 0.00242
+batch 226
+train loss 0.00246
+batch 227
+train loss 0.00258
+batch 228
+train loss 0.00291
+batch 229
+train loss 0.00250
+batch 230
+train loss 0.00259
+batch 231
+train loss 0.00256
+batch 232
+train loss 0.00243
+batch 233
+train loss 0.00261
+batch 234
+train loss 0.00255
+batch 235
+train loss 0.00247
+batch 236
+train loss 0.00286
+batch 237
+train loss 0.00247
+batch 238
+train loss 0.00285
+batch 239
+train loss 0.00246
+batch 240
+train loss 0.00244
+batch 241
+train loss 0.00260
+batch 242
+train loss 0.00263
+batch 243
+train loss 0.00283
+batch 244
+train loss 0.00282
+batch 245
+train loss 0.00252
+batch 246
+train loss 0.00273
+batch 247
+train loss 0.00262
+batch 248
+train loss 0.00257
+batch 249
+train loss 0.00247
+batch 250
+train loss 0.00243
+batch 251
+train loss 0.00264
+batch 252
+train loss 0.00269
+batch 253
+train loss 0.00284
+batch 254
+train loss 0.00237
+batch 255
+train loss 0.00233
+batch 256
+train loss 0.00277
+batch 257
+train loss 0.00232
+batch 258
+train loss 0.00241
+batch 259
+train loss 0.00276
+batch 260
+train loss 0.00257
+batch 261
+train loss 0.00279
+batch 262
+train loss 0.00252
+batch 263
+train loss 0.00233
+batch 264
+train loss 0.00248
+batch 265
+train loss 0.00240
+batch 266
+train loss 0.00234
+batch 267
+train loss 0.00248
+batch 268
+train loss 0.00255
+batch 269
+train loss 0.00240
+batch 270
+train loss 0.00268
+batch 271
+train loss 0.00283
+batch 272
+train loss 0.00257
+batch 273
+train loss 0.00265
+batch 274
+train loss 0.00245
+batch 275
+train loss 0.00240
+batch 276
+train loss 0.00261
+batch 277
+train loss 0.00268
+batch 278
+train loss 0.00250
+batch 279
+train loss 0.00259
+batch 280
+train loss 0.00236
+batch 281
+train loss 0.00277
+batch 282
+train loss 0.00283
+batch 283
+train loss 0.00305
+batch 284
+train loss 0.00245
+batch 285
+train loss 0.00271
+batch 286
+train loss 0.00265
+batch 287
+train loss 0.00248
+batch 288
+train loss 0.00279
+batch 289
+train loss 0.00266
+batch 290
+train loss 0.00258
+batch 291
+train loss 0.00260
+batch 292
+train loss 0.00263
+batch 293
+train loss 0.00261
+batch 294
+train loss 0.00259
+batch 295
+train loss 0.00243
+batch 296
+train loss 0.00240
+batch 297
+train loss 0.00259
+batch 298
+train loss 0.00261
+batch 299
+train loss 0.00254
+batch 300
+train loss 0.00245
+batch 301
+train loss 0.00269
+batch 302
+train loss 0.00255
+batch 303
+train loss 0.00264
+batch 304
+train loss 0.00239
+batch 305
+train loss 0.00253
+batch 306
+train loss 0.00260
+batch 307
+train loss 0.00241
+batch 308
+train loss 0.00257
+batch 309
+train loss 0.00274
+batch 310
+train loss 0.00247
+batch 311
+train loss 0.00277
+batch 312
+train loss 0.00240
+batch 313
+train loss 0.00281
+batch 314
+train loss 0.00247
+batch 315
+train loss 0.00259
+batch 316
+train loss 0.00251
+batch 317
+train loss 0.00242
+batch 318
+train loss 0.00245
+batch 319
+train loss 0.00265
+batch 320
+train loss 0.00264
+batch 321
+train loss 0.00302
+batch 322
+train loss 0.00243
+batch 323
+train loss 0.00263
+batch 324
+train loss 0.00243
+batch 325
+train loss 0.00253
+batch 326
+train loss 0.00254
+batch 327
+train loss 0.00252
+batch 328
+train loss 0.00248
+batch 329
+train loss 0.00265
+batch 330
+train loss 0.00264
+batch 331
+train loss 0.00266
+batch 332
+train loss 0.00256
+batch 333
+train loss 0.00285
+batch 334
+train loss 0.00243
+batch 335
+train loss 0.00255
+batch 336
+train loss 0.00261
+batch 337
+train loss 0.00257
+batch 338
+train loss 0.00247
+batch 339
+train loss 0.00271
+batch 340
+train loss 0.00250
+batch 341
+train loss 0.00265
+batch 342
+train loss 0.00254
+batch 343
+train loss 0.00248
+batch 344
+train loss 0.00250
+batch 345
+train loss 0.00252
+batch 346
+train loss 0.00252
+batch 347
+train loss 0.00242
+batch 348
+train loss 0.00240
+batch 349
+train loss 0.00235
+batch 350
+train loss 0.00245
+batch 351
+train loss 0.00256
+batch 352
+train loss 0.00262
+batch 353
+train loss 0.00261
+batch 354
+train loss 0.00274
+batch 355
+train loss 0.00255
+batch 356
+train loss 0.00238
+batch 357
+train loss 0.00273
+batch 358
+train loss 0.00247
+batch 359
+train loss 0.00255
+batch 360
+train loss 0.00256
+batch 361
+train loss 0.00259
+batch 362
+train loss 0.00255
+batch 363
+train loss 0.00264
+batch 364
+train loss 0.00250
+batch 365
+train loss 0.00266
+batch 366
+train loss 0.00275
+batch 367
+train loss 0.00254
+batch 368
+train loss 0.00240
+batch 369
+train loss 0.00250
+batch 370
+train loss 0.00280
+batch 371
+train loss 0.00232
+batch 372
+train loss 0.00234
+batch 373
+train loss 0.00241
+batch 374
+train loss 0.00253
+batch 375
+train loss 0.00264
+batch 376
+train loss 0.00246
+batch 377
+train loss 0.00241
+batch 378
+train loss 0.00245
+batch 379
+train loss 0.00261
+batch 380
+train loss 0.00257
+batch 381
+train loss 0.00257
+batch 382
+train loss 0.00248
+batch 383
+train loss 0.00239
+batch 384
+train loss 0.00261
+batch 385
+train loss 0.00258
+batch 386
+train loss 0.00278
+batch 387
+train loss 0.00253
+batch 388
+train loss 0.00276
+batch 389
+train loss 0.00257
+batch 390
+train loss 0.00241
+batch 391
+train loss 0.00248
+batch 392
+train loss 0.00233
+batch 393
+train loss 0.00292
+batch 394
+train loss 0.00275
+batch 395
+train loss 0.00256
+batch 396
+train loss 0.00257
+batch 397
+train loss 0.00232
+batch 398
+train loss 0.00247
+batch 399
+train loss 0.00244
+batch 400
+train loss 0.00248
+batch 401
+train loss 0.00237
+batch 402
+train loss 0.00254
+batch 403
+train loss 0.00259
+batch 404
+train loss 0.00237
+batch 405
+train loss 0.00255
+batch 406
+train loss 0.00278
+batch 407
+train loss 0.00265
+batch 408
+train loss 0.00261
+batch 409
+train loss 0.00261
+batch 410
+train loss 0.00273
+batch 411
+train loss 0.00242
+batch 412
+train loss 0.00300
+batch 413
+train loss 0.00250
+batch 414
+train loss 0.00258
+batch 415
+train loss 0.00243
+batch 416
+train loss 0.00253
+batch 417
+train loss 0.00266
+batch 418
+train loss 0.00260
+batch 419
+train loss 0.00254
+batch 420
+train loss 0.00250
+batch 421
+train loss 0.00234
+batch 422
+train loss 0.00254
+batch 423
+train loss 0.00253
+batch 424
+train loss 0.00285
+batch 425
+train loss 0.00241
+batch 426
+train loss 0.00270
+batch 427
+train loss 0.00266
+batch 428
+train loss 0.00248
+batch 429
+train loss 0.00261
+batch 430
+train loss 0.00261
+batch 431
+train loss 0.00249
+batch 432
+train loss 0.00279
+batch 433
+train loss 0.00259
+batch 434
+train loss 0.00285
+batch 435
+train loss 0.00241
+batch 436
+train loss 0.00247
+batch 437
+train loss 0.00244
+batch 438
+train loss 0.00241
+batch 439
+train loss 0.00267
+batch 440
+train loss 0.00260
+batch 441
+train loss 0.00251
+batch 442
+train loss 0.00252
+batch 443
+train loss 0.00263
+batch 444
+train loss 0.00245
+batch 445
+train loss 0.00270
+batch 446
+train loss 0.00264
+batch 447
+train loss 0.00265
+batch 448
+train loss 0.00215
+batch 449
+train loss 0.00272
+batch 450
+train loss 0.00277
+batch 451
+train loss 0.00243
+batch 452
+train loss 0.00243
+batch 453
+train loss 0.00257
+batch 454
+train loss 0.00247
+batch 455
+train loss 0.00242
+batch 456
+train loss 0.00238
+batch 457
+train loss 0.00257
+batch 458
+train loss 0.00248
+batch 459
+train loss 0.00239
+batch 460
+train loss 0.00270
+batch 461
+train loss 0.00265
+batch 462
+train loss 0.00254
+batch 463
+train loss 0.00263
+batch 464
+train loss 0.00278
+batch 465
+train loss 0.00247
+batch 466
+train loss 0.00253
+batch 467
+train loss 0.00248
+batch 468
+train loss 0.00258
+batch 469
+train loss 0.00232
+batch 470
+train loss 0.00236
+batch 471
+train loss 0.00246
+batch 472
+train loss 0.00267
+batch 473
+train loss 0.00282
+batch 474
+train loss 0.00263
+batch 475
+train loss 0.00256
+batch 476
+train loss 0.00251
+batch 477
+train loss 0.00286
+batch 478
+train loss 0.00238
+batch 479
+train loss 0.00267
+batch 480
+train loss 0.00241
+batch 481
+train loss 0.00282
+batch 482
+train loss 0.00274
+batch 483
+train loss 0.00252
+batch 484
+train loss 0.00250
+batch 485
+train loss 0.00277
+batch 486
+train loss 0.00261
+batch 487
+train loss 0.00243
+batch 488
+train loss 0.00288
+batch 489
+train loss 0.00265
+batch 490
+train loss 0.00266
+batch 491
+train loss 0.00243
+batch 492
+train loss 0.00250
+batch 493
+train loss 0.00275
+batch 494
+train loss 0.00268
+batch 495
+train loss 0.00267
+batch 496
+train loss 0.00249
+batch 497
+train loss 0.00269
+batch 498
+train loss 0.00259
+batch 499
+train loss 0.00261
+[10 / 10] train loss: 0.0025579211
+
+validation loop
+batch 0
+validation loss 0.00282
+batch 1
+validation loss 0.00254
+batch 2
+validation loss 0.00255
+batch 3
+validation loss 0.00260
+batch 4
+validation loss 0.00249
+batch 5
+validation loss 0.00294
+batch 6
+validation loss 0.00256
+batch 7
+validation loss 0.00268
+batch 8
+validation loss 0.00226
+batch 9
+validation loss 0.00234
+batch 10
+validation loss 0.00285
+batch 11
+validation loss 0.00280
+batch 12
+validation loss 0.00258
+batch 13
+validation loss 0.00258
+batch 14
+validation loss 0.00257
+batch 15
+validation loss 0.00264
+batch 16
+validation loss 0.00253
+batch 17
+validation loss 0.00241
+batch 18
+validation loss 0.00255
+batch 19
+validation loss 0.00274
+batch 20
+validation loss 0.00246
+batch 21
+validation loss 0.00251
+batch 22
+validation loss 0.00251
+batch 23
+validation loss 0.00264
+batch 24
+validation loss 0.00250
+batch 25
+validation loss 0.00262
+batch 26
+validation loss 0.00247
+batch 27
+validation loss 0.00272
+batch 28
+validation loss 0.00262
+batch 29
+validation loss 0.00252
+batch 30
+validation loss 0.00234
+batch 31
+validation loss 0.00257
+batch 32
+validation loss 0.00240
+batch 33
+validation loss 0.00275
+batch 34
+validation loss 0.00264
+batch 35
+validation loss 0.00270
+batch 36
+validation loss 0.00276
+batch 37
+validation loss 0.00283
+batch 38
+validation loss 0.00233
+batch 39
+validation loss 0.00267
+batch 40
+validation loss 0.00268
+batch 41
+validation loss 0.00277
+batch 42
+validation loss 0.00294
+batch 43
+validation loss 0.00240
+batch 44
+validation loss 0.00284
+batch 45
+validation loss 0.00253
+batch 46
+validation loss 0.00256
+batch 47
+validation loss 0.00275
+batch 48
+validation loss 0.00253
+batch 49
+validation loss 0.00231
+batch 50
+validation loss 0.00250
+batch 51
+validation loss 0.00237
+batch 52
+validation loss 0.00268
+batch 53
+validation loss 0.00252
+batch 54
+validation loss 0.00261
+batch 55
+validation loss 0.00261
+batch 56
+validation loss 0.00264
+batch 57
+validation loss 0.00260
+batch 58
+validation loss 0.00256
+batch 59
+validation loss 0.00255
+batch 60
+validation loss 0.00263
+batch 61
+validation loss 0.00277
+batch 62
+validation loss 0.00261
+batch 63
+validation loss 0.00270
+batch 64
+validation loss 0.00239
+batch 65
+validation loss 0.00261
+batch 66
+validation loss 0.00262
+batch 67
+validation loss 0.00275
+batch 68
+validation loss 0.00266
+batch 69
+validation loss 0.00250
+batch 70
+validation loss 0.00255
+batch 71
+validation loss 0.00279
+batch 72
+validation loss 0.00260
+batch 73
+validation loss 0.00263
+batch 74
+validation loss 0.00268
+batch 75
+validation loss 0.00255
+batch 76
+validation loss 0.00252
+batch 77
+validation loss 0.00298
+batch 78
+validation loss 0.00249
+batch 79
+validation loss 0.00243
+batch 80
+validation loss 0.00283
+batch 81
+validation loss 0.00259
+batch 82
+validation loss 0.00252
+batch 83
+validation loss 0.00250
+batch 84
+validation loss 0.00264
+batch 85
+validation loss 0.00236
+batch 86
+validation loss 0.00243
+batch 87
+validation loss 0.00253
+batch 88
+validation loss 0.00252
+batch 89
+validation loss 0.00262
+batch 90
+validation loss 0.00262
+batch 91
+validation loss 0.00302
+batch 92
+validation loss 0.00252
+batch 93
+validation loss 0.00262
+batch 94
+validation loss 0.00253
+batch 95
+validation loss 0.00248
+batch 96
+validation loss 0.00259
+batch 97
+validation loss 0.00304
+batch 98
+validation loss 0.00234
+batch 99
+validation loss 0.00281
+[10 / 10] validation loss: 0.0025579211
+
+end points train
+mmdfixsigma_output_target, mmd_output_target, mmd_output_target_hadflav0, mmd_output_target_hadflav4, mmd_output_target_hadflav5, mmd_output_target_hadflavSum, mse_output_target, mse_input_output, huber_output_target, huber_input_output, deepjetsum_mean, deepjetsum_std
+0.0015054366867989302, 0.0006701702908612787, 0.0014605127840768546, 0.007702432820573449, 0.002522298478987068, 0.0024809188209474085, 1.0829904990196229, 0.03556133279204369, 0.05835482770204544, 0.00926592075265944, 1.0000015432834626, 0.0030625591967254878
+
+end points validation
+mmdfixsigma_output_target, mmd_output_target, mmd_output_target_hadflav0, mmd_output_target_hadflav4, mmd_output_target_hadflav5, mmd_output_target_hadflavSum, mse_output_target, mse_input_output, huber_output_target, huber_input_output, deepjetsum_mean, deepjetsum_std
+0.0015446291549596936, 0.0007124692661454901, 0.0015197590668685735, 0.007806115569546818, 0.002635030294768512, 0.002562379164155573, 1.0788890236616135, 0.03802277110517025, 0.05832973636686802, 0.010025479914620519, 0.9992518824338913, 0.0019873011589515953
+
+just created /eos/user/d/dboncukc/fastsim/test10_loge_recJetpt/20240313.pt
+just created /eos/user/d/dboncukc/fastsim/test10_loge_recJetpt/20240313.root
+just created /eos/user/d/dboncukc/fastsim/test10_loge_recJetpt/20240313_train.csv
+just created /eos/user/d/dboncukc/fastsim/test10_loge_recJetpt/20240313_validation.csv
+
+
+..::The Story has been ended::..
+
