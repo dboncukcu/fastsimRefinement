@@ -29,7 +29,7 @@ samples = [
 
 # (name, branch name, (nbins, xlow, xhigh), title, ratio plot range, selection)
 variables = [
-    ('RecJet_pt_tanh800', 'RecJet_pt_CLASS', (60, 0.8, 3.6), 'RecJet_pt', 0.3, '1'),
+    ('RecJet_pt', 'RecJet_pt_CLASS', (60, 0.8, 3.6), 'RecJet_pt', 0.3, '1'),
     ('RecJet_btagDeepFlavB_logit', 'RecJet_btagDeepFlavB_CLASS', (60, -0.1, 1.1), 'RecJet_btagDeepFlavB_logit', 0.3, '1'),
         ('RecJet_btagDeepFlavCvB_logit', 'RecJet_btagDeepFlavCvB_CLASS', (60, -0.1, 1.1), 'RecJet_btagDeepFlavCvB_logit', 0.3, '1'),
 
@@ -74,13 +74,15 @@ for v in variables:
         else:
             histos[v[0] + s[0]] = ROOT.TH1F('h' + v[0] + s[0], '', v[2][0], v[2][1], v[2][2])
  
-        if "pt" in v[0].lower(): drawarg =  "TMath::Log10("+v[1].replace('CLASS', s[1])+")"
-        else: drawarg =  v[1].replace('CLASS', s[1])
+        if "pt" in v[0].lower(): 
+            drawarg =  "TMath::Log10("+v[1].replace('CLASS', s[1])+")"
+        else: 
+            drawarg =  v[1].replace('CLASS', s[1])
         print("drawing", v[1].replace('CLASS', s[1]))
         tree.Draw( drawarg + '>>h' + v[0] + s[0], s[6] + v[5].replace('CLASS', s[1]), '')
 
         if normalize: histos[v[0] + s[0]].Scale(1. / histos[v[0] + s[0]].Integral())
-
+        
         histos[v[0] + s[0]].SetFillStyle(s[4])
         histos[v[0] + s[0]].SetFillColor(s[3])
         histos[v[0] + s[0]].SetLineWidth(s[5])
@@ -121,9 +123,13 @@ for v in variables:
         leg[v[0]].AddEntry(histos[v[0] + s[0]], s[2], s[7] if len(s) > 7 else 'lpf')
 
     histos[v[0] + samples[0][0]].SetMaximum(1.6*max([histos[key].GetMaximum() for key in histos if v[0] == key[:len(v[0])] and key[len(v[0]):] in [s[0] for s in samples]]))
-    histos[v[0] + samples[0][0]].GetXaxis().SetTitle(v[3])
+    
+    if "pt" in v[0].lower():
+        histos[v[0] + samples[0][0]].GetXaxis().SetTitle('log_{10}('+ v[3] +')')
+    else:
+        histos[v[0] + samples[0][0]].GetXaxis().SetTitle(v[3])
     histos[v[0] + samples[0][0]].GetXaxis().SetLabelSize(0)
-    if normalize: histos[v[0] + samples[0][0]].GetYaxis().SetTitle('Distribution')
+    if normalize: histos[v[0] + samples[0][0]].GetYaxis().SetTitle('Normalized Distribution')
     else: histos[v[0] + samples[0][0]].GetYaxis().SetTitle('Jets')
 
     leg[v[0]].Draw('same')
@@ -145,9 +151,12 @@ for v in variables:
     logrange = ROOT.TMath.Log10(globalmax) - ROOT.TMath.Log10(globalmin)
 
     histos[v[0] + 'emptyloghist'].SetMinimum(0.5 * globalmin)
-    histos[v[0] + 'emptyloghist'].SetMaximum(globalmax * 10 ** max(1, logrange))
-    histos[v[0] + 'emptyloghist'].GetXaxis().SetTitle(v[3])
-    if normalize: histos[v[0] + 'emptyloghist'].GetYaxis().SetTitle('Distribution')
+    histos[v[0] + 'emptyloghist'].SetMaximum(globalmax * 10 ** max(1, logrange))    
+    if "pt" in v[0].lower():
+        histos[v[0] + 'emptyloghist'].GetXaxis().SetTitle('log_{10}('+ v[3] +')')
+    else:
+        histos[v[0] + 'emptyloghist'].GetXaxis().SetTitle(v[3])
+    if normalize: histos[v[0] + 'emptyloghist'].GetYaxis().SetTitle('Log Scale of Norm. Distribution')
     else: histos[v[0] + 'emptyloghist'].GetYaxis().SetTitle('Jets')
 
     leg[v[0]].Draw('SAME')
@@ -174,7 +183,13 @@ for v in variables:
         p.adjustLowerHisto(ratios[v[0] + firstname])
         ratios[v[0] + firstname].SetMinimum(1. - v[4] + 0.0001)
         ratios[v[0] + firstname].SetMaximum(1. + v[4] - 0.0001)
-        ratios[v[0] + firstname].GetXaxis().SetTitle(v[3])
+        
+        if "pt" in v[0].lower():
+            ratios[v[0] + firstname].GetXaxis().SetTitle('log_{10}('+ v[3] +')')
+            ratios[v[0] + firstname].GetXaxis().SetTitleSize(0.12)
+        else:
+            ratios[v[0] + firstname].GetXaxis().SetTitle(v[3])
+
         ratios[v[0] + firstname].GetYaxis().SetTitle('#scale[0.9]{#frac{FastSim}{FullSim}}')
 
         if type(v[2]) == list:
