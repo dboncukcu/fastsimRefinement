@@ -3,9 +3,9 @@ source /cvmfs/sft.cern.ch/lcg/views/LCG_101cuda/x86_64-centos7-gcc8-opt/setup.sh
 #source /afs/cern.ch/user/d/dboncukc/.bash_profile
 export PYTHONPATH=./site-packages:$PYTHONPATH
 
-export outputDirName="epoch100_log10"
+export outputDirName="epoch100_tanh500_logit"
 
-export trainingId="log10"
+export trainingId="logtanh500_logit"
 
 export isTest="False"
 

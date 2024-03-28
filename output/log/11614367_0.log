@@ -1,0 +1,92 @@
+000 (11614367.000.000) 03/28 11:48:55 Job submitted from host: <137.138.120.116:9618?addrs=137.138.120.116-9618+[2001-1458-d00-16--17b]-9618&alias=bigbird12.cern.ch&noUDP&sock=schedd_2694918_2c3d>
+...
+040 (11614367.000.000) 03/28 11:53:55 Started transferring input files
+	Transferring to host: <188.184.195.68:9618?addrs=188.184.195.68-9618+[2001-1458-301-72--100-263]-9618&alias=b9g47n2269.cern.ch&noUDP&sock=slot1_1_8718_5e9c_4698>
+...
+040 (11614367.000.000) 03/28 11:53:55 Finished transferring input files
+...
+001 (11614367.000.000) 03/28 11:53:56 Job executing on host: <188.184.195.68:9618?addrs=188.184.195.68-9618+[2001-1458-301-72--100-263]-9618&alias=b9g47n2269.cern.ch&noUDP&sock=startd_8319_b874>
+...
+006 (11614367.000.000) 03/28 11:54:06 Image size of job updated: 73356
+	35  -  MemoryUsage of job (MB)
+	35052  -  ResidentSetSize of job (KB)
+...
+006 (11614367.000.000) 03/28 11:59:07 Image size of job updated: 3490408
+	3409  -  MemoryUsage of job (MB)
+	3490408  -  ResidentSetSize of job (KB)
+...
+006 (11614367.000.000) 03/28 12:04:08 Image size of job updated: 3510008
+	3428  -  MemoryUsage of job (MB)
+	3510008  -  ResidentSetSize of job (KB)
+...
+006 (11614367.000.000) 03/28 12:09:08 Image size of job updated: 3524900
+	3442  -  MemoryUsage of job (MB)
+	3524516  -  ResidentSetSize of job (KB)
+...
+006 (11614367.000.000) 03/28 12:14:08 Image size of job updated: 3527804
+	3444  -  MemoryUsage of job (MB)
+	3525756  -  ResidentSetSize of job (KB)
+...
+006 (11614367.000.000) 03/28 12:19:08 Image size of job updated: 3632016
+	3547  -  MemoryUsage of job (MB)
+	3631120  -  ResidentSetSize of job (KB)
+...
+006 (11614367.000.000) 03/28 12:24:10 Image size of job updated: 3793488
+	3705  -  MemoryUsage of job (MB)
+	3792928  -  ResidentSetSize of job (KB)
+...
+006 (11614367.000.000) 03/28 12:29:10 Image size of job updated: 3971100
+	3878  -  MemoryUsage of job (MB)
+	3970720  -  ResidentSetSize of job (KB)
+...
+006 (11614367.000.000) 03/28 12:34:10 Image size of job updated: 4145632
+	4047  -  MemoryUsage of job (MB)
+	4143584  -  ResidentSetSize of job (KB)
+...
+006 (11614367.000.000) 03/28 12:39:11 Image size of job updated: 4300816
+	4199  -  MemoryUsage of job (MB)
+	4298768  -  ResidentSetSize of job (KB)
+...
+006 (11614367.000.000) 03/28 12:44:12 Image size of job updated: 4330696
+	4228  -  MemoryUsage of job (MB)
+	4328656  -  ResidentSetSize of job (KB)
+...
+006 (11614367.000.000) 03/28 12:49:13 Image size of job updated: 4330696
+	4228  -  MemoryUsage of job (MB)
+	4329068  -  ResidentSetSize of job (KB)
+...
+006 (11614367.000.000) 03/28 12:54:13 Image size of job updated: 4330696
+	4228  -  MemoryUsage of job (MB)
+	4329096  -  ResidentSetSize of job (KB)
+...
+006 (11614367.000.000) 03/28 12:59:13 Image size of job updated: 4330696
+	4229  -  MemoryUsage of job (MB)
+	4329592  -  ResidentSetSize of job (KB)
+...
+006 (11614367.000.000) 03/28 13:04:14 Image size of job updated: 4330696
+	4229  -  MemoryUsage of job (MB)
+	4329748  -  ResidentSetSize of job (KB)
+...
+040 (11614367.000.000) 03/28 20:34:17 Started transferring output files
+...
+040 (11614367.000.000) 03/28 20:34:18 Finished transferring output files
+...
+005 (11614367.000.000) 03/28 20:34:18 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 04:10:19, Sys 0 04:28:56  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 04:10:19, Sys 0 04:28:56  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	5537215  -  Run Bytes Sent By Job
+	83941  -  Run Bytes Received By Job
+	5537215  -  Total Bytes Sent By Job
+	83941  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated Assigned
+	   Cpus                 :     1.00        1         1 
+	   Disk (KB)            :  5541         100   1171382 
+	   Gpus (Average)       :     0.64        1         1 "GPU-eec0bab3"
+	   GpusMemory (MB)      :  7822                       
+	   Memory (MB)          :  4229        2000      2000 
+
+	Job terminated of its own accord at 2024-03-28T19:34:17Z.
+...
