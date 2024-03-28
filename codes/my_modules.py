@@ -15,30 +15,31 @@ class Dummy(nn.Module):
 
 
 class LogTransform(nn.Module):
+    """Returns log-transformed values in range (-inf,inf)
+    if x < eps, then x is clamped to eps
+    Dorukhan Boncukçu
     """
-        Returns natural log-transformed values in range (-inf,inf)
-        if abs(x) < eps, then x is clamped to eps
-        LogTransform ==> log_e(x)      
-        Dorukhan Boncukçu
-        
-    """
-    
-    def __init__(self,mask, eps = 1e-6 ):
-            
-            super(LogTransform, self).__init__()
-            
-            self._mask = mask
-            self.register_buffer('_eps', torch.tensor(eps))
 
-    
+    def __init__(self, mask, base=None, eps=1e-6):
+
+        super(LogTransform, self).__init__()
+
+        self._mask = mask
+        if base is None:
+            self.register_buffer('_base', None)
+        else:
+            self.register_buffer('_base', torch.tensor(base))
+        self.register_buffer('_eps', torch.tensor(eps))
+
     def forward(self, x):
-        
+
         xt = torch.t(x)
         x_ = torch.empty_like(xt)
         for idim, dim in enumerate(xt):
             if self._mask[idim]:
-                dim = torch.clamp(torch.abs(dim), min = self._eps)
-                x_[idim] = torch.log10(dim)                
+                dim = torch.clamp(dim, min=self._eps)
+                x_[idim] = torch.log(dim)
+                if self._base is not None: x_[idim] /= torch.log(self._base)
             else:
                 x_[idim] = dim
 
@@ -46,30 +47,32 @@ class LogTransform(nn.Module):
 
 
 class LogTransformBack(nn.Module):
+    """Dorukhan Boncukçu
     """
-        Dorukhan Boncukçu
-    """
-    
-    def __init__(self,mask ):
-            
-            super(LogTransformBack, self).__init__()
-            self._mask = mask
-    
+
+    def __init__(self, mask, base=None):
+
+        super(LogTransformBack, self).__init__()
+        self._mask = mask
+        if base is None:
+            self.register_buffer('_base', None)
+        else:
+            self.register_buffer('_base', torch.tensor(base))
+
     def forward(self, x):
-        
+
         xt = torch.t(x)
         x_ = torch.empty_like(xt)
         for idim, dim in enumerate(xt):
             if self._mask[idim]:
-                                
-                x_[idim] = torch.pow(10, dim)
-                #x_[idim] = torch.exp(dim)
-               
+                if self._base is None:
+                    x_[idim] = torch.exp(dim)
+                else:
+                    x_[idim] = torch.pow(self._base, dim)
             else:
                 x_[idim] = dim
 
         return torch.t(x_)
-
 
 
 class TanhTransform(nn.Module):
@@ -180,6 +183,60 @@ class LogitTransformBack(nn.Module):
         return torch.t(x_)
 
 
+class FisherTransform(nn.Module):
+    """
+    Applies the Fisher transform to the input data.
+    Transforms data using (1/2)*log((1+x)/(1-x))  for x in range (-1, 1).
+    This transformation is applied selectively based on a provided mask.
+    """
+
+    def __init__(self, mask, eps=1e-6, tiny=1e-6, factor=0.5, onnxcompatible=False):
+        super(FisherTransform, self).__init__()
+
+        self._mask = mask
+        self.register_buffer('_eps', torch.tensor(eps))
+        self.register_buffer('_tiny', torch.tensor(tiny))
+        self.register_buffer('_factor', torch.tensor(factor))
+        self._onnxcompatible = onnxcompatible
+
+    def forward(self, x):
+        xt = torch.t(x)
+        x_ = torch.empty_like(xt)
+        for idim, dim in enumerate(xt):
+            if self._mask[idim]:
+                dim = torch.clamp(dim, min=-1.+self._eps, max=1.-self._eps)  # Ensure x is in the (-1, 1) range
+                x_[idim] = self._factor * torch.log((1 + dim) / (1 - dim))
+            else:
+                x_[idim] = dim
+
+        return torch.t(x_)
+
+
+class FisherTransformBack(nn.Module):
+    """
+    Applies the inverse of the Fisher transform to the input data.
+    Transforms data back using the inverse function of the Fisher transformation.
+    This transformation is applied selectively based on a provided mask.
+    """
+
+    def __init__(self, mask, factor=0.5):
+        super(FisherTransformBack, self).__init__()
+
+        self._mask = mask
+        self.register_buffer('_factor', torch.tensor(factor))
+
+    def forward(self, x):
+        xt = torch.t(x)
+        x_ = torch.empty_like(xt)
+        for idim, dim in enumerate(xt):
+            if self._mask[idim]:
+                x_[idim] = (torch.exp( dim / self._factor) - 1) / (torch.exp( dim / self._factor) + 1)
+            else:
+                x_[idim] = dim
+
+        return torch.t(x_)
+
+
 class OneHotEncode(nn.Module):
     def __init__(self, source_idx, target_vals, eps=1.):
 
@@ -232,8 +289,17 @@ class LinearWithSkipConnection(nn.Module):
             self._linears.append(nn.Linear(in_features=self._in_features if i == 0 else self._hidden_features,
                                            out_features=self._out_features if i == self._nskiplayers-1 else self._hidden_features))
 
-            nn.init.normal_(self._linears[-1].weight, mean=0.0, std=0.001)
-            nn.init.normal_(self._linears[-1].bias, mean=0.0, std=0.001)
+            # nn.init.normal_(self._linears[-1].weight, mean=0.0, std=0.001)
+            # nn.init.normal_(self._linears[-1].bias, mean=0.0, std=0.001)
+
+            # nn.init.zeros_(self._linears[-1].weight)
+            # nn.init.zeros_(self._linears[-1].bias)
+
+            if i == 0:
+                nn.init.kaiming_normal_(self._linears[-1].weight, a=0.01, mode='fan_in', nonlinearity='leaky_relu')
+            else:
+                nn.init.zeros_(self._linears[-1].weight)
+            nn.init.zeros_(self._linears[-1].bias)
 
             self._leakyrelus.append(nn.LeakyReLU())
 

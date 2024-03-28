@@ -1,14 +1,17 @@
 #!/bin/bash
 source /cvmfs/sft.cern.ch/lcg/views/LCG_101cuda/x86_64-centos7-gcc8-opt/setup.sh
+#source /afs/cern.ch/user/d/dboncukc/.bash_profile
 export PYTHONPATH=./site-packages:$PYTHONPATH
 
-export outputDirName="test100_log10_recJetpt"
+export outputDirName="epoch100_log10"
+
+export trainingId="log10"
+
+export isTest="False"
 
 echo $outputDirName
-
 mkdir /eos/user/d/dboncukc/fastsim/$outputDirName
+mkdir /eos/user/d/dboncukc/fastsim/$outputDirName/codes
+cp *.py /eos/user/d/dboncukc/fastsim/$outputDirName/codes/
 
-cp train.py /eos/user/d/dboncukc/fastsim/$outputDirName/train.py
-cp my_modules.py /eos/user/d/dboncukc/fastsim/$outputDirName/my_modules.py
-
-python train.py
+python trainRegression_Jet.py

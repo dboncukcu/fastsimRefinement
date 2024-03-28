@@ -1,5 +1,0 @@
-mkdir: cannot create directory '/eos/user/d/dboncukc/fastsim/test_log1_recJetpt': File exists
-Traceback (most recent call last):
-  File "train.py", line 504, in <module>
-    if any(logmaskWithoutParameters): model.add_module('LogTransformBack', LogTransformBack(mask=logmaskWithoutParameters, norm=LOGTRANSFORM_NORM, eps = tiny))
-TypeError: __init__() got an unexpected keyword argument 'eps'

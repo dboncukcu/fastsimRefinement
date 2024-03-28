@@ -1,4 +1,5 @@
 
+
 import os
 import csv
 from datetime import datetime
@@ -8,16 +9,19 @@ import numpy as np
 import seaborn as sns
 import pandas as pd
 from matplotlib import colors
+
 import torch
 torch.set_printoptions(edgeitems=5, linewidth=160)
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print("selected device is", device)
+
 import my_mmd
 import my_mdmm
 from my_modules import *
 
-#VARIABLES
-outputDirName = os.getenv("outputDirName","test")
+outputDirName = os.getenv("outputDirName","test") # for condorjob
+
+
 
 def snapshot(_inp, _target, _out, _epoch, is_transformed=False, plot_kde=True):
 
@@ -189,11 +193,15 @@ def snapshot(_inp, _target, _out, _epoch, is_transformed=False, plot_kde=True):
 # ##### ##### #####
 '''
 
-training_id = datetime.today().strftime('%Y%m%d') + ''  # will be used as an identifier in the output filenames, adapt if needed
+#training_id = datetime.today().strftime('%Y%m%d') + ''  # will be used as an identifier in the output filenames, adapt if needed
+
+training_id = os.getenv("trainingId",datetime.today().strftime('%Y%m%d') + '' ) # for condorjob
 
 
+is_test = os.getenv("isTest","False") == "True" # for condorjob
 
-is_test = False
+print("Test Mode: ",is_test)
+
 is_verbose = True
 
 save_snapshots = False  # save snapshot plots to monitor training progress
@@ -216,11 +224,10 @@ snapshot_plot_kde = True
 '''
 
 # the input file is expected to contain a tree filled with jet triplets: RecJet_x_FastSim, RecJet_x_FullSim, GenJet_y,...
-in_path = '/home/refi/data/littletree_CMSSW_10_6_X_2023-04-23-0000_T1tttt_SMS-T1tttt_mGl-1500_mLSP-100_13TeV-pythia8_cfi_GEN_SIM_RECOBEFMIX_DIGI_L1_DIGI2RAW_L1Reco_RECO_PAT_NANO_coffea_new.root'
+#in_path = '/nfs/dust/cms/user/wolfmor/Refinement/littletree_CMSSW_12_6_0_TTbar_step2_SIM_RECOBEFMIX_DIGI_L1_DIGI2RAW_L1Reco_RECO_PAT_NANO_coffea_new.root'
+in_path = '/eos/cms/store/group/comm_fastsim/RefinementTraining/T1ttttRun3_CMSSW_13_0_13/mc_fullfast_T1tttt_JetsMuonsElectronsPhotonsTausEvents.root'
 in_tree = 'tJet'
-preselection = 'GenJet_nearest_dR>0.5&&RecJet_nearest_dR_FastSim>0.5&&RecJet_nearest_dR_FullSim>0.5'
-
-
+preselection = "1"#'GenJet_nearest_dR>0.5&&RecJet_nearest_dR_FastSim>0.5&&RecJet_nearest_dR_FullSim>0.5'
 
 out_path_eos = '/eos/user/d/dboncukc/fastsim/'+outputDirName+"/"
 
@@ -263,23 +270,31 @@ logitfactor = 1.
 '''
 
 if is_test: num_epochs = 2
-else: num_epochs = 100
+else: 
+    #num_epochs = 1000
+    num_epochs = 100    
+    #num_epochs = 2
 
 learning_rate = 1e-5
 lr_scheduler_gamma = 1.
 
-if is_test: batch_size = 2048 # 4096
-else: batch_size = 4096
+if is_test: batch_size = 2048
+else: batch_size = 2048
 
+#batch_size = 2048
 
 if is_test: num_batches = [2, 2, 2]
 else: num_batches = [500, 100, 200]
+
 
 '''
 # ##### ##### ##### ##### ##### ##### #####
 # define variables and transformations
 # ##### ##### ##### ##### ##### ##### #####
 '''
+
+logBase = 10
+tanhNorm = 200
 
 onehotencode = ('RecJet_hadronFlavour_FastSim', [0, 4, 5])  # add one-hot-encoding for given input variable with the given values
 # onehotencode = False
@@ -292,40 +307,21 @@ PARAMETERS = [
 
 # if using DeepJetConstraint the DeepJet transformations have to be explicitly adapted in the DeepJetConstraint module
 VARIABLES = [
-    ('RecJet_pt_CLASS', ["tanh200","logit"]),
+    ('RecJet_pt_CLASS', ["log"]),
     ('RecJet_btagDeepFlavB_CLASS', ['logit']),
     ('RecJet_btagDeepFlavCvB_CLASS', ['logit']),
     ('RecJet_btagDeepFlavCvL_CLASS', ['logit']),
     ('RecJet_btagDeepFlavQG_CLASS', ['logit'])
 ]
 
-TANHTRANSFORM_NORM = 500.
-
-
 spectators = [
+    'GenJet_pt',
     'GenJet_eta',
     'GenJet_phi',
     'GenJet_mass',
     'GenJet_hadronFlavour',
     'GenJet_partonFlavour',
-    'GenJet_nearest_dR',
-    'GenJet_nearest_pt',
-    #'RecJet_pt_CLASS',
-    'RecJet_eta_CLASS',
-    'RecJet_phi_CLASS',
-    'RecJet_mass_CLASS',
-    'RecJet_hadronFlavour_CLASS',
-    'RecJet_partonFlavour_CLASS',
-    'RecJet_jetId_CLASS',
 
-    'RecJet_response_CLASS',
-
-    'RecJet_event_nJet_CLASS',
-    'RecJet_event_PV_npvsGood_CLASS',
-    'RecJet_event_MET_pt_CLASS',
-
-    'RecJet_nearest_dR_CLASS',
-    'RecJet_nearest_pt_CLASS',
 ]
 excludespectators = [var[0] for var in PARAMETERS + VARIABLES]
 SPECTATORS = [
@@ -346,10 +342,17 @@ ntrain = num_batches[0] * batch_size
 nval = num_batches[1] * batch_size
 ntest = num_batches[2] * batch_size
 
+print('ntest', ntest)
 if ntest == 0:
     rdf = ROOT.RDataFrame(in_tree, in_path).Filter(preselection)
 else:
     rdf = ROOT.RDataFrame(in_tree, in_path).Filter(preselection).Range(ntrain + nval + ntest)
+
+#print('looking for something like print branches', dir(rdf))
+#column_names = rdf.GetColumnNames()
+#print("Branches/Columns in the DataFrame:")
+#for name in column_names:
+#    print(name)
 
 dict_input = rdf.AsNumpy([n[0].replace('CLASS', 'FastSim') for n in PARAMETERS + VARIABLES if '_ohe_' not in n[0]])
 dict_target = rdf.AsNumpy([n[0].replace('CLASS', 'FullSim') for n in VARIABLES])
@@ -413,6 +416,7 @@ tanh200maskWithoutParameters = [int('tanh200' in name[1]) for name in VARIABLES]
 logmaskWithParameters = [int('log' in name[1]) for name in PARAMETERS + VARIABLES]
 logmaskWithoutParameters = [int('log' in name[1]) for name in VARIABLES]
 
+
 # without artificial increase due to one-hot-encoding
 real_parameters = PARAMETERS.copy()
 real_len_parameters = len(PARAMETERS)
@@ -449,8 +453,8 @@ nodes_hidden_layer_list = [nodes_hidden_layer for _ in range(num_skipblocks)]
 
 model = nn.Sequential()
 
-if any(logmaskWithParameters): model.add_module('LogTransform', LogTransform(mask=logmaskWithParameters, eps = tiny))
-if any(tanh200maskWithParameters): model.add_module('Tanh200Transform', TanhTransform(mask=tanh200maskWithParameters, norm=TANHTRANSFORM_NORM))
+if any(logmaskWithParameters): model.add_module('LogTransform', LogTransform(mask=logmaskWithParameters, base = logBase))
+if any(tanh200maskWithParameters): model.add_module('Tanh200Transform', TanhTransform(mask=tanh200maskWithParameters, norm=tanhNorm))
 if any(logitmaskWithParameters): model.add_module('LogitTransform', LogitTransform(mask=logitmaskWithParameters, factor=logitfactor, onnxcompatible=onnxcompatible, eps=epsilon, tiny=tiny))
 
 if onehotencode: model.add_module('OneHotEncode_' + onehotencode[0], OneHotEncode(source_idx=onehotencode[2], target_vals=onehotencode[1]))
@@ -492,8 +496,8 @@ for k in range(num_skipblocks - 1):
                                                                                           dropout=dropout))
 
 if any(logitmaskWithoutParameters): model.add_module('LogitTransformBack', LogitTransformBack(mask=logitmaskWithoutParameters, factor=logitfactor))
-if any(tanh200maskWithoutParameters): model.add_module('Tanh200TransformBack', TanhTransformBack(mask=tanh200maskWithoutParameters, norm=TANHTRANSFORM_NORM))
-if any(logmaskWithoutParameters): model.add_module('LogTransformBack', LogTransformBack(mask=logmaskWithoutParameters))
+if any(tanh200maskWithoutParameters): model.add_module('Tanh200TransformBack', TanhTransformBack(mask=tanh200maskWithoutParameters, norm=tanhNorm))
+if any(logmaskWithoutParameters): model.add_module('LogTransformBack', LogTransformBack(mask=logmaskWithoutParameters, base=logBase))
 
 if castto16bit:
     model.add_module('CastTo16Bit', CastTo16Bit())
@@ -513,8 +517,8 @@ print(sum(p.numel() for p in model.parameters() if p.requires_grad), 'trainable 
 calculatelosseswithtransformedvariables = True
 includeparametersinmmd = True
 
-mmdfixsigma_fn = my_mmd.MMD(kernel_mul=10., kernel_num=5, fix_sigma=1.)
-mmd_fn = my_mmd.MMD(kernel_mul=10., kernel_num=5)
+mmdfixsigma_fn = my_mmd.MMD(kernel_mul=5., kernel_num=5,calculate_fix_sigma_for_each_dimension_with_target_only=True)# fix_sigma=true by default
+mmd_fn = my_mmd.MMD(kernel_mul=2., kernel_num=3, one_sided_bandwidth=True, calculate_fix_sigma_for_each_dimension_with_target_only=True)
 mse_fn = torch.nn.MSELoss()
 mae_fn = torch.nn.L1Loss()
 huber_fn = torch.nn.HuberLoss(delta=0.1)
@@ -549,22 +553,22 @@ loss_fns = {
     #                                                 if includeparametersinmmd else None,
     #                                                 mask=inp_[:, hadronFlavourIndex] == 5),
 
-    # 'mmdfixsigma_output_target_hadflavSum':
-    #     lambda inp_, out_, target_: hadflav_fraction_0 * mmdfixsigma_fn(out_, target_,
-    #                                                                      parameters=(OneHotEncode(source_idx=onehotencode[2], target_vals=onehotencode[1]).forward(inp_)[:, :len(PARAMETERS)]
-    #                                                                                  if onehotencode else inp_[:, :len(PARAMETERS)])
-    #                                                                      if includeparametersinmmd else None,
-    #                                                                      mask=inp_[:, hadronFlavourIndex] == 0) +
-    #                                 hadflav_fraction_4 * mmdfixsigma_fn(out_, target_,
-    #                                                                      parameters=(OneHotEncode(source_idx=onehotencode[2], target_vals=onehotencode[1]).forward(inp_)[:, :len(PARAMETERS)]
-    #                                                                                  if onehotencode else inp_[:, :len(PARAMETERS)])
-    #                                                                      if includeparametersinmmd else None,
-    #                                                                      mask=inp_[:, hadronFlavourIndex] == 4) +
-    #                                 hadflav_fraction_5 * mmdfixsigma_fn(out_, target_,
-    #                                                                      parameters=(OneHotEncode(source_idx=onehotencode[2], target_vals=onehotencode[1]).forward(inp_)[:, :len(PARAMETERS)]
-    #                                                                                  if onehotencode else inp_[:, :len(PARAMETERS)])
-    #                                                                      if includeparametersinmmd else None,
-    #                                                                      mask=inp_[:, hadronFlavourIndex] == 5),
+    'mmdfixsigma_output_target_hadflavSum':
+        lambda inp_, out_, target_: hadflav_fraction_0 * mmdfixsigma_fn(out_, target_,
+                                                                         parameters=(OneHotEncode(source_idx=onehotencode[2], target_vals=onehotencode[1]).forward(inp_)[:, :len(PARAMETERS)]
+                                                                                     if onehotencode else inp_[:, :len(PARAMETERS)])
+                                                                         if includeparametersinmmd else None,
+                                                                         mask=inp_[:, hadronFlavourIndex] == 0) +
+                                    hadflav_fraction_4 * mmdfixsigma_fn(out_, target_,
+                                                                         parameters=(OneHotEncode(source_idx=onehotencode[2], target_vals=onehotencode[1]).forward(inp_)[:, :len(PARAMETERS)]
+                                                                                     if onehotencode else inp_[:, :len(PARAMETERS)])
+                                                                         if includeparametersinmmd else None,
+                                                                         mask=inp_[:, hadronFlavourIndex] == 4) +
+                                    hadflav_fraction_5 * mmdfixsigma_fn(out_, target_,
+                                                                         parameters=(OneHotEncode(source_idx=onehotencode[2], target_vals=onehotencode[1]).forward(inp_)[:, :len(PARAMETERS)]
+                                                                                     if onehotencode else inp_[:, :len(PARAMETERS)])
+                                                                         if includeparametersinmmd else None,
+                                                                         mask=inp_[:, hadronFlavourIndex] == 5),
 
     'mmd_output_target':
         lambda inp_, out_, target_: mmd_fn(out_, target_,
@@ -657,13 +661,13 @@ nomdmm_loss_scales = {
     'mmdfixsigma_output_target_hadflav0': 0.,
     'mmdfixsigma_output_target_hadflav4': 0.,
     'mmdfixsigma_output_target_hadflav5': 0.,
-    'mmdfixsigma_output_target_hadflavSum': 0.,
+    'mmdfixsigma_output_target_hadflavSum': 1.,
 
     'mmd_output_target': 0.,
     'mmd_output_target_hadflav0': 0.,
     'mmd_output_target_hadflav4': 0.,
     'mmd_output_target_hadflav5': 0.,
-    'mmd_output_target_hadflavSum': 1.,
+    'mmd_output_target_hadflavSum': 0.,
 
     'mse_output_target': 0.,
     'mse_input_output': 0.,
@@ -708,6 +712,14 @@ start_points_validation = {loss: 0. for loss in loss_fns}
 end_points_train = {loss: 0. for loss in loss_fns}
 end_points_validation = {loss: 0. for loss in loss_fns}
 iteration = 0
+
+
+for name, param in model.named_parameters():
+    print(f'{name} is on {param.device}')
+
+
+
+
 for epoch in range(num_epochs):
 
     if is_verbose:
@@ -729,19 +741,18 @@ for epoch in range(num_epochs):
                 out = model(inp)
 
                 if calculatelosseswithtransformedvariables:
-                    
+
                     if any(logmaskWithParameters):
-                            inp = LogTransform(mask=logmaskWithParameters ,eps=tiny).forward(inp)
+                            inp = LogTransform(mask=logmaskWithParameters ,base=logBase).forward(inp)
                     if any(logmaskWithoutParameters):
-                            target = LogTransform(mask=logmaskWithoutParameters, eps=tiny).forward(target)
-                            out = LogTransform(mask=logmaskWithoutParameters, eps=tiny).forward(out)
-    
+                            target = LogTransform(mask=logmaskWithoutParameters ,base=logBase).forward(target)
+                            out = LogTransform(mask=logmaskWithoutParameters ,base=logBase).forward(out)
 
                     if any(tanh200maskWithParameters):
-                        inp = TanhTransform(mask=tanh200maskWithParameters, norm=TANHTRANSFORM_NORM).forward(inp)
+                        inp = TanhTransform(mask=tanh200maskWithParameters, norm=tanhNorm).forward(inp)
                     if any(tanh200maskWithoutParameters):
-                        target = TanhTransform(mask=tanh200maskWithoutParameters, norm=TANHTRANSFORM_NORM).forward(target)
-                        out = TanhTransform(mask=tanh200maskWithoutParameters, norm=TANHTRANSFORM_NORM).forward(out)
+                        target = TanhTransform(mask=tanh200maskWithoutParameters, norm=tanhNorm).forward(target)
+                        out = TanhTransform(mask=tanh200maskWithoutParameters, norm=tanhNorm).forward(out)
 
                     if any(logitmaskWithParameters):
                         inp = LogitTransform(mask=logitmaskWithParameters, factor=logitfactor, onnxcompatible=False, eps=epsilon, tiny=tiny).forward(inp)
@@ -796,21 +807,12 @@ for epoch in range(num_epochs):
                         target_list = torch.cat((target_list, target))
                         out_list = torch.cat((out_list, out))
 
-
-                    if any(logmaskWithParameters):
-                        inp = LogTransform(mask=logmaskWithParameters, eps=tiny).forward(inp)
-                    if any(logmaskWithoutParameters):
-                        target = LogTransform(mask=logmaskWithoutParameters ,eps=tiny).forward(target)
-                        out = LogTransform(mask=logmaskWithoutParameters, eps=tiny).forward(out)
-
-
                     if any(tanh200maskWithParameters):
-                        inp = TanhTransform(mask=tanh200maskWithParameters, norm=TANHTRANSFORM_NORM).forward(inp)
+                        inp = TanhTransform(mask=tanh200maskWithParameters, norm=200).forward(inp)
                     if any(tanh200maskWithoutParameters):
-                        target = TanhTransform(mask=tanh200maskWithoutParameters, norm=TANHTRANSFORM_NORM).forward(target)
-                        out = TanhTransform(mask=tanh200maskWithoutParameters, norm=TANHTRANSFORM_NORM).forward(out)
-                        
-                        
+                        target = TanhTransform(mask=tanh200maskWithoutParameters, norm=200).forward(target)
+                        out = TanhTransform(mask=tanh200maskWithoutParameters, norm=200).forward(out)
+
                     if any(logitmaskWithParameters):
                         inp = LogitTransform(mask=logitmaskWithParameters, factor=logitfactor, onnxcompatible=False, eps=epsilon, tiny=tiny).forward(inp)
                     if any(logitmaskWithoutParameters):
@@ -843,18 +845,18 @@ for epoch in range(num_epochs):
         out = model(inp)
 
         if calculatelosseswithtransformedvariables:
-
+            
             if any(logmaskWithParameters):
-                inp = LogTransform(mask=logmaskWithParameters,eps=tiny).forward(inp)
+                inp = LogTransform(mask=logmaskWithParameters ,base=logBase).forward(inp)
             if any(logmaskWithoutParameters):
-                target = LogTransform(mask=logmaskWithoutParameters ,eps=tiny).forward(target)
-                out = LogTransform(mask=logmaskWithoutParameters ,eps=tiny).forward(out)
-
+                target = LogTransform(mask=logmaskWithoutParameters ,base=logBase).forward(target)
+                out = LogTransform(mask=logmaskWithoutParameters ,base=logBase).forward(out)
+                
             if any(tanh200maskWithParameters):
-                inp = TanhTransform(mask=tanh200maskWithParameters, norm=TANHTRANSFORM_NORM).forward(inp)
+                inp = TanhTransform(mask=tanh200maskWithParameters, norm=tanhNorm).forward(inp)
             if any(tanh200maskWithoutParameters):
-                target = TanhTransform(mask=tanh200maskWithoutParameters, norm=TANHTRANSFORM_NORM).forward(target)
-                out = TanhTransform(mask=tanh200maskWithoutParameters, norm=TANHTRANSFORM_NORM).forward(out)
+                target = TanhTransform(mask=tanh200maskWithoutParameters, norm=tanhNorm).forward(target)
+                out = TanhTransform(mask=tanh200maskWithoutParameters, norm=tanhNorm).forward(out)
 
             if any(logitmaskWithParameters):
                 inp = LogitTransform(mask=logitmaskWithParameters, factor=logitfactor, onnxcompatible=False, eps=epsilon, tiny=tiny).forward(inp)
@@ -877,6 +879,8 @@ for epoch in range(num_epochs):
                 else:
                     train_loss += nomdmm_loss_scales[loss] * loss_vals[loss]
 
+        print("train_loss:",train_loss.device)
+        print(train_loss)
         train_loss.backward()
 
         trainer.step()
@@ -916,21 +920,18 @@ for epoch in range(num_epochs):
                     out_list = torch.cat((out_list, out))
 
             if calculatelosseswithtransformedvariables:
-
-
+                
                 if any(logmaskWithParameters):
-                    inp = LogTransform(mask=logmaskWithParameters ,eps=tiny).forward(inp)
+                    inp = LogTransform(mask=logmaskWithParameters ,base=logBase).forward(inp)
                 if any(logmaskWithoutParameters):
-                    target = LogTransform(mask=logmaskWithoutParameters, eps=tiny).forward(target)
-                    out = LogTransform(mask=logmaskWithoutParameters, eps=tiny).forward(out)
-
-
+                    target = LogTransform(mask=logmaskWithoutParameters ,base=logBase).forward(target)
+                    out = LogTransform(mask=logmaskWithoutParameters ,base=logBase).forward(out)
+                
                 if any(tanh200maskWithParameters):
-                    inp = TanhTransform(mask=tanh200maskWithParameters, norm=TANHTRANSFORM_NORM).forward(inp)
+                    inp = TanhTransform(mask=tanh200maskWithParameters, norm=tanhNorm).forward(inp)
                 if any(tanh200maskWithoutParameters):
-                    target = TanhTransform(mask=tanh200maskWithoutParameters, norm=TANHTRANSFORM_NORM).forward(target)
-                    out = TanhTransform(mask=tanh200maskWithoutParameters, norm=TANHTRANSFORM_NORM).forward(out)
-
+                    target = TanhTransform(mask=tanh200maskWithoutParameters, norm=tanhNorm).forward(target)
+                    out = TanhTransform(mask=tanh200maskWithoutParameters, norm=tanhNorm).forward(out)
 
                 if any(logitmaskWithParameters):
                     inp = LogitTransform(mask=logitmaskWithParameters, factor=logitfactor, onnxcompatible=False, eps=epsilon, tiny=tiny).forward(inp)
@@ -991,6 +992,7 @@ for epoch in range(num_epochs):
         print('\nend points validation')
         print(', '.join([loss for loss in loss_fns]))
         print(', '.join([str(end_points_validation[loss]) for loss in loss_fns]))
+        print('\nend of cheeky loop')
 
 
 '''
@@ -998,6 +1000,7 @@ for epoch in range(num_epochs):
 # save model
 # ##### ##### #####
 '''
+print('\nsaving model')
 
 m = torch.jit.script(model)
 torch.jit.save(m, out_path.replace('output', 'model').replace('.root', '.pt'))
@@ -1076,12 +1079,10 @@ out_rdf = ROOT.RDF.MakeNumpyDataFrame(out_dict)
 out_rdf.Snapshot('tJet', out_path)
 print('just created ' + out_path)
 
-
 csvfile_train.close()
 print('just created ' + csvfile_train.name)
 
 csvfile_validation.close()
 print('just created ' + csvfile_validation.name)
-
 
 print("\n\n..::The Story has been ended::..\n")
