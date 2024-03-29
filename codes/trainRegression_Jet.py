@@ -271,8 +271,8 @@ logitfactor = 1.
 
 if is_test: num_epochs = 2
 else: 
-    #num_epochs = 1000
-    num_epochs = 100    
+    num_epochs = 1000
+    #num_epochs = 100    
     #num_epochs = 2
 
 learning_rate = 1e-5
@@ -294,7 +294,7 @@ else: num_batches = [500, 100, 200]
 '''
 
 logBase = None
-tanhNorm = 500
+tanhNorm = 800
 
 onehotencode = ('RecJet_hadronFlavour_FastSim', [0, 4, 5])  # add one-hot-encoding for given input variable with the given values
 # onehotencode = False
@@ -307,7 +307,7 @@ PARAMETERS = [
 
 # if using DeepJetConstraint the DeepJet transformations have to be explicitly adapted in the DeepJetConstraint module
 VARIABLES = [
-    ('RecJet_pt_CLASS', ['tanh200', 'logit']),
+    ('RecJet_pt_CLASS', ['tanh200','logit']),
     ('RecJet_btagDeepFlavB_CLASS', ['logit']),
     ('RecJet_btagDeepFlavCvB_CLASS', ['logit']),
     ('RecJet_btagDeepFlavCvL_CLASS', ['logit']),

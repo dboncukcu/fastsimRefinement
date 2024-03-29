@@ -5,7 +5,7 @@ error      = output/err/$(Cluster)_$(Process).err
 log        = output/log/$(Cluster)_$(Process).log
 
 MY.WantOS = "el7"
-+JobFlavour = "tomorrow"
++JobFlavour = "nextweek"
 request_gpus            = 1
 should_transfer_files = YES
 transfer_input_files = codes/checkONNX.py,codes/convertONNX.py,codes/my_mdmm.py,codes/my_mmd.py,codes/my_modules.py,codes/trainRegression_Jet.py
