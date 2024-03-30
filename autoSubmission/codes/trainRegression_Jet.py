@@ -222,9 +222,9 @@ snapshot_plot_kde = True
 
 # the input file is expected to contain a tree filled with jet triplets: RecJet_x_FastSim, RecJet_x_FullSim, GenJet_y,...
 #in_path = '/nfs/dust/cms/user/wolfmor/Refinement/littletree_CMSSW_12_6_0_TTbar_step2_SIM_RECOBEFMIX_DIGI_L1_DIGI2RAW_L1Reco_RECO_PAT_NANO_coffea_new.root'
-in_path = '/eos/cms/store/group/comm_fastsim/RefinementTraining/T1ttttRun3_CMSSW_13_0_13/mc_fullfast_T1tttt_JetsMuonsElectronsPhotonsTausEvents.root'
-in_tree = 'tJet'
-preselection = "1"#'GenJet_nearest_dR>0.5&&RecJet_nearest_dR_FastSim>0.5&&RecJet_nearest_dR_FullSim>0.5'
+in_path = trainConfig["inputFile"]
+in_tree = trainConfig["treeName"]
+preselection = trainConfig["preSelection"]#'GenJet_nearest_dR>0.5&&RecJet_nearest_dR_FastSim>0.5&&RecJet_nearest_dR_FullSim>0.5'
 
 out_path_eos = trainConfig["outdir"]+trainConfig["trainingName"]+"/"
 

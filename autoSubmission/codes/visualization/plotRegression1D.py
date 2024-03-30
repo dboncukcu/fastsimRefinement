@@ -5,10 +5,15 @@ import ROOT
 from plotting import Plotting
 from array import array
 import os
+from trainConfig import config as trainConfig
 
 normalize = True
 
-in_path,training_id = os.getenv("visulazationDir").split(",")
+
+in_path = trainConfig["outdir"]+trainConfig["trainingName"]+"/"
+
+training_id = trainConfig["trainingName"]
+
 
 
 fname = in_path+training_id+'.root'

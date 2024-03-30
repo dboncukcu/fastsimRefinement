@@ -90,7 +90,7 @@ def cp(source, destination):
     return destination_paths
 
 
-def create_submission_file(executableFile, tempTrainDir, inputFiles,jobFlavour):
+def create_submission_file(executableFile, tempTrainDir, inputFiles,jobFlavour, requestGPUs):
     
     template = """
     universe   = vanilla
@@ -101,7 +101,7 @@ def create_submission_file(executableFile, tempTrainDir, inputFiles,jobFlavour):
 
     MY.WantOS = "el7"
     +JobFlavour = "$jobFlavour$"
-    request_gpus            = 1
+    request_gpus            = $requestGPUs$
     should_transfer_files = YES
     transfer_input_files = $inputFiles$
     arguments = $(Cluster) $(Process)
@@ -112,6 +112,7 @@ def create_submission_file(executableFile, tempTrainDir, inputFiles,jobFlavour):
     template = template.replace("$tempTrainDir$", tempTrainDir)
     template = template.replace("$jobFlavour$", jobFlavour)
     template = template.replace("$inputFiles$", ", ".join(inputFiles))
+    template = template.replace("$requestGPUs$", str(requestGPUs))
     file_path = tempTrainDir + "start_train.sub"
     with open(file_path, "w") as file:
         file.write(template)
@@ -122,9 +123,31 @@ def create_executable_file(tempTrainDir,training_outdir):
     #!/bin/bash
     source /cvmfs/sft.cern.ch/lcg/views/LCG_101cuda/x86_64-centos7-gcc8-opt/setup.sh
     export PYTHONPATH=./site-packages:$PYTHONPATH
-    mkdir $training_outdir$/codes
-    cp *.py $training_outdir$/codes/
+    mkdir $training_outdir$codes
+    mkdir $training_outdir$codes/visualization
+    cp *.py $training_outdir$codes/
+    
+    echo "Training..."
     python3 trainRegression_Jet.py
+    
+    echo "plotLearningCurves"
+    python3 plotLearningCurves.py
+
+    echo "plotWeights"
+    python3 plotWeights.py
+
+
+    echo "plotPareto"
+    python3 plotPareto.py
+
+    echo "plotRegression1D"
+    python3 plotRegression1D.py
+
+    echo "plotRegressionCorrelationFactors"
+    python3 plotRegressionCorrelationFactors.py
+
+    echo "All Done"
+    
     """
     template = template.replace("$tempTrainDir$", tempTrainDir)
     template = template.replace("$training_outdir$", training_outdir)

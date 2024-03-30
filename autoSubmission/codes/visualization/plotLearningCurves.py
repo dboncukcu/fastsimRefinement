@@ -3,7 +3,11 @@ import numpy as np
 import matplotlib.lines as mlines
 import matplotlib.pyplot as plt
 import os
-in_path,training_id = os.getenv("visulazationDir").split(",")
+from trainConfig import config as trainConfig
+
+in_path = trainConfig["outdir"]+trainConfig["trainingName"]+"/"
+
+training_id = trainConfig["trainingName"]
 
 def read_csv(filepath):
 

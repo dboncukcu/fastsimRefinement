@@ -2,6 +2,7 @@ import csv
 import numpy as np
 import matplotlib.pyplot as plt
 import os
+from trainConfig import config as trainConfig
 
 def read_csv(filepath):
 
@@ -42,8 +43,9 @@ iszoom = False
 
 # specify the samples with
 
+_in_path = trainConfig["outdir"]+trainConfig["trainingName"]+"/"
 
-_in_path,_training_id = os.getenv("visulazationDir").split(",")
+_training_id = trainConfig["trainingName"]
 
 # (title, training_id, {constraint: epsilon}, linestyle, alpha)
 samples = [

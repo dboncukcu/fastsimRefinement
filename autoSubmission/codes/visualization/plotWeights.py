@@ -2,8 +2,11 @@ import torch
 import numpy as np
 import matplotlib.pyplot as plt
 import os
+from trainConfig import config as trainConfig
 
-in_path,training_id = os.getenv("visulazationDir").split(",")
+in_path = trainConfig["outdir"]+trainConfig["trainingName"]+"/"
+
+training_id = trainConfig["trainingName"]
 
 model_path = in_path+training_id+'.pt'
 out_path =  in_path+ "weights_"+ training_id+'.png'

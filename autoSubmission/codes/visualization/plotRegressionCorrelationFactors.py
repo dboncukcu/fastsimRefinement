@@ -4,13 +4,18 @@
 import ROOT
 from plotting import Plotting
 import os
+from trainConfig import config as trainConfig
+
 rightmargin = 0.19
 zaxistitleoffset = 1.1
 
 onlyupperhalf = True
 diff = 'divide'  # 'subtract'
 
-in_path,training_id = os.getenv("visulazationDir").split(",")
+
+in_path = trainConfig["outdir"]+trainConfig["trainingName"]+"/"
+
+training_id = trainConfig["trainingName"]
 
 
 fin = ROOT.TFile(in_path + training_id+'.root'.replace('TRAININGID', training_id))
