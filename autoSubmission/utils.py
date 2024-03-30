@@ -1,5 +1,6 @@
 import shutil
 import os
+import subprocess
 
 def printc(text, **kwargs):
     colors = {
@@ -94,9 +95,9 @@ def create_submission_file(executableFile, tempTrainDir, inputFiles,jobFlavour):
     template = """
     universe   = vanilla
     executable = $executableFile$
-    output     = $tempTrainDir$/output.out
-    error      = $tempTrainDir$/error.err
-    log        = $tempTrainDir$/log.log
+    output     = $tempTrainDir$output/output.out
+    error      = $tempTrainDir$output/error.err
+    log        = $tempTrainDir$output/log.log
 
     MY.WantOS = "el7"
     +JobFlavour = "$jobFlavour$"
@@ -116,13 +117,16 @@ def create_submission_file(executableFile, tempTrainDir, inputFiles,jobFlavour):
         file.write(template)
         log("Submission file created -> " + file_path, message_type="success")
         
-def create_executable_file(tempTrainDir):
+def create_executable_file(tempTrainDir,training_outdir):
     template = """
     #!/bin/bash
     source /cvmfs/sft.cern.ch/lcg/views/LCG_101cuda/x86_64-centos7-gcc8-opt/setup.sh
     export PYTHONPATH=./site-packages:$PYTHONPATH
+    cp $tempTrainDir$/*.py $training_outdir$
     python trainRegression_Jet.py
     """
+    template = template.replace("$tempTrainDir$", tempTrainDir)
+    template = template.replace("$training_outdir$", training_outdir)
     file_path = tempTrainDir + "train.sh"
     with open(file_path, "w") as file:
         file.write(template)
@@ -166,4 +170,13 @@ config =  {
     with open(file_path, "w") as file:
         file.write(template)
         log("Train Config file created -> " + file_path , message_type="success")
-        
+
+def condor_submit(tempTrainDir):
+    command = ["condor_submit", tempTrainDir + "start_train.sub"]
+    process = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    if process.returncode == 0:
+        log("Job has been succesfully submitted:\n", message_type="success_bg", end="")
+        log(process.stdout)
+    else:
+        log("An error has been accured:\n", message_type="error_bg", end="")
+        log(process.stderr)

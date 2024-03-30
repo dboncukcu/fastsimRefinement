@@ -1,7 +1,7 @@
 
 
 training_config = {
-    "outdir" : "../testeos/fastsim/", #"/eos/user/d/dboncukc/fastsim/",
+    "outdir" : "/eos/user/d/dboncukc/fastsimTest/", #"/eos/user/d/dboncukc/fastsim/",
     "trainingName": "epoch1000_tanh800_logit",
     "description": "epoch1000_tanh800_logit",
     "jobFlavour" : "espresso",
@@ -78,7 +78,7 @@ if os.path.exists(training_outdir):
     training_outdir = new_folder_path + "/"
     training_temp_dir = temp_directory + new_folder_path.split("/")[-1] + "/"
 else:
-    log("Created training output directory", message_type="success")
+    log("Created training output directory, " + training_outdir, message_type="success")
     os.makedirs(training_outdir)
     training_temp_dir = temp_directory + training_outdir.split("/")[-1] + "/"
 training_config["outdir"] = training_outdir    
@@ -93,11 +93,12 @@ temp_copied_files_paths = cp(training_files, training_temp_dir)
 log("_"*50,message_type="debug") # create submission file
 create_submission_file(training_temp_dir + "train.sh", training_temp_dir, temp_copied_files_paths, training_config["jobFlavour"])
 log("_"*50,message_type="debug") # create executable file
-create_executable_file(training_temp_dir)
+create_executable_file(training_temp_dir,training_outdir)
 log("_"*50,message_type="debug") # create config file for training
 create_config_file(training_temp_dir, training_config)
-log("_"*50,message_type="debug") # create config file for training
-
+log("_"*50,message_type="debug") # submit job
+condor_submit(training_temp_dir)
+log("_"*50,message_type="debug")
 # prepare training files
 
 
