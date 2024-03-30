@@ -123,9 +123,9 @@ def create_executable_file(tempTrainDir,training_outdir):
     #!/bin/bash
     source /cvmfs/sft.cern.ch/lcg/views/LCG_101cuda/x86_64-centos7-gcc8-opt/setup.sh
     export PYTHONPATH=./site-packages:$PYTHONPATH
-    mkdir $training_outdir$codes
-    mkdir $training_outdir$plots
-    cp *.py $training_outdir$codes/
+    mkdir $training_outdir$/codes
+    mkdir $training_outdir$/plots
+    cp *.py $training_outdir$/codes/
     
     echo "Training..."
     python3 trainRegression_Jet.py

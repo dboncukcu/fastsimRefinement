@@ -233,7 +233,7 @@ for category, files in plot_categories.items():
             plot_cards_html += '            <div class="col-md-6">\n'
             plot_cards_html += f'                <div class="card">\n'
             plot_cards_html += f'                    <div class="card-header">{file}</div>\n'
-            plot_cards_html += f'                    <img src="{plot_path}" class="img-fluid plot-img" alt="{file}">\n'
+            plot_cards_html += f'                    <img src="{"/".join(plots_dir.split("/")[-2:])}" class="img-fluid plot-img" alt="{file}">\n'
             plot_cards_html += '                </div>\n'
             plot_cards_html += '            </div>\n'
         plot_cards_html += '        </div>\n'
