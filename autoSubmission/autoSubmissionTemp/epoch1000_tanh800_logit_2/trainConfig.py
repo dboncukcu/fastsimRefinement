@@ -1,7 +1,7 @@
 
 config =  {
-    "outdir" : "/eos/user/d/dboncukc/fastsimTest/epoch1000_tanh800_logit",
-    "trainingName": "epoch1000_tanh800_logit",
+    "outdir" : "/eos/user/d/dboncukc/fastsimTest/",
+    "trainingName": "epoch1000_tanh800_logit_2",
     "description": "epoch1000_tanh800_logit",
     "jobFlavour" : "espresso",
     "isTest" : False,

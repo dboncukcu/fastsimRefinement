@@ -5,7 +5,7 @@ training_config = {
     "trainingName": "epoch1000_tanh800_logit",
     "description": "epoch1000_tanh800_logit",
     "jobFlavour" : "espresso",
-    "isTest" : False,
+    "isTest" : True,
     # if not isTest, the following parameters are used
     "nEpochs" : 1000, 
     "batchSize" : 2048,
@@ -81,7 +81,7 @@ else:
     log("Created training output directory, " + training_outdir, message_type="success")
     os.makedirs(training_outdir)
     training_temp_dir = temp_directory + training_outdir.split("/")[-1] + "/"
-training_config["outdir"] = training_outdir    
+training_config["trainingName"] = new_folder_path.split("/")[-1]    
 
 log("_"*50,message_type="debug") # create training temp directory
 if not os.path.exists(training_temp_dir):
@@ -90,6 +90,7 @@ if not os.path.exists(training_temp_dir):
     os.makedirs(training_temp_dir + "/output")
 log("_"*50,message_type="debug") # copy files to training temp directory
 temp_copied_files_paths = cp(training_files, training_temp_dir)
+temp_copied_files_paths.append(training_temp_dir + "trainConfig.py")
 log("_"*50,message_type="debug") # create submission file
 create_submission_file(training_temp_dir + "train.sh", training_temp_dir, temp_copied_files_paths, training_config["jobFlavour"])
 log("_"*50,message_type="debug") # create executable file

@@ -1,0 +1,15 @@
+
+    universe   = vanilla
+    executable = autoSubmissionTemp/epoch1000_tanh800_logit_1/train.sh
+    output     = autoSubmissionTemp/epoch1000_tanh800_logit_1/output/output.out
+    error      = autoSubmissionTemp/epoch1000_tanh800_logit_1/output/error.err
+    log        = autoSubmissionTemp/epoch1000_tanh800_logit_1/output/log.log
+
+    MY.WantOS = "el7"
+    +JobFlavour = "espresso"
+    request_gpus            = 0
+    should_transfer_files = YES
+    transfer_input_files = /afs/cern.ch/user/d/dboncukc/fastsim_ref/auto/autoSubmission/autoSubmissionTemp/epoch1000_tanh800_logit_1/checkONNX.py, /afs/cern.ch/user/d/dboncukc/fastsim_ref/auto/autoSubmission/autoSubmissionTemp/epoch1000_tanh800_logit_1/convertONNX.py, /afs/cern.ch/user/d/dboncukc/fastsim_ref/auto/autoSubmission/autoSubmissionTemp/epoch1000_tanh800_logit_1/my_mdmm.py, /afs/cern.ch/user/d/dboncukc/fastsim_ref/auto/autoSubmission/autoSubmissionTemp/epoch1000_tanh800_logit_1/my_mmd.py, /afs/cern.ch/user/d/dboncukc/fastsim_ref/auto/autoSubmission/autoSubmissionTemp/epoch1000_tanh800_logit_1/my_modules.py, /afs/cern.ch/user/d/dboncukc/fastsim_ref/auto/autoSubmission/autoSubmissionTemp/epoch1000_tanh800_logit_1/trainRegression_Jet.py, autoSubmissionTemp/epoch1000_tanh800_logit_1/trainConfig.py
+    arguments = $(Cluster) $(Process)
+    queue
+    

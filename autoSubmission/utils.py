@@ -122,8 +122,8 @@ def create_executable_file(tempTrainDir,training_outdir):
     #!/bin/bash
     source /cvmfs/sft.cern.ch/lcg/views/LCG_101cuda/x86_64-centos7-gcc8-opt/setup.sh
     export PYTHONPATH=./site-packages:$PYTHONPATH
-    cp $tempTrainDir$/*.py $training_outdir$
-    python trainRegression_Jet.py
+    cp $tempTrainDir$*.py $training_outdir$
+    python3 trainRegression_Jet.py
     """
     template = template.replace("$tempTrainDir$", tempTrainDir)
     template = template.replace("$training_outdir$", training_outdir)
