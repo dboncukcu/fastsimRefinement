@@ -77,12 +77,13 @@ if os.path.exists(training_outdir):
     os.makedirs(new_folder_path)
     training_outdir = new_folder_path + "/"
     training_temp_dir = temp_directory + new_folder_path.split("/")[-1] + "/"
+    training_config["trainingName"] = new_folder_path.split("/")[-1]    
 else:
     log("Created training output directory, " + training_outdir, message_type="success")
     os.makedirs(training_outdir)
     training_temp_dir = temp_directory + training_outdir.split("/")[-1] + "/"
-training_config["trainingName"] = new_folder_path.split("/")[-1]    
-
+    
+    
 log("_"*50,message_type="debug") # create training temp directory
 if not os.path.exists(training_temp_dir):
     log("Created training temp directory, "+ training_temp_dir, message_type="success")
@@ -100,12 +101,3 @@ create_config_file(training_temp_dir, training_config)
 log("_"*50,message_type="debug") # submit job
 condor_submit(training_temp_dir)
 log("_"*50,message_type="debug")
-# prepare training files
-
-
-
-# copy files
-
-# create submission file
-
-# submit job
