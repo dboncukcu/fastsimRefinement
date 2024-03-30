@@ -8,7 +8,7 @@ training_config = {
     "treeName": "tJet",
     "preSelection": "1",
     "jobFlavour" : "espresso",
-    "requestGPUs" : 1,
+    "requestGPUs" : 0,
     "isTest" : True,
     # if not isTest, the following parameters are used
     "nEpochs" : 1000, 
@@ -23,7 +23,7 @@ training_config = {
             ('RecJet_hadronFlavour_FastSim', [])
         ],
         "variables" : [
-            ('RecJet_pt_CLASS', ['tanh200','logit']),
+            ('RecJet_pt_CLASS', ['tanh','logit']),
             ('RecJet_btagDeepFlavB_CLASS', ['logit']),
             ('RecJet_btagDeepFlavCvB_CLASS', ['logit']),
             ('RecJet_btagDeepFlavCvL_CLASS', ['logit']),
@@ -47,6 +47,7 @@ training_files = [
     "./codes/my_mdmm.py",
     "./codes/my_mmd.py",
     "./codes/my_modules.py",
+    "./codes/makeHTML.py",
     "./codes/trainRegression_Jet.py",
     "./codes/visualization/plotting.py",
     "./codes/visualization/CMS_lumi.py",

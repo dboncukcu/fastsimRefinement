@@ -124,7 +124,7 @@ def create_executable_file(tempTrainDir,training_outdir):
     source /cvmfs/sft.cern.ch/lcg/views/LCG_101cuda/x86_64-centos7-gcc8-opt/setup.sh
     export PYTHONPATH=./site-packages:$PYTHONPATH
     mkdir $training_outdir$codes
-    mkdir $training_outdir$codes/visualization
+    mkdir $training_outdir$plots
     cp *.py $training_outdir$codes/
     
     echo "Training..."
@@ -146,8 +146,11 @@ def create_executable_file(tempTrainDir,training_outdir):
     echo "plotRegressionCorrelationFactors"
     python3 plotRegressionCorrelationFactors.py
 
-    echo "All Done"
+    echo "All Plots Done"
     
+    python3 $training_outdir$codes/makeHTML.py
+    
+    echo "train.sh executed successfully!"
     """
     template = template.replace("$tempTrainDir$", tempTrainDir)
     template = template.replace("$training_outdir$", training_outdir)
@@ -162,7 +165,9 @@ config =  {
     "outdir" : "$outdir$",
     "trainingName": "$trainingName$",
     "description": "$description$",
-    "jobFlavour" : "$jobFlavour$",
+    "inputFile" : '$inputFile$',
+    "treeName": "$treeName$",
+    "preSelection": "$preSelection$",
     "isTest" : $isTest$,
     "nEpochs" : $nEpochs$, 
     "batchSize" : $batchSize$,
@@ -189,6 +194,9 @@ config =  {
     template = template.replace("$parameters$", str(training_config["modelInput"]["parameters"]))
     template = template.replace("$variables$", str(training_config["modelInput"]["variables"]))
     template = template.replace("$spectators$", str(training_config["modelInput"]["spectators"]))
+    template = template.replace("$inputFile$", training_config["inputFile"])
+    template = template.replace("$treeName$", training_config["treeName"])
+    template = template.replace("$preSelection$", training_config["preSelection"])
     
     file_path = tempTrainDir + "trainConfig.py"
     with open(file_path, "w") as file:
@@ -199,8 +207,8 @@ def condor_submit(tempTrainDir):
     command = ["condor_submit", tempTrainDir + "start_train.sub"]
     process = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     if process.returncode == 0:
-        log("Job has been succesfully submitted:\n", message_type="success_bg", end="")
+        log("Job has been succesfully submitted:\n", message_type="success_bg")
         log(process.stdout)
     else:
-        log("An error has been accured:\n", message_type="error_bg", end="")
+        log("An error has been accured:\n", message_type="error_bg")
         log(process.stderr)
