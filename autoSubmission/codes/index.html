@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Training Status</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        table {
+            table-layout: fixed;
+            word-wrap: break-word;
+        }
+        @keyframes spin {
+          from {transform: rotate(0deg);}
+          to {transform: rotate(360deg);}
+        }
+
+        .spinner {
+          display: inline-block;
+          animation: spin 2s linear infinite;
+}
+    </style>
+</head>
+<body>
+  <div class="container">
+    <div class="text-center mb-4">
+      <h2>FastSim Refinement Training Logs</h2>
+    </div>
+    <div class="row justify-content-end">
+        <div class="col-4">
+            <div class="d-flex align-items-start">
+                <button id="refreshBtn" class="btn btn-primary mb-2 mr-2" style="width: 45%;">Refresh</button>
+                <select id="autoRefreshSelect" class="form-control" style="width: 55%;">
+                    <option value="No">No Refresh Timer</option>
+                    <option value="3">3 secs</option>
+                    <option value="5">5 secs</option>
+                    <option value="15">15 secs</option>
+                    <option value="30">30 secs</option>
+                    <option value="60">60 secs</option>
+                    <option value="90">90 secs</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-12">
+        <table class="table table-hover" id="trainingLogsTable">
+            <thead class="thead-light">
+              <tr>
+                <th class="text-center">Training Name</th>
+                <th class="text-center" style="width: 10%;">Status</th>
+                <th class="text-center">Detail</th>
+                <th class="text-center"  style="width: 15%;">Updated Date</th>
+                <th class="text-center" style="width: 10%;">Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>          
+      </div>
+    </div>
+
+    
+  </div>
+  <script src="log.js"></script>
+  <script>
+  function createStatusBadge(status) {
+    status = status.toLowerCase();
+    if (status === 'training') {
+        return '<span class="badge badge-pill badge-primary">Training</span>';
+    } else if (status === 'plotting') {
+        return '<span class="badge badge-pill badge-warning">Plotting</span>';
+    } else if (status === 'completed') {
+        return '<span class="badge badge-pill badge-success">Completed</span>';
+    } else if (status === 'prepared') {
+        return '<span class="badge badge-pill badge-info">Prepared</span>';
+    } else if (status === 'idle') {
+        return '<span class="badge badge-pill badge-secondary">IDLE</span>';
+    } else if (status === 'benchmarking') {
+        return '<span class="badge badge-pill badge-dark">Benchmarking</span>';
+    }
+    return '<span class="badge badge-pill badge-danger">Unknown</span>';
+    }
+   function createDetailColumn(status, trainingName,detail) {
+
+        status = status.toLowerCase();
+        if (status === 'training') {
+
+            const epoch = parseInt(detail.epoch)
+            const maxEpoch = parseInt(detail.maxEpoch)
+
+            const progressPercentage = (epoch / maxEpoch) * 100;
+            return `
+                <div style="position: relative; width: 100%; height: 20px;">
+                    <div class="progress" style="position: absolute; width: 100%; height: 100%; z-index: 1;">
+                        <div class="progress-bar bg-info" role="progressbar" style="width: ${progressPercentage}%;"
+                        aria-valuenow="${epoch}" aria-valuemin="0" aria-valuemax="${maxEpoch}"></div>
+                    </div>
+                    <div style="position: absolute; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; z-index: 2; color: black; font-weight: bold;">
+                        ${epoch}/${maxEpoch}
+                    </div>
+                </div>
+            `;
+        } else if (status === 'plotting') {
+            const plotTextDisplay = detail!=="" ? `<span style="margin-left: 10px;">${detail}</span>` : '';
+            return `<div class="spinner-grow text-warning" role="status"></div>${plotTextDisplay}`;
+        } else if (status === 'completed') {
+            return `<a href="${trainingName}/" target="_blank" class="btn btn-success"><i class="bi bi-eye-fill"></i> Open</a>`;
+        } else if (status === 'prepared') {
+            return 'All Necessary Files Prepared.';
+        } else if (status === 'idle') {
+            return `<div class="spinner-border border-transparent text-secondary"></div>`;
+        } else if(status === 'benchmarking'){
+            return `<i class="bi bi-gear h3 spinner"></i>`;
+        }
+        return 'N/A';
+    }
+
+  function refreshLogs() {
+    const tableBody = $('#trainingLogsTable tbody');
+    tableBody.empty();
+
+    for (const [trainingName, logEntries] of Object.entries(trainingLogs)) {
+      logEntries.sort((a, b) => {
+          const dateA = a.updatedDate.split('/').reverse().join() + a.updatedDate.split(' ')[1].split(':').join();
+          const dateB = b.updatedDate.split('/').reverse().join() + b.updatedDate.split(' ')[1].split(':').join();
+          return dateA.localeCompare(dateB);
+        })
+      const latestLogEntry = logEntries[logEntries.length - 1];
+      const historyButton = `<button class="btn btn-info btn-sm history-button" data-training-name="${trainingName}"><i class="bi bi-clock-history"></i> History</button>`;
+
+      tableBody.append(`
+        <tr>
+            <td class="text-center">${trainingName}</td>
+            <td class="text-center">${createStatusBadge(latestLogEntry.status)}</td>
+            <td ${ latestLogEntry.status.toLowerCase()!="plotting" ?  'class="text-center"': ""}>${createDetailColumn(latestLogEntry.status,trainingName,latestLogEntry.detail)}</td>
+            <td class="text-center">${latestLogEntry.updatedDate}</td>
+            <td class="text-center">${historyButton}</td>
+        </tr>
+      `);
+    }
+    $('.history-button').click(function() {
+        const trainingName = $(this).data('trainingName');
+        const logEntries = trainingLogs[trainingName];
+
+        // Check if detail rows exist
+        if ($(`.log-details[data-training-name="${trainingName}"]`).length > 0) {
+            // Toggle visibility of existing detail rows
+            $(`.log-details[data-training-name="${trainingName}"]`).toggle();
+        } else {
+            // Add detail rows for history, excluding the most recent log entry
+            // Note: Assuming logEntries are in chronological order, so start from the second last and move backwards
+            $(this).closest('tr').after(
+            logEntries.slice(0, -1).reverse().map(entry => `
+                <tr class="log-details" data-training-name="${trainingName}">
+                    <td> </td>
+                    <td class="text-center">${createStatusBadge(entry.status)}</td>
+                    <td ${ entry.status.toLowerCase()!="plotting" ?  'class="text-center"': ""}>${createDetailColumn(entry.status,trainingName,entry.detail)}</td>
+                    <td class="text-center">${entry.updatedDate}</td>
+                    <td> </td>
+                </tr>
+            `).join('')
+            );
+        }
+        });
+
+  }
+  refreshLogs()
+
+  $(document).ready(function() {
+  // Sayfa yüklendiğinde localStorage'dan seçilen süreyi yükle
+  if (localStorage.getItem("refreshTime")) {
+    $('#autoRefreshSelect').val(localStorage.getItem("refreshTime"));
+  }
+
+  let countdownTimer;
+  $('#refreshBtn').click(function() {
+    location.reload();
+  });
+
+  $('#autoRefreshSelect').change(function() {
+    clearInterval(countdownTimer);
+    localStorage.setItem("refreshTime", $(this).val()); // Seçili süreyi localStorage'a kaydet
+
+    if ($(this).val() === 'No') {
+      $('#refreshBtn').text(`Refresh`);
+      return;
+    }
+
+    const interval = parseInt($(this).val());
+    let timeLeft = interval;
+    countdownTimer = setInterval(() => {
+      timeLeft--;
+      if (timeLeft <= 0) {
+        location.reload();
+      } else {
+        $('#refreshBtn').text(`Refresh-${timeLeft}`);
+      }
+    }, 1000);
+    $('#refreshBtn').text(`Refresh-${interval}`);
+  });
+
+  $('#autoRefreshSelect').trigger('change'); // Bu, sayfa yüklenirken otomatik yenilemeyi başlatır ve seçilen süreyi yükler
+});
+
+  </script>
+</body>
+</html>

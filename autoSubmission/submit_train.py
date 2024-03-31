@@ -2,17 +2,17 @@
 
 training_config = {
     "outdir" : "/eos/user/d/dboncukc/fastsimTest/", #"/eos/user/d/dboncukc/fastsim/",
-    "trainingName": "epoch1000_tanh800_logit",
-    "description": "epoch1000_tanh800_logit",
+    "trainingName": "epoch1000_tanh800_logit_gpu",
+    "description": "lorem ipsum dolor sit amet" * 10,
     "inputFile" : '/eos/cms/store/group/comm_fastsim/RefinementTraining/T1ttttRun3_CMSSW_13_0_13/mc_fullfast_T1tttt_JetsMuonsElectronsPhotonsTausEvents.root',
     "treeName": "tJet",
     "preSelection": "1",
     "jobFlavour" : "espresso",
-    "requestGPUs" : 0,
-    "isTest" : True,
+    "requestGPUs" : 1,
+    "isTest" : False,
     # if not isTest, the following parameters are used
-    "nEpochs" : 1000, 
-    "batchSize" : 2048,
+    "nEpochs" : 10, 
+    "batchSize" : 20,
     "numBatches" : [500, 100, 200], # [train, val, test]
     "logBase" : None,
     "tanhNorm" : 800,
@@ -95,12 +95,16 @@ else:
     log("Created training output directory, " + training_outdir, message_type="success")
     os.makedirs(training_outdir)
     training_temp_dir = temp_directory + training_outdir.split("/")[-1] + "/"
+if os.path.isfile(training_config["outdir"] + "index.html"):
+    log("index.html exists", message_type="success")
+else:
+    log("index.html does not exist", message_type="error")
+    cp("./codes/index.html", training_config["outdir"])
 if os.path.isfile(training_config["outdir"] + "makeHomePage.py"):
     log("makeHomePage.py exists", message_type="success")
 else:
     log("makeHomePage.py does not exist", message_type="error")
     cp("./codes/makeHomePage.py", training_config["outdir"])
-
 log("_"*50,message_type="debug") # create training temp directory
 if not os.path.exists(training_temp_dir):
     log("Created training temp directory, "+ training_temp_dir, message_type="success")
@@ -116,5 +120,5 @@ create_executable_file(training_temp_dir,training_outdir,training_config["outdir
 log("_"*50,message_type="debug") # create config file for training
 create_config_file(training_temp_dir, training_config)
 log("_"*50,message_type="debug") # submit job
-condor_submit(training_temp_dir)
+condor_submit(training_temp_dir,training_config["outdir"], training_config["trainingName"])
 log("_"*50,message_type="debug")

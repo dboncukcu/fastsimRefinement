@@ -210,7 +210,10 @@ config =  {
         file.write(template)
         log("Train Config file created -> " + file_path , message_type="success")
 
-def condor_submit(tempTrainDir):
+def condor_submit(tempTrainDir,outdir,trainingName):
+    
+    process = subprocess.run(["python3", f"{outdir}makeHomePage.py", "--trainingName", trainingName, "--status", "idle"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    print(process.stdout,process.stderr) 
     command = ["condor_submit", tempTrainDir + "start_train.sub"]
     process = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     if process.returncode == 0:

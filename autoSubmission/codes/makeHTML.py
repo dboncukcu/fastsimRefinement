@@ -245,6 +245,7 @@ files = [
     (f"{config['trainingName']}.root", "Output"),
     (f"{config['trainingName']}_train.csv", "Output"),
     (f"{config['trainingName']}_validation.csv", "Output"),
+    ("trainConfig.py", "Config File"),
     ("checkONNX.py", "Training Files"),
     ("convertONNX.py", "Training Files"),
     ("my_mdmm.py", "Training Files"),

@@ -708,18 +708,14 @@ for name, param in model.named_parameters():
     print(f'{name} is on {param.device}')
 
 
-
-
 for epoch in range(num_epochs):
     
 
     if is_verbose:
         print('\n# epoch {}'.format(epoch + 1))
         
-    process = subprocess.run(["python3", 
-                    trainConfig["outdir"]+ "makeHomePage.py --trainingName " + trainConfig["trainingName"] + " --epoch " + str(epoch) + " --maxEpoch " + str(num_epochs)], 
-                   stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-    print(process.stdout, process.stderr)
+    process = subprocess.run(["python3", f'{trainConfig["outdir"]}makeHomePage.py', "--trainingName", trainConfig["trainingName"], "--status", "Training","--epoch",str(epoch),"--maxEpoch",str(num_epochs)], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    print(process.stdout,process.stderr) 
     
     model.train()
 
