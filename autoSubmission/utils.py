@@ -118,7 +118,7 @@ def create_submission_file(executableFile, tempTrainDir, inputFiles,jobFlavour, 
         file.write(template)
         log("Submission file created -> " + file_path, message_type="success")
         
-def create_executable_file(tempTrainDir,training_outdir):
+def create_executable_file(tempTrainDir,training_outdir,outdir,trainingName):
     template = """
     #!/bin/bash
     source /cvmfs/sft.cern.ch/lcg/views/LCG_101cuda/x86_64-centos7-gcc8-opt/setup.sh
@@ -127,33 +127,40 @@ def create_executable_file(tempTrainDir,training_outdir):
     mkdir $training_outdir$/plots
     cp *.py $training_outdir$/codes/
     
+    python3 $outdir$makeHomePage.py --trainingName $trainingName$ --status Prepared
     echo "Training..."
     python3 trainRegression_Jet.py
     
+    python3 $outdir$makeHomePage.py --trainingName $trainingName$ --status Plotting --plot "Learning Curves"
     echo "plotLearningCurves"
     python3 plotLearningCurves.py
-
+    python3 $outdir$makeHomePage.py --trainingName $trainingName$ --status Plotting --plot "Weights"
     echo "plotWeights"
     python3 plotWeights.py
 
-
+    python3 $outdir$makeHomePage.py --trainingName $trainingName$ --status Plotting --plot "Pareto"
     echo "plotPareto"
     python3 plotPareto.py
 
+    python3 $outdir$makeHomePage.py --trainingName $trainingName$ --status Plotting --plot "Regression 1D"
     echo "plotRegression1D"
     python3 plotRegression1D.py
 
+    python3 $outdir$makeHomePage.py --trainingName $trainingName$ --status Plotting --plot "Regression Correlation Factors"
     echo "plotRegressionCorrelationFactors"
     python3 plotRegressionCorrelationFactors.py
 
     echo "All Plots Done"
     
-    python3 $training_outdir$codes/makeHTML.py
+    python3 $training_outdir$/codes/makeHTML.py
     
+    python3 $outdir$makeHomePage.py --trainingName $trainingName$ --status Completed
     echo "train.sh executed successfully!"
     """
     template = template.replace("$tempTrainDir$", tempTrainDir)
     template = template.replace("$training_outdir$", training_outdir)
+    template = template.replace("$outdir$", outdir)
+    template = template.replace("$trainingName$", trainingName)
     file_path = tempTrainDir + "train.sh"
     with open(file_path, "w") as file:
         file.write(template)

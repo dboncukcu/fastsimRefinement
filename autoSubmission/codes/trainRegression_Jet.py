@@ -11,6 +11,7 @@ import numpy as np
 import seaborn as sns
 import pandas as pd
 from matplotlib import colors
+import subprocess
 
 import torch
 torch.set_printoptions(edgeitems=5, linewidth=160)
@@ -710,10 +711,16 @@ for name, param in model.named_parameters():
 
 
 for epoch in range(num_epochs):
+    
 
     if is_verbose:
         print('\n# epoch {}'.format(epoch + 1))
-
+        
+    process = subprocess.run(["python3", 
+                    trainConfig["outdir"]+ "makeHomePage.py --trainingName " + trainConfig["trainingName"] + " --epoch " + str(epoch) + " --maxEpoch " + str(num_epochs)], 
+                   stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    print(process.stdout, process.stderr)
+    
     model.train()
 
     epoch_train_loss = 0.
@@ -875,7 +882,6 @@ for epoch in range(num_epochs):
                     train_loss += nomdmm_loss_scales[loss] * loss_vals[loss]
 
         print("train_loss:",train_loss.device)
-        print(train_loss)
         train_loss.backward()
 
         trainer.step()

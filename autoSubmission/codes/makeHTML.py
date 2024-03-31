@@ -233,7 +233,7 @@ for category, files in plot_categories.items():
             plot_cards_html += '            <div class="col-md-6">\n'
             plot_cards_html += f'                <div class="card">\n'
             plot_cards_html += f'                    <div class="card-header">{file}</div>\n'
-            plot_cards_html += f'                    <img src="{"/".join(plots_dir.split("/")[-2:])}" class="img-fluid plot-img" alt="{file}">\n'
+            plot_cards_html += f'                    <img src="plots/{file}" class="img-fluid plot-img" alt="{file}">\n'
             plot_cards_html += '                </div>\n'
             plot_cards_html += '            </div>\n'
         plot_cards_html += '        </div>\n'
@@ -262,7 +262,7 @@ files = [
     ("plotWeights.py", "Visualization"),
     ("tdrstyle.py", "Visualization"),
 ]
-files_rows = ''.join(f"<tr><td>{name}</td><td>{file_type}</td><td><a href='{mainDir +('codes/' if file_type != 'Output' else '') + name}' target='_blank' class='btn btn-success'>Download</a></td></tr>"
+files_rows = ''.join(f"<tr><td>{name}</td><td>{file_type}</td><td><a href='{('codes/' if file_type != 'Output' else '') + name}' target='_blank' class='btn btn-success'>Download</a></td></tr>"
                      for name, file_type in files)
 
 html_content = html_template.format(

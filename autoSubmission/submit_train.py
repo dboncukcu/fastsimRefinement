@@ -95,8 +95,12 @@ else:
     log("Created training output directory, " + training_outdir, message_type="success")
     os.makedirs(training_outdir)
     training_temp_dir = temp_directory + training_outdir.split("/")[-1] + "/"
-    
-    
+if os.path.isfile(training_config["outdir"] + "makeHomePage.py"):
+    log("makeHomePage.py exists", message_type="success")
+else:
+    log("makeHomePage.py does not exist", message_type="error")
+    cp("./codes/makeHomePage.py", training_config["outdir"])
+
 log("_"*50,message_type="debug") # create training temp directory
 if not os.path.exists(training_temp_dir):
     log("Created training temp directory, "+ training_temp_dir, message_type="success")
@@ -108,7 +112,7 @@ temp_copied_files_paths.append(training_temp_dir + "trainConfig.py")
 log("_"*50,message_type="debug") # create submission file
 create_submission_file(training_temp_dir + "train.sh", training_temp_dir, temp_copied_files_paths, training_config["jobFlavour"],training_config["requestGPUs"])
 log("_"*50,message_type="debug") # create executable file
-create_executable_file(training_temp_dir,training_outdir)
+create_executable_file(training_temp_dir,training_outdir,training_config["outdir"], training_config["trainingName"])
 log("_"*50,message_type="debug") # create config file for training
 create_config_file(training_temp_dir, training_config)
 log("_"*50,message_type="debug") # submit job
